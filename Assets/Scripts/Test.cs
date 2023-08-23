@@ -12,6 +12,6 @@ public class Test : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        Debug.Log(Conductor.instance.beatNum);
+        Debug.Log(Conductor.instance.beatDelta);
     }
 }

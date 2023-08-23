@@ -6,22 +6,24 @@ public class Conductor : MonoBehaviour
 {
 	public static Conductor instance { get; private set; }
 
-	private float _currentBPS = 2f;
-	private float _currentBPM = 120f;
+	private float _currentBPS = 2f;   // Assigned beats-per-second
+	private float _currentBPM = 120f; // Assigned beats-per-minute
 
-	public double startOffset { get; private set; } = 0.0;
-	public double inputOffset = 0.2;
+	public double startOffset { get; private set; } = 0.0; // The offset of the start of the song, in seconds
+	public double inputOffset = 0.2; // The offset between a keypress and being processed by the program, in seconds
 
 	public double startedTime { get; private set; } = 0.0;
 
 	public float rawSongTime { get; private set; } = 0f;
 	public float rawSongBeat { get; private set; } = 0f;
-	public int rawBeatNum { get; private set; } = 0;
+	public int rawNearestBeat { get; private set; } = 0;
+	public float rawBeatDelta { get; private set; } = 0;
 
 	// The current time/beat with input delay taken out
-	public float songTime { get; private set; } = 0f;
-	public float songBeat { get; private set; } = 0f;
-	public int beatNum { get; private set; } = 0;
+	public float songTime { get; private set; } = 0f; // The current position in the song in seconds
+	public float songBeat { get; private set; } = 0f; // The current position in beats, can be between beats
+	public int nearestBeat { get; private set; } = 0; // The number of the closest beat, starting from 0
+	public float beatDelta { get; private set; } = 0; // Offset of the closest beat in seconds
 
 	// Beats per second
 	public float currentBPS
@@ -53,11 +55,13 @@ public class Conductor : MonoBehaviour
 
 		rawSongTime = (float)(AudioSettings.dspTime - startedTime - startOffset);
 		rawSongBeat = rawSongTime * currentBPS;
-		rawBeatNum = Mathf.FloorToInt(rawSongBeat);
+		rawNearestBeat = Mathf.RoundToInt(rawSongBeat);
+		rawBeatDelta = (rawSongBeat - rawNearestBeat) / currentBPS;
 
 		songTime = (float)(AudioSettings.dspTime - startedTime - startOffset - inputOffset);
 		songBeat = songTime * currentBPS;
-		beatNum = Mathf.FloorToInt(songBeat);
+		nearestBeat = Mathf.RoundToInt(songBeat);
+		beatDelta = (songBeat - nearestBeat) / currentBPS;
 	}
 
 	private void Awake()
@@ -75,10 +79,12 @@ public class Conductor : MonoBehaviour
 	{
 		rawSongTime = (float)(AudioSettings.dspTime - startedTime - startOffset);
 		rawSongBeat = rawSongTime * currentBPS;
-		rawBeatNum = Mathf.FloorToInt(rawSongBeat);
+		rawNearestBeat = Mathf.RoundToInt(rawSongBeat);
+		rawBeatDelta = (rawSongBeat - rawNearestBeat) / currentBPS;
 
 		songTime = (float)(AudioSettings.dspTime - startedTime - startOffset - inputOffset);
 		songBeat = songTime * currentBPS;
-		beatNum = Mathf.FloorToInt(songBeat);
+		nearestBeat = Mathf.RoundToInt(songBeat);
+		beatDelta = (songBeat - nearestBeat) / currentBPS;
 	}
 }
