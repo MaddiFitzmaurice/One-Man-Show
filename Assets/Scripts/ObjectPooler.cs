@@ -19,8 +19,23 @@ public static class ObjectPooler
         return pooledObjects;
     }
 
+    // Create object pool using a prefab and amount to pool under a given parent
+    public static List<GameObject> CreateObjectPool(int amountToPool, GameObject objectToPool, Transform parent)
+    {
+        List<GameObject> pooledObjects = new List<GameObject>();
+
+        for (int i = 0; i < amountToPool; i++)
+        {
+            GameObject obj = GameObject.Instantiate(objectToPool, parent);
+            obj.SetActive(false);
+            pooledObjects.Add(obj);
+        }
+
+        return pooledObjects;
+    }
+
     //Retrieve a pooled object if it is not active in the hierarchy
-    public static GameObject GetPooledObject(List<GameObject> pooledObjects)
+    public static GameObject GetPooledObject(this List<GameObject> pooledObjects)
     {
         foreach (GameObject obj in pooledObjects)
         {
@@ -34,7 +49,7 @@ public static class ObjectPooler
     }
 
     // Return objects to pool
-    public static void ReturnObjectsToPool(List<GameObject> pooledObjects)
+    public static void ReturnObjectsToPool(this List<GameObject> pooledObjects)
     {
         foreach (GameObject obj in pooledObjects)
         {
@@ -42,15 +57,6 @@ public static class ObjectPooler
             {
                 obj.SetActive(false);
             }
-        }
-    }
-
-    // Assign parent transform for pooled objects to organise hierarchy
-    public static void AssignParentGroup(List<GameObject> pooledObjects, Transform parent)
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            pooledObjects[i].transform.parent = parent;
         }
     }
 }

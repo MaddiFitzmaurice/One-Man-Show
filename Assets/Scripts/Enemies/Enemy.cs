@@ -24,8 +24,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Conductor cd = Conductor.instance;
-        float beatDiff = cd.currentBPS * _hitWindow;
+        float beatDiff = Conductor.currentBPS * _hitWindow;
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
     }
@@ -56,8 +55,7 @@ public class Enemy : MonoBehaviour
 	// perform movement and animations
 	void Update()
     {
-        Conductor cd = Conductor.instance;
-        float relativeBeat = cd.songBeat - _startBeat;
+        float relativeBeat = Conductor.songBeat - _startBeat;
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
         // check if any new beats/animations need to occur
@@ -77,7 +75,7 @@ public class Enemy : MonoBehaviour
 		}
 
         // check if it's time to attack
-        if (_earlyWindow < cd.songBeat && cd.songBeat > _lateWindow)
+        if (_earlyWindow < Conductor.songBeat && Conductor.songBeat < _lateWindow)
 		{
             switch (_direction)
 			{
@@ -96,7 +94,7 @@ public class Enemy : MonoBehaviour
             }
         }
         // if the player hasn't destroyed this enemy in time, deal damage
-        else if (cd.songBeat > _lateWindow)
+        else if (Conductor.songBeat > _lateWindow)
 		{
             // TODO: make this deal damage
             gameObject.SetActive(false);

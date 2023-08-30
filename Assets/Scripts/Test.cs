@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+	public SongMeta song;
+	public AudioSource clickSource;
+
 	private void Start()
 	{
-		Conductor.instance.StartTracking(120,0);
+		SongManager.StartSong(song);
+
+		EventManager.EventSubscribe(EventType.BEAT, OnBeat);
 	}
 
-	// Update is called once per frame
-	void Update()
-    {
-        Debug.Log(Conductor.instance.beatDelta);
-    }
+	private void OnDestroy()
+	{
+		EventManager.EventUnsubscribe(EventType.BEAT, OnBeat);
+	}
+
+	void OnBeat(object data)
+	{
+		if ((int)data < 0) return;
+
+		clickSource.Play();
+	}
 }
