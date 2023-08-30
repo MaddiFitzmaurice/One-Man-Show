@@ -18,10 +18,12 @@ public static class EventManager
     public static void EventSubscribe(EventType gameEventName, Action<object> funcToSub)
     {
         // Check if event exists, then sub handler function to it
-        if (_gameEventDict.ContainsKey(gameEventName))
+        if (!_gameEventDict.ContainsKey(gameEventName))
         {
-            _gameEventDict[gameEventName] += funcToSub;
+            EventInitialise(gameEventName);
         }
+
+        _gameEventDict[gameEventName] += funcToSub;
     }
 
     // Unsubscribe function handler from event
