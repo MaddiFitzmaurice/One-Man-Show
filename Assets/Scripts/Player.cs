@@ -6,16 +6,16 @@ public class Player : MonoBehaviour
 {
     private void OnEnable()
     {
-        EventManager.EventSubscribe("Parry_Left", ParryLeftHandler);
-        EventManager.EventSubscribe("Parry_Right", ParryRightHandler);
-        EventManager.EventSubscribe("Parry_Forward", ParryForwardHandler);
+        EventManager.EventSubscribe(EventType.PARRY_LEFT, ParryLeftHandler);
+        EventManager.EventSubscribe(EventType.PARRY_RIGHT, ParryRightHandler);
+        EventManager.EventSubscribe(EventType.PARRY_FORWARD, ParryForwardHandler);
     }
 
     private void OnDisable()
     {
-        EventManager.EventUnsubscribe("Parry_Left", ParryLeftHandler);
-        EventManager.EventUnsubscribe("Parry_Right", ParryRightHandler);
-        EventManager.EventUnsubscribe("Parry_Forward", ParryForwardHandler);
+        EventManager.EventUnsubscribe(EventType.PARRY_LEFT, ParryLeftHandler);
+        EventManager.EventUnsubscribe(EventType.PARRY_RIGHT, ParryRightHandler);
+        EventManager.EventUnsubscribe(EventType.PARRY_FORWARD, ParryForwardHandler);
     }
 
     // Callback functions for Parry events that accept data

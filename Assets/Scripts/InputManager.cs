@@ -6,12 +6,6 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour, GameInput.IGameplayActions
 {
-    // Event Name Keys
-    // TODO: Need to think of a better way to do keys - public enums maybe??? 
-    private const string EVENT_PARRY_LEFT = "Parry_Left";
-    private const string EVENT_PARRY_RIGHT = "Parry_Right";
-    private const string EVENT_PARRY_FORWARD = "Parry_Forward";
-
     // Input
     private GameInput _inputActions;
 
@@ -42,16 +36,16 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
     // Create events
     public void EventInit()
     {
-        EventManager.EventInitialise(EVENT_PARRY_LEFT);
-        EventManager.EventInitialise(EVENT_PARRY_RIGHT);
-        EventManager.EventInitialise(EVENT_PARRY_FORWARD);
+        EventManager.EventInitialise(EventType.PARRY_LEFT);
+        EventManager.EventInitialise(EventType.PARRY_RIGHT);
+        EventManager.EventInitialise(EventType.PARRY_FORWARD);
     }
 
     public void OnLeftParry(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            EventManager.EventTrigger(EVENT_PARRY_LEFT, null);
+            EventManager.EventTrigger(EventType.PARRY_LEFT, null);
         }    
     }
 
@@ -59,7 +53,7 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
     {
         if (context.started)
         {
-            EventManager.EventTrigger(EVENT_PARRY_RIGHT, null);
+            EventManager.EventTrigger(EventType.PARRY_RIGHT, null);
         }
     }
 
@@ -68,7 +62,7 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
         if (context.started)
         {
             // To test if it can take data
-            EventManager.EventTrigger(EVENT_PARRY_FORWARD, 1);
+            EventManager.EventTrigger(EventType.PARRY_FORWARD, 1);
         }
     }
 }

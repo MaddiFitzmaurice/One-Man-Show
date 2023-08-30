@@ -5,17 +5,17 @@ using System;
 
 public static class EventManager
 {
-    private static Dictionary<string, Action<object>> _gameEventDict = new Dictionary<string, Action<object>>();
+    private static Dictionary<EventType, Action<object>> _gameEventDict = new Dictionary<EventType, Action<object>>();
 
     // Create an event and add to the dictionary
-    public static void EventInitialise(string gameEventName)
+    public static void EventInitialise(EventType gameEventName)
     {
         Action<object> newGameEvent = null;
         _gameEventDict.Add(gameEventName, newGameEvent);
     }
 
     // Subscribe function handler to event
-    public static void EventSubscribe(string gameEventName, Action<object> funcToSub)
+    public static void EventSubscribe(EventType gameEventName, Action<object> funcToSub)
     {
         // Check if event exists, then sub handler function to it
         if (_gameEventDict.ContainsKey(gameEventName))
@@ -25,7 +25,7 @@ public static class EventManager
     }
 
     // Unsubscribe function handler from event
-    public static void EventUnsubscribe(string gameEventName, Action<object> funcToUnsub)
+    public static void EventUnsubscribe(EventType gameEventName, Action<object> funcToUnsub)
     {
         // Check if event exists, then unsub handler function from it
         if (_gameEventDict.ContainsKey(gameEventName))
@@ -35,7 +35,7 @@ public static class EventManager
     }
 
     // Trigger event
-    public static void EventTrigger(string gameEventName, object data)
+    public static void EventTrigger(EventType gameEventName, object data)
     {
         // Check if event exists, then invoke and execute all handlers subscribed to it
         if (_gameEventDict.ContainsKey(gameEventName))

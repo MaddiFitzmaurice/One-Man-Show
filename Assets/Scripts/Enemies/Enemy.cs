@@ -42,13 +42,13 @@ public class Enemy : MonoBehaviour
         switch (_direction)
         {
             case StageDirection.LEFT:
-                EventManager.EventUnsubscribe("Parry_Left", DefeatMe);
+                EventManager.EventUnsubscribe(EventType.PARRY_LEFT, DefeatMe);
                 break;
             case StageDirection.RIGHT:
-                EventManager.EventUnsubscribe("Parry_Right", DefeatMe);
+                EventManager.EventUnsubscribe(EventType.PARRY_RIGHT, DefeatMe);
                 break;
             case StageDirection.FORWARD:
-                EventManager.EventUnsubscribe("Parry_Forward", DefeatMe);
+                EventManager.EventUnsubscribe(EventType.PARRY_FORWARD, DefeatMe);
                 break;
         }
     }
@@ -83,15 +83,15 @@ public class Enemy : MonoBehaviour
 			{
                 case StageDirection.LEFT:
                     // subscribe this enemy dying to EVENT_PARRY_LEFT
-                    EventManager.EventSubscribe("Parry_Left", DefeatMe);
+                    EventManager.EventSubscribe(EventType.PARRY_LEFT, DefeatMe);
                     break;
                 case StageDirection.RIGHT:
                     // subscribe this enemy dying to EVENT_PARRY_RIGHT
-                    EventManager.EventSubscribe("Parry_Right", DefeatMe);
+                    EventManager.EventSubscribe(EventType.PARRY_RIGHT, DefeatMe);
                     break;
                 case StageDirection.FORWARD:
                     // subscribe this enemy dying to EVENT_PARRY_FORWARD
-                    EventManager.EventSubscribe("Parry_Forward", DefeatMe);
+                    EventManager.EventSubscribe(EventType.PARRY_FORWARD, DefeatMe);
                     break;
             }
         }
