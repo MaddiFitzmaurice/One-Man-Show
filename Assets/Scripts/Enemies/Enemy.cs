@@ -37,8 +37,24 @@ public class Enemy : MonoBehaviour
         _direction = dr;
 	}
 
-    // perform movement and animations
-    void Update()
+	private void OnDisable()
+	{
+        switch (_direction)
+        {
+            case StageDirection.LEFT:
+                EventManager.EventUnsubscribe("Parry_Left", DefeatMe);
+                break;
+            case StageDirection.RIGHT:
+                EventManager.EventUnsubscribe("Parry_Right", DefeatMe);
+                break;
+            case StageDirection.FORWARD:
+                EventManager.EventUnsubscribe("Parry_Forward", DefeatMe);
+                break;
+        }
+    }
+
+	// perform movement and animations
+	void Update()
     {
         Conductor cd = Conductor.instance;
         float relativeBeat = cd.songBeat - _startBeat;
@@ -66,15 +82,16 @@ public class Enemy : MonoBehaviour
             switch (_direction)
 			{
                 case StageDirection.LEFT:
-                    // TODO: it should be something like this?? this gives an error tho
-                    // System.Action<object> a = () => Destroy(this); 
-                    // EventManager.EventSubscribe("Parry_Left", a);
+                    // subscribe this enemy dying to EVENT_PARRY_LEFT
+                    EventManager.EventSubscribe("Parry_Left", DefeatMe);
                     break;
                 case StageDirection.RIGHT:
                     // subscribe this enemy dying to EVENT_PARRY_RIGHT
+                    EventManager.EventSubscribe("Parry_Right", DefeatMe);
                     break;
                 case StageDirection.FORWARD:
-                    // subscribe this enemy dying to EVENT_PARRY_RIGHT
+                    // subscribe this enemy dying to EVENT_PARRY_FORWARD
+                    EventManager.EventSubscribe("Parry_Forward", DefeatMe);
                     break;
             }
         }
@@ -82,6 +99,13 @@ public class Enemy : MonoBehaviour
         else if (cd.songBeat > _lateWindow)
 		{
             // TODO: make this deal damage
-		}
+            gameObject.SetActive(false);
+        }
     }
+
+    public void DefeatMe(object data)
+	{
+        // TODO: any death animations/sounds go here
+        gameObject.SetActive(false);
+	}
 }
