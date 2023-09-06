@@ -6,21 +6,23 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] List<EnemySpawner> _enemySpawns;
 
-    // Enemy prefab to pool
-    [SerializeField] GameObject _enemyPrefab;
+    // Enemy prefabs to pool
+    [SerializeField] GameObject _type1EnemyPrefab;
+    [SerializeField] GameObject _type2EnemyPrefab;
+    [SerializeField] GameObject _type3EnemyPrefab;
 
     // Maximum number of enemies per pool
     [SerializeField] int _maxNumToPool;
 
     // Parents that enemies are parented to so the hierarchy is clean and organised
-    [SerializeField] Transform _leftEnemyParent;
-    [SerializeField] Transform _rightEnemyParent;
-    [SerializeField] Transform _centreEnemyParent;
+    [SerializeField] Transform _type1EnemyParent;
+    [SerializeField] Transform _type2EnemyParent;
+    [SerializeField] Transform _type3EnemyParent;
 
     // Enemy pool lists
-    List<GameObject> _leftEnemyList;
-    List<GameObject> _rightEnemyList;
-    List<GameObject> _centreEnemyList;
+    List<GameObject> _type1EnemyList;
+    List<GameObject> _type2EnemyList;
+    List<GameObject> _type3EnemyList;
 
     private void Start()
     {
@@ -30,8 +32,8 @@ public class EnemyManager : MonoBehaviour
     // Create enemy pools
     void InitEnemyPools()
     {
-        _leftEnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _enemyPrefab, _leftEnemyParent);
-        _rightEnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _enemyPrefab, _rightEnemyParent);
-        _centreEnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _enemyPrefab, _centreEnemyParent);
+        _type1EnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _type1EnemyPrefab, _type1EnemyParent);
+        _type2EnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _type2EnemyPrefab, _type2EnemyParent);
+        _type3EnemyList = ObjectPooler.CreateObjectPool(_maxNumToPool, _type3EnemyPrefab, _type3EnemyParent);
     }
 }
