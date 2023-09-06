@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct EnemyBeat
 {
     public float BeatOffset;
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float _hitTime; // how many beats until this enemy attacks
     [SerializeField] private AudioClip _hitSound; // the sound this enemy plays if it attacks the player
+    [SerializeField] private AudioClip _deathSound; // the sound this enemy plays if it is killed
     private float _hitWindow = 0.08f; // ms leniency in both directions (consistent across all enemies)
     private float _earlyWindow; // how many beats the player can be early
     private float _lateWindow; // how many beats the player can be late
@@ -64,6 +66,8 @@ public class Enemy : MonoBehaviour
             if (relativeBeat > b.BeatOffset)
 			{
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
+                SFXData thisSound = new SFXData(b.Sound, _direction);
+                EventManager.EventTrigger(EventType.SFX, thisSound);
                 deleteBeats.Add(b); // queue the beat for deletion
 			}
 		}
@@ -97,6 +101,8 @@ public class Enemy : MonoBehaviour
         else if (Conductor.songBeat > _lateWindow)
 		{
             // TODO: make this deal damage
+            SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
+            EventManager.EventTrigger(EventType.SFX, hitClip);
             gameObject.SetActive(false);
         }
     }
