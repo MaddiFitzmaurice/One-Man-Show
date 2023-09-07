@@ -4,5 +4,7 @@ public enum EventType
 	PARRY_RIGHT,
 	PARRY_FORWARD,
 	BEAT,
-	SFX
+	SFX,
+	PLAYER_HIT,
+	HEALTH_UI
 };

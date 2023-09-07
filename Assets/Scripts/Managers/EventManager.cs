@@ -10,8 +10,11 @@ public static class EventManager
     // Create an event and add to the dictionary
     public static void EventInitialise(EventType gameEventName)
     {
-        Action<object> newGameEvent = null;
-        _gameEventDict.Add(gameEventName, newGameEvent);
+        if (!_gameEventDict.ContainsKey(gameEventName))
+        {
+            Action<object> newGameEvent = null;
+            _gameEventDict.Add(gameEventName, newGameEvent);
+        } 
     }
 
     // Subscribe function handler to event
