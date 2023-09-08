@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     // NOTE: JUST A TEST FOR SFXMANAGER. Player sound will always
     // come from centre
-    [SerializeField] int _maxHealth;
+    [SerializeField] [Range(1, 5)] int _maxHealth;
     [SerializeField] int _currentHealth;    // TEST, remove serialise when done
 
     // TO TEST HEALTH REGEN
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         RegenHealth();
+        EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
         _regenTimer = 0;
         _isDead = false;
 

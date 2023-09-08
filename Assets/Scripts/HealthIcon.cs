@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class HealthIcon : MonoBehaviour
 {
-    bool _active;
+    bool _isFull;
     Image _image; 
 
     private void Awake()
     {
-        _active = true;
+        _isFull = true;
         _image = GetComponent<Image>();
     }
 
@@ -21,17 +21,17 @@ public class HealthIcon : MonoBehaviour
 
     public void SetImage()
     {
-        _image.color = _active == true ? Color.red : Color.gray;
+        _image.color = _isFull == true ? Color.red : Color.gray;
     }
 
-    public void SetActive(bool flag)
+    public void SetIsFull(bool flag)
     {
-        _active = flag;
+        _isFull = flag;
         SetImage();
     }
 
-    public bool GetActive()
+    public bool GetIsFull()
     {
-        return _active;
+        return _isFull;
     }
 }
