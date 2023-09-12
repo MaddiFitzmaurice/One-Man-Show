@@ -23,11 +23,12 @@ public class EnemyManager : MonoBehaviour
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;
 
+    private bool _debugTestSpawn = true;
+
     private void Start()
     {
         _typeEnemyList = new List<List<GameObject>>();
         InitEnemyPools();
-        TestSpawn();
     }
 
     // Create enemy pools
@@ -39,8 +40,18 @@ public class EnemyManager : MonoBehaviour
 		}
     }
 
-    // spawn an enemy, just to test that it works
-    public void TestSpawn()
+	// TESTING ONLY: DELETE WHEN DONE
+	private void Update()
+	{
+        if (_debugTestSpawn)
+        {
+            TestSpawn();
+            _debugTestSpawn = false;
+        }
+    }
+
+	// spawn an enemy, just to test that it works
+	public void TestSpawn()
     {
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
         newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);

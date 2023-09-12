@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _hitTime; // how many beats until this enemy attacks
     [SerializeField] private AudioClip _hitSound; // the sound this enemy plays if it attacks the player
     [SerializeField] private AudioClip _deathSound; // the sound this enemy plays if it is killed
-    private float _hitWindow = 0.092f; // ms leniency in both directions (consistent across all enemies)
+    private float _hitWindow = 0.098f; // ms leniency in both directions (consistent across all enemies)
     private float _earlyWindow; // how many beats the player can be early
     private float _lateWindow; // how many beats the player can be late
     [SerializeField] private StageDirection _direction;
@@ -31,9 +31,11 @@ public class Enemy : MonoBehaviour
         _startBeat = sb;
         _direction = dr;
 
-        float beatDiff = Conductor.currentBPS * _hitWindow;
+        Debug.Log(Conductor.currentBPS); // TODO: why do you think this is 2?? it should be 1.33
+        float beatDiff = _hitWindow / (1 / Conductor.currentBPS); // what percentage of a beat the hit window falls within
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
+        Debug.Log("Early window is beat " + _earlyWindow + ", late window is " + _lateWindow);
     }
 
 	private void OnDisable()
