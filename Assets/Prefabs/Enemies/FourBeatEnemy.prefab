@@ -100,12 +100,12 @@ MonoBehaviour:
   _startBeat: 0
   _beats:
   - BeatOffset: 0
-    Sound: {fileID: 8300000, guid: 0004bbaf58d38f74f8cd511f0bf204c5, type: 3}
+    Sound: {fileID: 8300000, guid: 6bbaa1a09110abe4a94cf7948205ccaa, type: 3}
   - BeatOffset: 1
-    Sound: {fileID: 8300000, guid: 0004bbaf58d38f74f8cd511f0bf204c5, type: 3}
+    Sound: {fileID: 8300000, guid: 6bbaa1a09110abe4a94cf7948205ccaa, type: 3}
   - BeatOffset: 2
-    Sound: {fileID: 8300000, guid: 0004bbaf58d38f74f8cd511f0bf204c5, type: 3}
+    Sound: {fileID: 8300000, guid: 6bbaa1a09110abe4a94cf7948205ccaa, type: 3}
   _hitTime: 3
-  _hitSound: {fileID: 8300000, guid: 9ca1e05dc9ae2cd419aa81e893efbe84, type: 3}
-  _deathSound: {fileID: 8300000, guid: 65cef461ab50bce4e9d76ec9d2fd559e, type: 3}
+  _hitSound: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+  _deathSound: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0

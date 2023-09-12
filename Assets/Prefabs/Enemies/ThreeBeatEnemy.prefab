@@ -104,6 +104,6 @@ MonoBehaviour:
   - BeatOffset: 2
     Sound: {fileID: 8300000, guid: 825efcfab88bcce40a80af65279083bf, type: 3}
   _hitTime: 4
-  _hitSound: {fileID: 8300000, guid: 9ca1e05dc9ae2cd419aa81e893efbe84, type: 3}
-  _deathSound: {fileID: 8300000, guid: 65cef461ab50bce4e9d76ec9d2fd559e, type: 3}
+  _hitSound: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+  _deathSound: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0
