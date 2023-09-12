@@ -24,21 +24,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private StageDirection _direction;
     private bool _attackReadied = false; // set to true when the event to kill this enemy is added
     private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // MOVE THIS TO Initialise ONCE DONE TESTING
-        float beatDiff = Conductor.currentBPS * _hitWindow;
-        _earlyWindow = (_hitTime + _startBeat) - beatDiff;
-        _lateWindow = (_hitTime + _startBeat) + beatDiff;
-    }
     
     // set unique values for this enemy
     public void Initialise(StageDirection dr, float sb)
 	{
         _startBeat = sb;
         _direction = dr;
+
+        float beatDiff = Conductor.currentBPS * _hitWindow;
+        _earlyWindow = (_hitTime + _startBeat) - beatDiff;
+        _lateWindow = (_hitTime + _startBeat) + beatDiff;
     }
 
 	private void OnDisable()

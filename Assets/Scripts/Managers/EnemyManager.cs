@@ -27,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     {
         _typeEnemyList = new List<List<GameObject>>();
         InitEnemyPools();
+        TestSpawn();
     }
 
     // Create enemy pools
@@ -36,5 +37,13 @@ public class EnemyManager : MonoBehaviour
 		{
             _typeEnemyList.Add(ObjectPooler.CreateObjectPool(_maxNumToPool, ept.prefab, ept.parent));
 		}
+    }
+
+    // spawn an enemy, just to test that it works
+    public void TestSpawn()
+    {
+        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
+        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);
+        newEnemy.SetActive(true);
     }
 }
