@@ -107,6 +107,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
 
             // TODO: make this deal damage
+            EventManager.EventTrigger(EventType.PLAYER_HIT, null);
             SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
             EventManager.EventTrigger(EventType.SFX, hitClip);
             gameObject.SetActive(false);
