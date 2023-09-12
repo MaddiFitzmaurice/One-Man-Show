@@ -17,6 +17,7 @@ public class SongManager : MonoBehaviour
 		instance.songSource.clip = song.clip;
 		instance.songSource.Play();
 
+		Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
 		Conductor.StartTracking(song.BPM, song.startOffset);
 
 		_lastBeat = Conductor.rawLastBeat;
@@ -36,6 +37,11 @@ public class SongManager : MonoBehaviour
 	private void Start()
 	{
 		EventManager.EventInitialise(EventType.BEAT);
+		SongMeta sm = new SongMeta();
+		sm.BPM = 85;
+		sm.clip = songSource.clip; // using the source's clip for now
+		sm.startOffset = 1.442f; // in milliseconds
+		StartSong(sm);
 	}
 
 	private void Update()
