@@ -7,6 +7,8 @@ public class SongManager : MonoBehaviour
 	private static int _lastBeat;
 
 	public AudioSource songSource;
+	public SongMeta song; // is there a better place to store this?
+
 	// Decides whether to call Beat events before the song starts
 	public bool broadcastNegativeBeats = true;
 
@@ -37,11 +39,11 @@ public class SongManager : MonoBehaviour
 	private void Start()
 	{
 		EventManager.EventInitialise(EventType.BEAT);
-		SongMeta sm = new SongMeta();
-		sm.BPM = 85;
-		sm.clip = songSource.clip; // using the source's clip for now
-		sm.startOffset = 1.442f; // in milliseconds
-		StartSong(sm);
+		//SongMeta sm = new SongMeta();
+		//sm.BPM = 85;
+		//sm.clip = songSource.clip; // using the source's clip for now
+		//sm.startOffset = 1.442f; // in milliseconds
+		StartSong(song);
 	}
 
 	private void Update()
