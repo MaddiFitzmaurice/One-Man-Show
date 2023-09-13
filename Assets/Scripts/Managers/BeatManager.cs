@@ -19,12 +19,22 @@ public class BeatManager : MonoBehaviour
         float totalBeats = 53f * Conductor.currentBPS;
         Debug.Log(totalBeats);
 
+        double currentTime = Conductor.songTime;
+
         // Broadcast until song finishes
         while (Conductor.songBeat < totalBeats)
         {
-            Debug.Log(Conductor.songBeat);
-            // Wait for the equivalent of a half-beat in seconds before broadcasting again
-            yield return new WaitForSeconds(0.375f);
+            // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
+            if (Conductor.songTime > currentTime + 0.375)
+            {
+                //Broadcast beat and reset current time
+                Debug.Log(Conductor.songBeat);
+                currentTime = Conductor.songTime;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }
