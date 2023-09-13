@@ -8,7 +8,6 @@ public class BeatManager : MonoBehaviour
     void Start()
     {
         // TEST
-        IEnumerator coroutine = BroadcastBeat();
         StartCoroutine(BroadcastBeat());
     }
 
@@ -19,7 +18,7 @@ public class BeatManager : MonoBehaviour
         float totalBeats = 53f * Conductor.currentBPS;
         Debug.Log(totalBeats);
 
-        double currentTime = Conductor.songTime;
+        float currentTime = Conductor.songTime;
 
         // Broadcast until song finishes
         while (Conductor.songBeat < totalBeats)
