@@ -39,13 +39,12 @@ public class SFXManager : MonoBehaviour
     // Handles SFXEvent with incoming SFX data to play at specified cue source
     public void SFXEventHandler(object data)
     {
-        if (data != null)
+        if (data == null) return;
+
+        SFXData sfxData = (SFXData)data;
+        if (_cues.ContainsKey(sfxData.Dir))
         {
-            SFXData sfxData = (SFXData)data;
-            if (_cues.ContainsKey(sfxData.Dir))
-            {
-                _cues[sfxData.Dir].PlayOneShot(sfxData.Clip);
-            }
+            _cues[sfxData.Dir].PlayOneShot(sfxData.Clip);
         }
     }
 }

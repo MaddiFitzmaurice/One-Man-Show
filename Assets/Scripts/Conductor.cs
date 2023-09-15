@@ -1,97 +1,95 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Conductor : MonoBehaviour
+public class Conductor
 {
-	public static Conductor instance { get; private set; }
+	[SerializeField] private static double _currentBPS = 2.0;   // Assigned beats-per-second
+	[SerializeField] private static double _currentBPM = 120.0; // Assigned beats-per-minute
 
-	private static float _currentBPS = 2f;   // Assigned beats-per-second
-	private static float _currentBPM = 120f; // Assigned beats-per-minute
+	[SerializeField] private static double _startOffset = 0.0; // The offset of the start of the song, in seconds
+	[SerializeField] private static double _inputOffset = 0.0; // The offset between a keypress and being processed by the program, in seconds
 
-	public static double startOffset { get; private set; } = 0.0; // The offset of the start of the song, in seconds
-	public static double inputOffset = 0.2; // The offset between a keypress and being processed by the program, in seconds
+	[SerializeField] private static double _startedTime = 0.0;
 
-	public static double startedTime { get; private set; } = 0.0;
+	public static double StartedTime
+	{
+		get => _startedTime;
+	}
 
-	public static float rawSongTime { get; private set; } = 0f;
-	public static float rawSongBeat { get; private set; } = 0f;
-	public static int rawLastBeat { get; private set; } = 0;
-	public static int rawNearestBeat { get; private set; } = 0;
-	public static float rawBeatDelta { get; private set; } = 0f;
+	// Raw values are relative to the true time since the start of a song
+	// These values should be used for anything that is not affected by
+	// input delay, such as graphics and sound effects
+	public static double RawSongTime
+	{
+		get => (AudioSettings.dspTime - _startedTime - _startOffset);
+	}
+	public static float RawSongBeat
+	{
+		get => (float)(RawSongTime * _currentBPS);
+	}
+	public static int RawLastBeat
+	{
+		get => Mathf.FloorToInt(RawSongBeat);
+	}
+	public static int RawNearestBeat
+	{
+		get => Mathf.RoundToInt(RawSongBeat);
+	}
+	public static float RawBeatDelta
+	{
+		get => (RawSongBeat - RawNearestBeat) / (float)_currentBPS;
+	}
 
-	// The current time/beat with input delay taken out
-	public static float songTime { get; private set; } = 0f; // The current position in the song in seconds
-	public static float songBeat { get; private set; } = 0f; // The current position in beats, can be between beats
-	public static int lastBeat { get; private set; } = 0; // The number of the last beat, starting from 0 at the start of the song
-	public static int nearestBeat { get; private set; } = 0; // The number of the closest beat, starting from 0 at the start of the song
-	public static float beatDelta { get; private set; } = 0f; // Offset of the closest beat in seconds
+	// These values are relative to the time since the start of a song
+	// with input delay removed. They should be used whenever input is
+	// being checked, such as deciding whether to attack or take damage.
+	public static double SongTime
+	{
+		get => (AudioSettings.dspTime - _startedTime - _startOffset - _inputOffset); // The current position in the song in seconds
+	}
+	public static float SongBeat
+	{
+		get => (float)(SongTime * _currentBPS); // The current position in beats, can be between beats
+	}
+	public static int LastBeat
+	{
+		get => Mathf.FloorToInt(SongBeat); // The number of the last beat, starting at 0 at the start of the song
+	}
+	public static int NearestBeat
+	{
+		get => Mathf.RoundToInt(SongBeat); // The number of the closest beat, starting at 0 at the start of the song
+	}
+	public static float BeatDelta
+	{
+		get => (SongBeat - NearestBeat) / (float)_currentBPS; // Offset of the closest beat in seconds
+	}
 
 	// Beats per second
-	public static float currentBPS
+	public static double CurrentBPS
 	{
 		get => _currentBPS;
 		private set
 		{
 			_currentBPS = value;
-			_currentBPM = value * 60f;
+			_currentBPM = value * 60.0;
 		}
 	}
 
 	// Beats per minute
-	public static float currentBPM
+	public static double CurrentBPM
 	{
 		get => _currentBPM;
 		private set {
 			_currentBPM = value;
-			_currentBPS = value / 60f;
+			_currentBPS = value / 60.0;
 		}
 	}
 
 	// Sets the reference point for beats and time to be calculated relative to
-	public static void StartTracking(float bpm, double startOffset)
+	public static void StartTracking(double bpm, double startOffset)
 	{
-		currentBPM = bpm;
-		Conductor.startOffset = startOffset;
-
-		startedTime = AudioSettings.dspTime;
-
-		rawSongTime = (float)(AudioSettings.dspTime - startedTime - startOffset);
-		rawSongBeat = rawSongTime * currentBPS;
-		rawLastBeat = Mathf.FloorToInt(rawSongBeat);
-		rawNearestBeat = Mathf.RoundToInt(rawSongBeat);
-		rawBeatDelta = (rawSongBeat - rawNearestBeat) / currentBPS;
-
-		songTime = (float)(AudioSettings.dspTime - startedTime - startOffset - inputOffset);
-		songBeat = songTime * currentBPS;
-		lastBeat = Mathf.FloorToInt(songBeat);
-		nearestBeat = Mathf.RoundToInt(songBeat);
-		beatDelta = (songBeat - nearestBeat) / currentBPS;
-	}
-
-	private void Awake()
-	{
-		if (instance != null && instance != this)
-		{
-			Destroy(this);
-			return;
-		}
-		
-		instance = this;
-	}
-
-	private void Update()
-	{
-		rawSongTime = (float)(AudioSettings.dspTime - startedTime - startOffset);
-		rawSongBeat = rawSongTime * currentBPS;
-		rawLastBeat = Mathf.FloorToInt(rawSongBeat);
-		rawNearestBeat = Mathf.RoundToInt(rawSongBeat);
-		rawBeatDelta = (rawSongBeat - rawNearestBeat) / currentBPS;
-
-		songTime = (float)(AudioSettings.dspTime - startedTime - startOffset - inputOffset);
-		songBeat = songTime * currentBPS;
-		lastBeat = Mathf.FloorToInt(songBeat);
-		nearestBeat = Mathf.RoundToInt(songBeat);
-		beatDelta = (songBeat - nearestBeat) / currentBPS;
+		CurrentBPM = bpm;
+		_startOffset = startOffset;
+		_startedTime = AudioSettings.dspTime;
 	}
 }

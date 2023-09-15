@@ -5,11 +5,11 @@ using UnityEngine;
 public static class ObjectPooler
 {
     // Create object pool using a prefab and amount to pool
-    public static List<GameObject> CreateObjectPool(int amountToPool, GameObject objectToPool)
+    public static List<GameObject> CreateObjectPool(uint amountToPool, GameObject objectToPool)
     {
         List<GameObject> pooledObjects = new List<GameObject>();
 
-        for (int i = 0; i < amountToPool; i++)
+        for (uint i = 0; i < amountToPool; i++)
         {
             GameObject obj = GameObject.Instantiate(objectToPool);
             obj.SetActive(false);
@@ -20,11 +20,11 @@ public static class ObjectPooler
     }
 
     // Create object pool using a prefab and amount to pool under a given parent
-    public static List<GameObject> CreateObjectPool(int amountToPool, GameObject objectToPool, Transform parent)
+    public static List<GameObject> CreateObjectPool(uint amountToPool, GameObject objectToPool, Transform parent)
     {
         List<GameObject> pooledObjects = new List<GameObject>();
 
-        for (int i = 0; i < amountToPool; i++)
+        for (uint i = 0; i < amountToPool; i++)
         {
             GameObject obj = GameObject.Instantiate(objectToPool, parent);
             obj.SetActive(false);

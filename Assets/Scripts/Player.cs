@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     // NOTE: JUST A TEST FOR SFXMANAGER. Player sound will always
     // come from centre
-    [SerializeField] [Range(1, 5)] int _maxHealth;
-    [SerializeField] int _currentHealth;    // TEST, remove serialise when done
+    [SerializeField] [Range(1, 5)] uint _maxHealth;
+    [SerializeField] uint _currentHealth;    // TEST, remove serialise when done
 
-    // TO TEST HEALTH REGEN
-    float _regenTimer;
+    public uint MaxHealth { get => _maxHealth; }
+	public uint CurrentHealth
+    {
+        get => _currentHealth;
+        private set
+        {
+            if (value == _currentHealth) return;
+            _currentHealth = value;
+			EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
+
+            if (value != 0) return;
+			EventManager.EventTrigger(EventType.PLAYER_DIED, null);
+		}
+    }
+    public bool IsDead { get => _currentHealth == 0; }
+
+	// TO TEST HEALTH REGEN
+	float _regenTimer;
     [SerializeField] float _timeToRegen;
-    bool _isDead;
 
     [SerializeField] AudioClip _attackSFXForward;
     [SerializeField] AudioClip _attackSFXLeft;
@@ -43,17 +59,10 @@ public class Player : MonoBehaviour
         EventManager.EventUnsubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
     }
 
-    private void Awake()
-    {
-        EventManager.EventInitialise(EventType.HEALTH_UI);
-    }
-
     private void Start()
     {
         RegenHealth();
-        EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
         _regenTimer = 0;
-        _isDead = false;
 
         CreateSFXData();
     }
@@ -62,14 +71,13 @@ public class Player : MonoBehaviour
     {
         // TEST, probably won't be doing this in update since it's poor form
         // TODO: Link this up with the beat manager instead of using update
-        if (!_isDead)
-        {
-            _regenTimer += Time.deltaTime;
+        if (IsDead) return;
 
-            if (_regenTimer > _timeToRegen)
-            {
-                RegenHealth();
-            }
+        _regenTimer += Time.deltaTime;
+
+        if (_regenTimer > _timeToRegen)
+        {
+            RegenHealth();
         }
     }
 
@@ -94,17 +102,15 @@ public class Player : MonoBehaviour
 
     public void PlayerHitHandler(object data)
     {
+        // Already dead
+        if (IsDead) return;
+
         // Subtract health and reset regen timer
-        _currentHealth -= 1;
+        CurrentHealth -= 1;
         _regenTimer = 0;
 
         // Play hit sfx
         SendSFXData(_hitSFXData);
-
-        if (_currentHealth > -1)
-        {
-            EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
-        }
 
         CheckHealthLeft();
     }
@@ -112,18 +118,16 @@ public class Player : MonoBehaviour
     // Check if player has died
     void CheckHealthLeft()
     {
-        if (_currentHealth < 1)
-        {
-            // Signal end game Event
-            Debug.Log("You lose");
-        }
-    }
+        if (!IsDead) return;
+
+		// Signal end game Event
+		Debug.Log("You lose");
+	}
 
     // Regen player's health to full
     void RegenHealth()
     {
-        _currentHealth = _maxHealth;
-        EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
+        CurrentHealth = _maxHealth;
     }
 
     // Create SFX data for player
@@ -131,9 +135,9 @@ public class Player : MonoBehaviour
     {
         // TEST, will get rid of later
         _SFXDataForward = new SFXData(_attackSFXForward, StageDirection.FORWARD);
-        _SFXDataRight = new SFXData(_attackSFXRight, StageDirection.RIGHT);
-        _SFXDataLeft = new SFXData(_attackSFXLeft, StageDirection.LEFT);
-        _hitSFXData = new SFXData(_hitSFX, StageDirection.FORWARD);
+        _SFXDataRight   = new SFXData(_attackSFXRight,   StageDirection.RIGHT  );
+        _SFXDataLeft    = new SFXData(_attackSFXLeft,    StageDirection.LEFT   );
+        _hitSFXData     = new SFXData(_hitSFX,           StageDirection.FORWARD);
     }
 
     // Send SFX data to play through the SFXManager

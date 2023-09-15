@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SongManager : MonoBehaviour
 {
@@ -8,12 +9,26 @@ public class SongManager : MonoBehaviour
 	private static int _lastBeat;
 
 	public AudioSource songSource;
-	public SongMeta song; // is there a better place to store this?
 
 	// Decides whether to call Beat events before the song starts
 	public bool broadcastNegativeBeats = true;
 
-	public static void StartSong(SongMeta song)
+	private static int LastBeat
+	{
+		get => _lastBeat;
+		set
+		{
+			if (value <= _lastBeat) return;
+
+			_lastBeat = value;
+
+			if (value < 0 && !instance.broadcastNegativeBeats) return;
+
+			EventManager.EventTrigger(EventType.BEAT, _lastBeat);
+		}
+	}
+
+	public static void StartSong(SongMeta song, bool negativeBeats = true)
 	{
 		instance.songSource.Stop();
 
@@ -23,7 +38,12 @@ public class SongManager : MonoBehaviour
 		Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
 		Conductor.StartTracking(song.BPM, song.startOffset);
 
-		_lastBeat = Conductor.rawLastBeat;
+		_lastBeat = Conductor.RawLastBeat;
+		instance.broadcastNegativeBeats = negativeBeats;
+
+		if (_lastBeat < 0 && !negativeBeats) return;
+
+		EventManager.EventTrigger(EventType.BEAT, _lastBeat);
 	}
 
 	private void Awake()
@@ -40,22 +60,12 @@ public class SongManager : MonoBehaviour
 	private void Start()
 	{
 		EventManager.EventInitialise(EventType.BEAT);
-		//SongMeta sm = new SongMeta();
-		//sm.BPM = 85;
-		//sm.clip = songSource.clip; // using the source's clip for now
-		//sm.startOffset = 1.442f; // in milliseconds
-		StartSong(song);
 	}
 
 	private void Update()
 	{
 		if (!songSource.isPlaying) return;
-		if (Conductor.rawLastBeat <= _lastBeat) return;
 
-		_lastBeat = Conductor.rawLastBeat;
-
-		if (!broadcastNegativeBeats && _lastBeat < 0) return;
-
-		EventManager.EventTrigger(EventType.BEAT, _lastBeat);
+		LastBeat = Conductor.RawLastBeat;
 	}
 }

@@ -1,13 +1,17 @@
 using UnityEngine;
 
+[System.Serializable]
 public struct SFXData
 {
-    public AudioClip Clip { get; private set; }
-    public StageDirection Dir { get; private set; }
+	[SerializeField] private AudioClip _clip;
+	[SerializeField] private StageDirection _dir;
+
+	public AudioClip Clip { get => _clip; }
+    public StageDirection Dir { get => _dir; }
 
     public SFXData(AudioClip clip, StageDirection dir)
     {
-        Clip = clip;
-        Dir = dir;
+        _clip = clip;
+        _dir = dir;
     }
 }

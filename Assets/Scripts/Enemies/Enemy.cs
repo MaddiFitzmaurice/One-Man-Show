@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _hitTime; // how many beats until this enemy attacks
     [SerializeField] private AudioClip _hitSound; // the sound this enemy plays if it attacks the player
     [SerializeField] private AudioClip _deathSound; // the sound this enemy plays if it is killed
-    private float _hitWindow = 0.098f; // ms leniency in both directions (consistent across all enemies)
+    private float _hitWindow = 0.098f; // seconds leniency in both directions (consistent across all enemies)
     private float _earlyWindow; // how many beats the player can be early
     private float _lateWindow; // how many beats the player can be late
     [SerializeField] private StageDirection _direction;
@@ -31,11 +31,11 @@ public class Enemy : MonoBehaviour
         _startBeat = sb;
         _direction = dr;
 
-        Debug.Log(Conductor.currentBPS); // TODO: why do you think this is 2?? it should be 1.33
-        float beatDiff = _hitWindow / (1 / Conductor.currentBPS); // what percentage of a beat the hit window falls within
+        Debug.Log(Conductor.CurrentBPS); // TODO: why do you think this is 2?? it should be 1.33
+        float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
-        Debug.Log("Early window is beat " + _earlyWindow + ", late window is " + _lateWindow);
+        Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
     }
 
 	private void OnDisable()
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (_attackReadied) { _debugTimeElapsed += Time.deltaTime; }
 
-        float relativeBeat = Conductor.songBeat - _startBeat;
+        double relativeBeat = Conductor.SongBeat - _startBeat;
         //Debug.Log("Relative beat is " + relativeBeat);
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
 		}
 
         // check if it's time to attack
-        if (_earlyWindow < Conductor.songBeat && Conductor.songBeat < _lateWindow && !_attackReadied)
+        if (_earlyWindow < Conductor.SongBeat && Conductor.SongBeat < _lateWindow && !_attackReadied)
 		{
             _attackReadied = true;
             switch (_direction)
@@ -102,9 +102,9 @@ public class Enemy : MonoBehaviour
             }
         }
         // if the player hasn't destroyed this enemy in time, deal damage
-        else if (Conductor.songBeat > _lateWindow)
+        else if (Conductor.SongBeat > _lateWindow)
 		{
-            Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
+            Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");  
 
             // TODO: make this deal damage
             EventManager.EventTrigger(EventType.PLAYER_HIT, null);
@@ -117,8 +117,8 @@ public class Enemy : MonoBehaviour
     public void DefeatMe(object data)
 	{
         // print to console the timing window
-        float ms = (Conductor.songBeat - (_hitTime + _startBeat)) * (1 / Conductor.currentBPS);
-        Debug.Log("Enemy was hit! Timing was " + ms + "ms");
+        float ms = (float)((Conductor.SongBeat - (_hitTime + _startBeat)) * 1000.0 / Conductor.CurrentBPS);
+        Debug.Log($"Enemy was hit! Timing was {ms}ms");
 
         // TODO: any death animations go here
         SFXData deathClip = new SFXData(_deathSound, StageDirection.FORWARD);

@@ -15,20 +15,20 @@ public class BeatManager : MonoBehaviour
     IEnumerator BroadcastBeat()
     {
         // TODO: Put song length in meta
-        float totalBeats = 53f * Conductor.currentBPS;
+        double totalBeats = 53f * Conductor.CurrentBPS;
         Debug.Log(totalBeats);
 
-        float currentTime = Conductor.songTime;
+		double currentTime = Conductor.SongTime;
 
         // Broadcast until song finishes
-        while (Conductor.songBeat < totalBeats)
+        while (Conductor.SongBeat < totalBeats)
         {
             // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
-            if (Conductor.songTime > currentTime + 0.375)
+            if (Conductor.SongTime > currentTime + 0.375)
             {
                 //Broadcast beat and reset current time
-                Debug.Log(Conductor.songBeat);
-                currentTime = Conductor.songTime;
+                Debug.Log(Conductor.SongBeat);
+                currentTime = Conductor.SongTime;
             }
             else
             {

@@ -6,5 +6,6 @@ public enum EventType
 	BEAT,
 	SFX,
 	PLAYER_HIT,
+	PLAYER_DIED,
 	HEALTH_UI
 };

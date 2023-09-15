@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<EnemyPrefabType> _enemyPrefabs;
 
     // Maximum number of enemies per pool
-    [SerializeField] int _maxNumToPool;
+    [SerializeField] uint _maxNumToPool;
 
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;

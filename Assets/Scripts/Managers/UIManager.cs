@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     List<GameObject> _objHealthIcons;
     List<HealthIcon> _healthIcons;
 
+    [SerializeField] Player _player;
 
     private void OnEnable()
     {
@@ -24,31 +25,25 @@ public class UIManager : MonoBehaviour
         EventManager.EventUnsubscribe(EventType.HEALTH_UI, UpdateHealthUIHandler);
     }
 
-    private void Awake()
+	private void Awake()
     {
         SetupHealthUI();
     }
 
-    #region HEALTHUI
-    void SetupHealthUI()
-    {
-        EventManager.EventUnsubscribe(EventType.HEALTH_UI, UpdateHealthUIHandler);
-        EventManager.EventSubscribe(EventType.HEALTH_UI, SetupHealthUIHandler);
-    }
+	#region HEALTHUI
 
-    // Create pool of health icons based on player's max health count
-    public void SetupHealthUIHandler(object data)
+	// Awake executes before OnEnable which would have caused order effects with
+	// event subscription; instead, just get the players health directly.
+
+	// Create pool of health icons based on player's max health count
+	void SetupHealthUI()
     {
-        int num = (int)data;
-        _objHealthIcons = ObjectPooler.CreateObjectPool(num, _healthIconPrefab, _healthPanel.transform);
+        _objHealthIcons = ObjectPooler.CreateObjectPool(_player.MaxHealth, _healthIconPrefab, _healthPanel.transform);
         
         foreach (GameObject obj in _objHealthIcons)
         {
             obj.SetActive(true);
         }
-
-        EventManager.EventUnsubscribe(EventType.HEALTH_UI, SetupHealthUIHandler);
-        EventManager.EventSubscribe(EventType.HEALTH_UI, UpdateHealthUIHandler);
 
         CreateHealthIconList();
     }
@@ -67,22 +62,14 @@ public class UIManager : MonoBehaviour
     // Update Health UI based on player's health
     public void UpdateHealthUIHandler(object data)
     {
-        int health = (int)data;
+        uint player_health = (uint)data;
         ResetHealthUI();
-        int i = 0;
+        uint icon_health = 0;
 
         foreach (HealthIcon icon in _healthIcons)
-        {
-            if (i == health)
-            {
-                return;
-            }
-
-            if (!icon.GetIsFull())
-            {
-                icon.SetIsFull(true);
-                i++;
-            }
+		{
+			icon.IsFull = icon_health < player_health;
+			icon_health++;
         }
     }
 
@@ -91,7 +78,7 @@ public class UIManager : MonoBehaviour
     {
         foreach (HealthIcon icon in _healthIcons)
         {
-            icon.SetIsFull(false);
+            icon.IsFull = false;
         }
     }
     #endregion
