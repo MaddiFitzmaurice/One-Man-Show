@@ -24,14 +24,26 @@ public class Enemy : MonoBehaviour
     [SerializeField] private StageDirection _direction;
     private bool _attackReadied = false; // set to true when the event to kill this enemy is added
     private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
-    
+
+    // Data
+    SFXData _deathClip;
+
+    // Components
+    SpriteRenderer _sprite;
+
+    private void Awake()
+    {
+        _deathClip = new SFXData(_deathSound, StageDirection.FORWARD);
+        _sprite = GetComponent<SpriteRenderer>();
+    }
+
     // set unique values for this enemy
     public void Initialise(StageDirection dr, float sb)
 	{
         _startBeat = sb;
         _direction = dr;
+        _sprite.enabled = true;
 
-        Debug.Log(Conductor.CurrentBPS); // TODO: why do you think this is 2?? it should be 1.33
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
@@ -114,6 +126,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Handler for when Player has successfully hit enemy
     public void DefeatMe(object data)
 	{
         // print to console the timing window
@@ -121,10 +134,14 @@ public class Enemy : MonoBehaviour
         Debug.Log($"Enemy was hit! Timing was {ms}ms");
 
         // TODO: any death animations go here
-        SFXData deathClip = new SFXData(_deathSound, StageDirection.FORWARD);
-        EventManager.EventTrigger(EventType.SFX, deathClip);
+        EventManager.EventTrigger(EventType.SFX, _deathClip);
         gameObject.SetActive(false);
 	}
+
+    public void BeatHandler()
+    {
+
+    }
 
     public float HitTime
 	{

@@ -14,7 +14,7 @@ public class BeatManager : MonoBehaviour
     // TEST
     IEnumerator BroadcastBeat()
     {
-        // TODO: Put song length in meta
+        // TODO: Get song length from clip
         double totalBeats = 53f * Conductor.CurrentBPS;
         Debug.Log(totalBeats);
 
@@ -24,7 +24,7 @@ public class BeatManager : MonoBehaviour
         while (Conductor.SongBeat < totalBeats)
         {
             // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
-            if (Conductor.SongTime > currentTime + 0.375)
+            if (Conductor.SongTime >= currentTime + 0.375)
             {
                 //Broadcast beat and reset current time
                 Debug.Log(Conductor.SongBeat);

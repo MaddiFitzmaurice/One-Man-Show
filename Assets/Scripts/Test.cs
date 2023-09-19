@@ -9,7 +9,7 @@ public class Test : MonoBehaviour
 
 	private void Start()
 	{
-		SongManager.StartSong(song);
+		//SongManager.StartSong(song);
 
 		EventManager.EventSubscribe(EventType.BEAT, OnBeat);
 	}

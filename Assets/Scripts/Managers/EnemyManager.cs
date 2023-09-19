@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Stores the prefab and its associated parent
@@ -23,7 +24,12 @@ public class EnemyManager : MonoBehaviour
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;
 
+    // List of spawn locations
+    [SerializeField] List<Transform> _spawnLocations; 
+
     private bool _debugTestSpawn = true;
+
+    private float _currentBeat;
 
     private void Start()
     {
@@ -54,7 +60,24 @@ public class EnemyManager : MonoBehaviour
 	public void TestSpawn()
     {
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);
+        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 10);
+        
+        // Assign spawn pos then activate
+        newEnemy.transform.position = _spawnLocations[(int)StageDirection.LEFT].position;
+        newEnemy.SetActive(true);
+    }
+
+    // Data will come from the TrackManager, and should contain Stage Direction and Enemy Type
+    // Handler to spawn enemies according to TrackManager
+    public void SpawnHandler(object data)
+    {
+        // Enemy type will come from data 
+        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
+        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, Conductor.RawSongBeat);
+
+        // StageDirection will come from data
+        // Assign spawn pos then activate
+        newEnemy.transform.position = _spawnLocations[(int)StageDirection.LEFT].position;
         newEnemy.SetActive(true);
     }
 }
