@@ -31,6 +31,16 @@ public class EnemyManager : MonoBehaviour
 
     private float _currentBeat;
 
+    private void OnEnable()
+    {
+        EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
+    }
+
     private void Start()
     {
         _typeEnemyList = new List<List<GameObject>>();
@@ -60,11 +70,16 @@ public class EnemyManager : MonoBehaviour
 	public void TestSpawn()
     {
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 10);
+        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);
         
         // Assign spawn pos then activate
         newEnemy.transform.position = _spawnLocations[(int)StageDirection.LEFT].position;
         newEnemy.SetActive(true);
+    }
+
+    public void BeatHandler(object data)
+    {
+        _currentBeat = (float)data;
     }
 
     // Data will come from the TrackManager, and should contain Stage Direction and Enemy Type
@@ -73,7 +88,7 @@ public class EnemyManager : MonoBehaviour
     {
         // Enemy type will come from data 
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, Conductor.RawSongBeat);
+        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, _currentBeat);
 
         // StageDirection will come from data
         // Assign spawn pos then activate

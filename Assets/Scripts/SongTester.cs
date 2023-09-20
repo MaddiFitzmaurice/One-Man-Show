@@ -10,7 +10,7 @@ public class SongTester : MonoBehaviour
 
 	private void Start()
 	{
-		TrackManager.StartSong(song, track);
+		//TrackManager.StartSong(song, track);
 
 		lastBeat = Mathf.FloorToInt(Conductor.LastBeat);
 	}

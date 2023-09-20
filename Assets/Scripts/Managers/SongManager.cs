@@ -78,7 +78,7 @@ public class SongManager : MonoBehaviour
     IEnumerator BroadcastBeats()
     {
 		// Broadcast starting beat
-		//EventManager.EventTrigger(EventType.BEAT, Conductor.LastBeat);
+		EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
         Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 
         // Calculate the total number of beats in the song
@@ -94,7 +94,7 @@ public class SongManager : MonoBehaviour
             if (Conductor.RawSongTime >= currentTime + 0.375f)
             {
 				//Broadcast beat and reset current time
-				//EventManager.EventTrigger(EventType.BEAT, Conductor.LastBeat);
+				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
 				Debug.Log("Current beat number: " + Conductor.RawSongBeat);
                 currentTime = Conductor.RawSongTime;
             }
