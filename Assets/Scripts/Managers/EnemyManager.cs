@@ -34,11 +34,13 @@ public class EnemyManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
+        EventManager.EventSubscribe(EventType.SPAWN, SpawnHandler);
     }
 
     private void OnDisable()
     {
         EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
+        EventManager.EventUnsubscribe(EventType.SPAWN, SpawnHandler);
     }
 
     private void Start()
@@ -57,14 +59,14 @@ public class EnemyManager : MonoBehaviour
     }
 
 	// TESTING ONLY: DELETE WHEN DONE
-	private void Update()
-	{
-        if (_debugTestSpawn)
-        {
-            TestSpawn();
-            _debugTestSpawn = false;
-        }
-    }
+	//private void Update()
+	//{
+ //       if (_debugTestSpawn)
+ //       {
+ //           TestSpawn();
+ //           _debugTestSpawn = false;
+ //       }
+ //   }
 
 	// spawn an enemy, just to test that it works
 	public void TestSpawn()
@@ -86,13 +88,15 @@ public class EnemyManager : MonoBehaviour
     // Handler to spawn enemies according to TrackManager
     public void SpawnHandler(object data)
     {
+        SpawnData spawnData = (SpawnData)data;
+
         // Enemy type will come from data 
-        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, _currentBeat);
+        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
+        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, _currentBeat);
 
         // StageDirection will come from data
         // Assign spawn pos then activate
-        newEnemy.transform.position = _spawnLocations[(int)StageDirection.LEFT].position;
+        newEnemy.transform.position = _spawnLocations[(int)spawnData.Direction].position;
         newEnemy.SetActive(true);
     }
 }
