@@ -28,7 +28,7 @@ public class SongManager : MonoBehaviour
 
 			if (value < 0 && broadcastNegativeBeats) return;
 
-			EventManager.EventTrigger(EventType.BEAT, _lastBeat);
+			//EventManager.EventTrigger(EventType.BEAT, _lastBeat);
 		}
 	}
 
