@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Health
     [SerializeField] [Range(1, 5)] uint _maxHealth;
     [SerializeField] uint _currentHealth;    // TEST, remove serialise when done
 
+    // Beat Data
     private float _currentBeat;
     private float _beatHitOn;
+    [SerializeField] float _beatsTillRegen;
 
     public uint MaxHealth { get => _maxHealth; }
 	public uint CurrentHealth
@@ -27,10 +30,6 @@ public class Player : MonoBehaviour
     }
     public bool IsDead { get => _currentHealth == 0; }
 
-	// TO TEST HEALTH REGEN
-	//float _regenTimer;
-    [SerializeField] float _timeToRegen;
-
     [SerializeField] AudioClip _attackSFXForward;
     [SerializeField] AudioClip _attackSFXLeft;
     [SerializeField] AudioClip _attackSFXRight;
@@ -45,9 +44,8 @@ public class Player : MonoBehaviour
         EventManager.EventSubscribe(EventType.PARRY_LEFT, ParryLeftHandler);
         EventManager.EventSubscribe(EventType.PARRY_RIGHT, ParryRightHandler);
         EventManager.EventSubscribe(EventType.PARRY_FORWARD, ParryForwardHandler);
-
-        // TEST
         EventManager.EventSubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
+        EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
     }
 
     private void OnDisable()
@@ -55,9 +53,8 @@ public class Player : MonoBehaviour
         EventManager.EventUnsubscribe(EventType.PARRY_LEFT, ParryLeftHandler);
         EventManager.EventUnsubscribe(EventType.PARRY_RIGHT, ParryRightHandler);
         EventManager.EventUnsubscribe(EventType.PARRY_FORWARD, ParryForwardHandler);
-
-        // TEST
         EventManager.EventUnsubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
+        EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
     }
 
     private void Start()
@@ -65,20 +62,6 @@ public class Player : MonoBehaviour
         RegenHealth();
         CreateSFXData();
     }
-
-    //private void Update()
-    //{
-    //    // TEST, probably won't be doing this in update since it's poor form
-    //    // TODO: Link this up with the beat manager instead of using update
-    //    if (IsDead) return;
-
-    //    _regenTimer += Time.deltaTime;
-
-    //    if (_regenTimer > _timeToRegen)
-    //    {
-    //        RegenHealth();
-    //    }
-    //}
 
     // Callback functions for Parry events that accept data
     public void ParryLeftHandler(object data)
@@ -125,8 +108,7 @@ public class Player : MonoBehaviour
     {
         if (IsDead) return;
 
-        Debug.Log("hi");
-        if (_currentBeat > _timeToRegen + _beatHitOn)
+        if (_currentBeat > _beatsTillRegen + _beatHitOn)
         {
             RegenHealth();
         }
