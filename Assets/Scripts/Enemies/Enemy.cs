@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _startBeat;
     // private List<Animation> _enemyAnims; // this may not work when changing directions? not needed for now
-    [SerializeField] private List<EnemyBeat> _beats;
+    [SerializeField] private List<EnemyBeat> _setBeats; // the defined list of beats this enemy type has
+    private List<EnemyBeat> _beats; // the current list of beats of this specific enemy
 
     [SerializeField] private float _hitTime; // how many beats until this enemy attacks
     [SerializeField] private AudioClip _hitSound; // the sound this enemy plays if it attacks the player
@@ -51,6 +52,9 @@ public class Enemy : MonoBehaviour
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
         Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
+
+        // TODO: DO A DEEP COPY HERE
+        _beats = _setBeats; // copy the beat events over to this instance
     }
 
     private void OnEnable()
