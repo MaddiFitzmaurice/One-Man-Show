@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // NOTE: JUST A TEST FOR SFXMANAGER. Player sound will always
-    // come from centre
     [SerializeField] [Range(1, 5)] uint _maxHealth;
     [SerializeField] uint _currentHealth;    // TEST, remove serialise when done
+
+    private float _currentBeat;
+    private float _beatHitOn;
 
     public uint MaxHealth { get => _maxHealth; }
 	public uint CurrentHealth
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
     public bool IsDead { get => _currentHealth == 0; }
 
 	// TO TEST HEALTH REGEN
-	float _regenTimer;
+	//float _regenTimer;
     [SerializeField] float _timeToRegen;
 
     [SerializeField] AudioClip _attackSFXForward;
@@ -62,24 +63,22 @@ public class Player : MonoBehaviour
     private void Start()
     {
         RegenHealth();
-        _regenTimer = 0;
-
         CreateSFXData();
     }
 
-    private void Update()
-    {
-        // TEST, probably won't be doing this in update since it's poor form
-        // TODO: Link this up with the beat manager instead of using update
-        if (IsDead) return;
+    //private void Update()
+    //{
+    //    // TEST, probably won't be doing this in update since it's poor form
+    //    // TODO: Link this up with the beat manager instead of using update
+    //    if (IsDead) return;
 
-        _regenTimer += Time.deltaTime;
+    //    _regenTimer += Time.deltaTime;
 
-        if (_regenTimer > _timeToRegen)
-        {
-            RegenHealth();
-        }
-    }
+    //    if (_regenTimer > _timeToRegen)
+    //    {
+    //        RegenHealth();
+    //    }
+    //}
 
     // Callback functions for Parry events that accept data
     public void ParryLeftHandler(object data)
@@ -100,19 +99,37 @@ public class Player : MonoBehaviour
         SendSFXData(_SFXDataForward);
     }
 
+    public void BeatHandler(object data)
+    {
+        _currentBeat = (float)data;
+
+        CheckHealthRegen();
+    }
+
     public void PlayerHitHandler(object data)
     {
         // Already dead
         if (IsDead) return;
 
-        // Subtract health and reset regen timer
+        // Subtract health and assign new beat hit on
         CurrentHealth -= 1;
-        _regenTimer = 0;
+        _beatHitOn = _currentBeat;
 
         // Play hit sfx
         SendSFXData(_hitSFXData);
 
         CheckHealthLeft();
+    }
+
+    void CheckHealthRegen()
+    {
+        if (IsDead) return;
+
+        Debug.Log("hi");
+        if (_currentBeat > _timeToRegen + _beatHitOn)
+        {
+            RegenHealth();
+        }
     }
 
     // Check if player has died
