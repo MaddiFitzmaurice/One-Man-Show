@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startBeat: 0
-  _beats:
+  _setBeats:
   - BeatOffset: 0
     Sound: {fileID: 8300000, guid: 6bbaa1a09110abe4a94cf7948205ccaa, type: 3}
   - BeatOffset: 1
