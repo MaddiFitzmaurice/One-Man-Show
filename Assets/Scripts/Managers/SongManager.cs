@@ -1,12 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SongManager : MonoBehaviour
 {
-	// I think this shouldn't be a static instance because no other game object should be accessing it freely
-	//public static SongManager instance { get; private set; } = null;
-
 	private static int _lastBeat;
 
 	public AudioSource songSource;
@@ -27,8 +23,6 @@ public class SongManager : MonoBehaviour
 			_lastBeat = value;
 
 			if (value < 0 && broadcastNegativeBeats) return;
-
-			//EventManager.EventTrigger(EventType.BEAT, _lastBeat);
 		}
 	}
 
@@ -37,34 +31,23 @@ public class SongManager : MonoBehaviour
 		songSource.Stop();
 
 		songSource.clip = song.clip;
-		songSource.Play();
 
-		Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
-		Conductor.StartTracking(song.BPM, song.startOffset);
+        Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
+        Conductor.StartTracking(song.BPM, song.startOffset);
 
-		_lastBeat = Conductor.RawLastBeat;
+        songSource.Play();
+        StartCoroutine(BroadcastBeats());
+
+        _lastBeat = Conductor.RawLastBeat;
 		broadcastNegativeBeats = negativeBeats;
 
 		if (_lastBeat < 0 && !negativeBeats) return;
-		StartCoroutine(BroadcastBeats());
 	}
-
-	/*private void Awake()
-	{
-		if (instance != null && instance != this)
-		{
-			Destroy(this);
-			return;
-		}
-
-		instance = this;
-	}*/
 
 	private void Start()
 	{
 		EventManager.EventInitialise(EventType.BEAT);
 
-		// TrackManager will initiate StartSong, but for now call here
 		StartSong(_song, false);
 	}
 
@@ -77,13 +60,13 @@ public class SongManager : MonoBehaviour
 
     IEnumerator BroadcastBeats()
     {
-		// Broadcast starting beat
-		EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
-        Debug.Log("Current beat number: " + Conductor.RawSongBeat);
-
         // Calculate the total number of beats in the song
         double totalBeats = _song.clip.length * Conductor.CurrentBPS;
         Debug.Log("Total number of beats in song: " + totalBeats);
+
+        // Broadcast starting beat
+        EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
+        Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 
         double currentTime = Conductor.RawSongTime;
 

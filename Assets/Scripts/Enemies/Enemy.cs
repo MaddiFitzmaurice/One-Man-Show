@@ -52,9 +52,10 @@ public class Enemy : MonoBehaviour
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
         Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
-
         // TODO: DO A DEEP COPY HERE
         _beats = _setBeats; // copy the beat events over to this instance
+        CheckBeatAction(sb);
+
     }
 
     private void OnEnable()
@@ -80,66 +81,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-	// perform movement and animations
-	void Update()
-    {
-  //      if (_attackReadied) { _debugTimeElapsed += Time.deltaTime; }
-
-  //      double relativeBeat = Conductor.SongBeat - _startBeat;
-  //      //Debug.Log("Relative beat is " + relativeBeat);
-  //      List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
-
-  //      // check if any new beats/animations need to occur
-  //      foreach (EnemyBeat b in _beats)
-		//{
-  //          if (relativeBeat > b.BeatOffset)
-		//	{
-  //              // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
-  //              SFXData thisSound = new SFXData(b.Sound, _direction);
-  //              EventManager.EventTrigger(EventType.SFX, thisSound);
-  //              deleteBeats.Add(b); // queue the beat for deletion
-		//	}
-		//}
-
-  //      // delete all occurred beats
-  //      foreach (EnemyBeat b in deleteBeats)
-		//{
-  //          _beats.Remove(b);
-		//}
-
-  //      // check if it's time to attack
-  //      if (_earlyWindow < Conductor.SongBeat && Conductor.SongBeat < _lateWindow && !_attackReadied)
-		//{
-  //          _attackReadied = true;
-  //          switch (_direction)
-		//	{
-  //              case StageDirection.LEFT:
-  //                  // subscribe this enemy dying to EVENT_PARRY_LEFT
-  //                  EventManager.EventSubscribe(EventType.PARRY_LEFT, DefeatMe);
-  //                  break;
-  //              case StageDirection.RIGHT:
-  //                  // subscribe this enemy dying to EVENT_PARRY_RIGHT
-  //                  EventManager.EventSubscribe(EventType.PARRY_RIGHT, DefeatMe);
-  //                  break;
-  //              case StageDirection.FORWARD:
-  //                  // subscribe this enemy dying to EVENT_PARRY_FORWARD
-  //                  EventManager.EventSubscribe(EventType.PARRY_FORWARD, DefeatMe);
-  //                  break;
-  //          }
-  //      }
-  //      // if the player hasn't destroyed this enemy in time, deal damage
-  //      else if (Conductor.SongBeat > _lateWindow)
-		//{
-  //          Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");  
-
-  //          // TODO: make this deal damage
-  //          EventManager.EventTrigger(EventType.PLAYER_HIT, null);
-  //          SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
-  //          EventManager.EventTrigger(EventType.SFX, hitClip);
-  //          gameObject.SetActive(false);
-  //      }
-    }
-
     // Handler for when Player has successfully hit enemy
     public void DefeatMeHandler(object data)
 	{
@@ -157,15 +98,23 @@ public class Enemy : MonoBehaviour
     {
         _currentBeat = (float)data;
 
-        double relativeBeat = _currentBeat - _startBeat;
+        CheckBeatAction(_currentBeat);
+        CheckAttack();
+    }
+
+    // Check if any enemy-specific actions need to occur on beat
+    private void CheckBeatAction(double currentBeat)
+    {
+        double relativeBeat = currentBeat - _startBeat;
 
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
         // check if any new beats/animations/movement needs to occur
         foreach (EnemyBeat b in _beats)
         {
-            if (relativeBeat > b.BeatOffset)
+            if (relativeBeat >= b.BeatOffset)
             {
+                Debug.Log("Beat");
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
                 EventManager.EventTrigger(EventType.SFX, thisSound);
@@ -178,7 +127,11 @@ public class Enemy : MonoBehaviour
         {
             _beats.Remove(b);
         }
+    }
 
+    // Check if player can attack enemy or vice versa
+    private void CheckAttack()
+    {
         // check if it's time to attack
         if (_earlyWindow < _currentBeat && _currentBeat < _lateWindow && !_attackReadied)
         {

@@ -18,7 +18,7 @@ public class TrackManager : MonoBehaviour
 
 	private void Awake()
 	{
-		EventManager.EventInitialise(EventType.SPAWN);	
+		//EventManager.EventInitialise(EventType.SPAWN);	
 	}
 
 	void Start()

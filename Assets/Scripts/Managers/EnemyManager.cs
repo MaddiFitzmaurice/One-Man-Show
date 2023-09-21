@@ -13,8 +13,6 @@ public struct EnemyPrefabType
 
 public class EnemyManager : MonoBehaviour
 {
-    //[SerializeField] List<EnemySpawner> _enemySpawns;
-
     // Enemy prefabs to pool
     [SerializeField] List<EnemyPrefabType> _enemyPrefabs;
 
@@ -26,8 +24,6 @@ public class EnemyManager : MonoBehaviour
 
     // List of spawn locations
     [SerializeField] List<Transform> _spawnLocations; 
-
-    private bool _debugTestSpawn = true;
 
     private float _currentBeat;
 
@@ -58,43 +54,20 @@ public class EnemyManager : MonoBehaviour
 		}
     }
 
-	// TESTING ONLY: DELETE WHEN DONE
-	//private void Update()
-	//{
- //       if (_debugTestSpawn)
- //       {
- //           TestSpawn();
- //           _debugTestSpawn = false;
- //       }
- //   }
-
-	// spawn an enemy, just to test that it works
-	public void TestSpawn()
-    {
-        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);
-        
-        // Assign spawn pos then activate
-        newEnemy.transform.position = _spawnLocations[(int)StageDirection.LEFT].position;
-        newEnemy.SetActive(true);
-    }
-
+    // Update current beat
     public void BeatHandler(object data)
     {
         _currentBeat = (float)data;
     }
 
-    // Data will come from the TrackManager, and should contain Stage Direction and Enemy Type
-    // Handler to spawn enemies according to TrackManager
+    // Handler to spawn enemies according to LevelManager's SpawnData
     public void SpawnHandler(object data)
     {
         SpawnData spawnData = (SpawnData)data;
 
-        // Enemy type will come from data 
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
         newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, _currentBeat);
 
-        // StageDirection will come from data
         // Assign spawn pos then activate
         newEnemy.transform.position = _spawnLocations[(int)spawnData.Direction].position;
         newEnemy.SetActive(true);
