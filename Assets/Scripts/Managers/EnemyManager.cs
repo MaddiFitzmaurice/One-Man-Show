@@ -23,8 +23,12 @@ public class EnemyManager : MonoBehaviour
     List<List<GameObject>> _typeEnemyList;
 
     // List of spawn locations
-    [SerializeField] List<Transform> _spawnLocations; 
+    [SerializeField] List<Transform> _spawnLocations;
 
+    //Player Pos Cache
+    [SerializeField] private Transform _playerPos;
+
+    // Track current beat number
     private float _currentBeat;
 
     private void OnEnable()
@@ -66,10 +70,7 @@ public class EnemyManager : MonoBehaviour
         SpawnData spawnData = (SpawnData)data;
 
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
-        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, _currentBeat);
-
-        // Assign spawn pos then activate
         newEnemy.transform.position = _spawnLocations[(int)spawnData.Direction].position;
-        newEnemy.SetActive(true);
+        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, _currentBeat, _playerPos.position);
     }
 }

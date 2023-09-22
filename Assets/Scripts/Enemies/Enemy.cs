@@ -27,13 +27,17 @@ public class Enemy : MonoBehaviour
     private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
 
     // Data
-    SFXData _deathClip;
+    private SFXData _deathClip;
 
     // Components
-    SpriteRenderer _sprite;
+    private SpriteRenderer _sprite;
 
     // Beat Tracking
     private float _currentBeat;
+
+    // Player-Related Data
+    private Vector3 _playerPos;
+    private float _moveInterval; // Movement intervals according to how many beats an enemy has and how far from player it is
 
     private void Awake()
     {
@@ -42,11 +46,15 @@ public class Enemy : MonoBehaviour
     }
 
     // set unique values for this enemy
-    public void Initialise(StageDirection dr, float sb)
+    public void Initialise(StageDirection dr, float sb, Vector3 playerPos)
 	{
         _startBeat = sb;
         _direction = dr;
-        _sprite.enabled = true;
+        _playerPos = playerPos;
+
+        // Find out start distance from player and calculate movement intervals
+        float startDistFromPlayer = Vector3.Distance(_playerPos, transform.position);
+        _moveInterval = startDistFromPlayer / _setBeats.Count;
 
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
@@ -54,8 +62,8 @@ public class Enemy : MonoBehaviour
         Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
         // TODO: DO A DEEP COPY HERE
         _beats = _setBeats; // copy the beat events over to this instance
+        gameObject.SetActive(true);
         CheckBeatAction(sb);
-
     }
 
     private void OnEnable()
@@ -65,6 +73,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
 	{
+        StopAllCoroutines();
         EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
 
         switch (_direction)
@@ -114,7 +123,8 @@ public class Enemy : MonoBehaviour
         {
             if (relativeBeat >= b.BeatOffset)
             {
-                Debug.Log("Beat");
+                StopAllCoroutines();
+                StartCoroutine(MoveOnBeat());
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
                 EventManager.EventTrigger(EventType.SFX, thisSound);
@@ -162,6 +172,27 @@ public class Enemy : MonoBehaviour
             SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
             EventManager.EventTrigger(EventType.SFX, hitClip);
             gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator MoveOnBeat()
+    {
+        Vector3 startPos = transform.position;
+        float distLeft = _moveInterval * (_beats.Count - 1);
+
+        Debug.Log("Start pos: " + startPos);
+        //Debug.Log("Move Interval: " + _moveInterval);
+        Debug.Log("Distance left: " + distLeft);
+
+        float timeElapsed = 0;
+
+        while (Vector3.Distance(_playerPos, transform.position) > distLeft)
+        {
+            transform.position = Vector3.Lerp(startPos, _playerPos, timeElapsed);
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
         }
     }
 

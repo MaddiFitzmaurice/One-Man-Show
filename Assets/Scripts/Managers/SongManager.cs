@@ -62,11 +62,11 @@ public class SongManager : MonoBehaviour
     {
         // Calculate the total number of beats in the song
         double totalBeats = _song.clip.length * Conductor.CurrentBPS;
-        Debug.Log("Total number of beats in song: " + totalBeats);
+        //Debug.Log("Total number of beats in song: " + totalBeats);
 
         // Broadcast starting beat
         EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
-        Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+        //Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 
         double currentTime = Conductor.RawSongTime;
 
@@ -78,12 +78,12 @@ public class SongManager : MonoBehaviour
             {
 				//Broadcast beat and reset current time
 				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
-				Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+				//Debug.Log("Current beat number: " + Conductor.RawSongBeat);
                 currentTime = Conductor.RawSongTime;
             }
             else
             {
-                yield return new WaitForEndOfFrame();
+				yield return null;
             }
         }
     }
