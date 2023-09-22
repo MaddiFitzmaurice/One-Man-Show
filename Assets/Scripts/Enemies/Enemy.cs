@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[System.Serializable]
-//public struct EnemyBeat
-//{
-//    public float BeatOffset;
-//    public AudioClip Sound;
-//}
-
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _startBeat;
@@ -37,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     // Player-Related Data
     private Vector3 _playerPos;
+    private float _playerBufferDist;
     private float _moveIntervalDist; // How far in units an Enemy has to move
 
     private void Awake()
@@ -46,14 +40,20 @@ public class Enemy : MonoBehaviour
     }
 
     // set unique values for this enemy
-    public void Initialise(StageDirection dr, float sb, Vector3 playerPos)
+    public void Initialise(StageDirection dr, float sb, Vector3 playerPos, Vector2 playerSprite)
 	{
         _startBeat = sb;
         _direction = dr;
         _playerPos = playerPos;
 
-        // Find out start distance from player and calculate movement intervals
+        // Find out start distance from player
         float startDistFromPlayer = Vector3.Distance(_playerPos, transform.position);
+
+        // Use either width or height depending on direction enemy is approaching and subtract from startDistFromPlayer
+        _playerBufferDist = dr == StageDirection.FORWARD ? playerSprite.y : playerSprite.x;
+        startDistFromPlayer -= _playerBufferDist;
+
+        //calculate movement intervals
         _moveIntervalDist = startDistFromPlayer / _setBeats.Count;
 
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
@@ -179,16 +179,16 @@ public class Enemy : MonoBehaviour
     {
         Vector3 startPos = transform.position;
         float distLeft = _moveIntervalDist * (_beats.Count - 1);
-        float moveIntervalTime = moveByBeat * 0.750f; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
+        float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
 
 
-    Debug.Log("Start pos: " + startPos);
+        Debug.Log("Start pos: " + startPos);
         //Debug.Log("Move Interval: " + _moveInterval);
         Debug.Log("Distance left: " + distLeft);
 
         float timeElapsed = 0;
 
-        while (Vector3.Distance(_playerPos, transform.position) > distLeft)
+        while (Vector3.Distance(_playerPos, transform.position) - _playerBufferDist > distLeft)
         {
             transform.position = Vector3.Lerp(startPos, _playerPos, timeElapsed / moveIntervalTime);
 

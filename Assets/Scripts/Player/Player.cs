@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     }
     public bool IsDead { get => _currentHealth == 0; }
 
+    // Audio Data
     [SerializeField] AudioClip _attackSFXForward;
     [SerializeField] AudioClip _attackSFXLeft;
     [SerializeField] AudioClip _attackSFXRight;
@@ -38,6 +39,9 @@ public class Player : MonoBehaviour
     SFXData _SFXDataLeft;
     SFXData _SFXDataRight;
     SFXData _hitSFXData;
+
+    // Components
+    SpriteRenderer _sprite;
 
     private void OnEnable()
     {
@@ -55,6 +59,11 @@ public class Player : MonoBehaviour
         EventManager.EventUnsubscribe(EventType.PARRY_FORWARD, ParryForwardHandler);
         EventManager.EventUnsubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
         EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
+    }
+
+    public void Awake()
+    {
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -104,6 +113,7 @@ public class Player : MonoBehaviour
         CheckHealthLeft();
     }
 
+    #region HEALTH
     void CheckHealthRegen()
     {
         if (IsDead) return;
@@ -128,7 +138,9 @@ public class Player : MonoBehaviour
     {
         CurrentHealth = _maxHealth;
     }
+    #endregion
 
+    #region SFX
     // Create SFX data for player
     private void CreateSFXData()
     {
@@ -143,5 +155,11 @@ public class Player : MonoBehaviour
     private void SendSFXData(SFXData sfxData)
     {
         EventManager.EventTrigger(EventType.SFX, sfxData);
+    }
+    #endregion
+
+    public Vector2 GetSpriteSize()
+    {
+        return _sprite.bounds.size;
     }
 }

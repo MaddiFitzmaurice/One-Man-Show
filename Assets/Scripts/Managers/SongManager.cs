@@ -74,7 +74,7 @@ public class SongManager : MonoBehaviour
         while (Conductor.RawSongBeat < totalBeats)
         {
             // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
-            if (Conductor.RawSongTime >= currentTime + 0.375f)
+            if (Conductor.RawSongTime >= currentTime + (Conductor.SecondsPerBeat / 2))
             {
 				//Broadcast beat and reset current time
 				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);

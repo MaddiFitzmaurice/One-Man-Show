@@ -85,6 +85,12 @@ public class Conductor
 		}
 	}
 
+	// Seconds per beat
+	public static float SecondsPerBeat
+	{
+		get => 1.0f / (float)_currentBPS;
+	}
+
 	// Sets the reference point for beats and time to be calculated relative to
 	public static void StartTracking(double bpm, double startOffset)
 	{

@@ -394,7 +394,7 @@ MonoBehaviour:
   - {fileID: 242818054}
   - {fileID: 739362562}
   - {fileID: 1449127457}
-  _playerPos: {fileID: 1282687931}
+  _player: {fileID: 1282687932}
 --- !u!4 &241471651
 Transform:
   m_ObjectHideFlags: 0
