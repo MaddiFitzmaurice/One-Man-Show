@@ -600,12 +600,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelLayout:
-  - _beat: 4
+  - _beat: 5
+    _direction: 1
+    _type: 2
+  - _beat: 15
     _direction: 0
     _type: 0
-  - _beat: 7
-    _direction: 1
-    _type: 0
+  - _beat: 25
+    _direction: 2
+    _type: 1
 --- !u!1 &730307234
 GameObject:
   m_ObjectHideFlags: 0
