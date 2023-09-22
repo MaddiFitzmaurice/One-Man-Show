@@ -23,6 +23,7 @@ public class EnemyManager : MonoBehaviour
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;
 
+    [SerializeField]
     private bool _debugTestSpawn = true;
 
     private void Start()
@@ -53,6 +54,8 @@ public class EnemyManager : MonoBehaviour
 	// spawn an enemy, just to test that it works
 	public void TestSpawn()
     {
+        Spawn(0, StageDirection.LEFT, 4);
+    }
     
     // Spawns an enemy from a type index and direction
     public GameObject Spawn(int typeIndex, StageDirection direction, float startBeat)
@@ -70,6 +73,8 @@ public class EnemyManager : MonoBehaviour
         if (newEnemy == null)
         {
             Debug.Log($"Attempted to spawn enemy but pool was empty! ({typeIndex})");
+            return null;
+        }
 
         newEnemy.GetComponent<Enemy>().Initialise(direction, startBeat);
         newEnemy.SetActive(true);
