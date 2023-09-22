@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour, GameInput.IGameplayActions
 {
     // Input
+    [SerializeField]
     private GameInput _inputActions;
 
     private void Awake()
