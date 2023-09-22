@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
 	private static TrackManager instance = null;
 
-	private static TrackData _cur_track = null;
+	private static TrackBeat[] _cur_track = null;
 	private static SongMeta _cur_song = null;
-	
-	private static uint _beats_processed = ~(uint)0;
+	private static uint _cur_beat = 0;
 
 	[SerializeField] private EnemyManager _enemyManager;
 
-	[SerializeField] private SongMeta songMeta;
 	[SerializeField] private TrackData trackData;
 
 	void Start()
@@ -30,17 +27,44 @@ public class TrackManager : MonoBehaviour
 
 			// Hardcoded value for prototype - remove when a system is in place
 			// for selecting and passing a song/track to this manager
-			StartSong(songMeta, trackData);
+			StartSong(trackData);
 		}
 	}
 
-	public static void StartSong(SongMeta song, TrackData track)
+	public static void StartSong(TrackData track)
 	{
-		_cur_song = song;
-		_cur_track = track;
+		_cur_song = track.song;
+		_cur_track = (TrackBeat[])track.beats.Clone(); // Take a deep copy so that the track is not modified
+		_cur_beat = 0;
 
-		_beats_processed = 0;
+		Array.Sort(_cur_track); // Ensure that the beat order is correct
 
-		SongManager.StartSong(song);
+		SongManager.StartSong(track.song);
+	}
+
+	public void Update()
+	{
+		if (_cur_track == null) return;
+		// No more beats
+		if (_cur_beat >= _cur_track.Length) return;
+
+		float beat = Conductor.RawSongBeat;
+
+		while (beat >= _cur_track[_cur_beat].beat)
+		{
+            foreach (EnemySpawn _enemy in _cur_track[_cur_beat].enemies)
+			{
+				_enemyManager.Spawn((int)_enemy.enemy_index, _enemy.direction, beat);
+			}
+
+			foreach (SpawnEvent _event in _cur_track[_cur_beat].events)
+			{
+				EventManager.EventTrigger(_event.type, _event.data);
+			}
+
+			_cur_beat++;
+
+			if (_cur_beat >= _cur_track.Length) return;
+		}
 	}
 }

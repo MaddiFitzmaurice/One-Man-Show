@@ -53,8 +53,28 @@ public class EnemyManager : MonoBehaviour
 	// spawn an enemy, just to test that it works
 	public void TestSpawn()
     {
-        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[0]);
-        newEnemy.GetComponent<Enemy>().Initialise(StageDirection.LEFT, 4);
+    
+    // Spawns an enemy from a type index and direction
+    public GameObject Spawn(int typeIndex, StageDirection direction, float startBeat)
+    {
+        // Invalid type ID
+        if (typeIndex < 0 || typeIndex >= _typeEnemyList.Count)
+        {
+            Debug.Log($"Attempted to spawn enemy with invalid ID! ({typeIndex})");
+            return null;
+        }
+
+        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[typeIndex]);
+
+        // No more enemies in pool
+        if (newEnemy == null)
+        {
+            Debug.Log($"Attempted to spawn enemy but pool was empty! ({typeIndex})");
+
+        newEnemy.GetComponent<Enemy>().Initialise(direction, startBeat);
         newEnemy.SetActive(true);
+
+        Debug.Log($"Spawned enemy {typeIndex} on beat {startBeat} from {direction}");
+        return newEnemy;
     }
 }
