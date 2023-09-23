@@ -609,6 +609,9 @@ MonoBehaviour:
   - _beat: 25
     _direction: 2
     _type: 1
+  - _beat: 30
+    _direction: 0
+    _type: 0
 --- !u!1 &730307234
 GameObject:
   m_ObjectHideFlags: 0

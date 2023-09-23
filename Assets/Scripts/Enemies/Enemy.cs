@@ -172,7 +172,8 @@ public class Enemy : MonoBehaviour
             }
         }
         // if the player hasn't destroyed this enemy in time, deal damage
-        else if (_currentBeat > _lateWindow)
+        
+        if (_currentBeat > _lateWindow)
         {
             Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
 
@@ -190,18 +191,17 @@ public class Enemy : MonoBehaviour
         float distLeft = _moveIntervalDist * (_beats.Count - 1);
         float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
 
+        // If this is the last beat before attacking player, get rid of multiplier
+        //float moveTimeMultiplier = _beats.Count > 1 ? 2 : 1;
+        float moveTimeMultiplier = 2;
 
         Debug.Log("Start pos: " + startPos);
         //Debug.Log("Move Interval: " + _moveInterval);
         Debug.Log("Distance left: " + distLeft);
 
-        float timeElapsed = 0;
-
         while (Vector3.Distance(_playerPos, transform.position) - _playerBufferDist > distLeft)
         {
-            transform.position = Vector3.Lerp(startPos, _playerPos, timeElapsed / moveIntervalTime);
-
-            timeElapsed += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, _playerPos, (_moveIntervalDist / (moveIntervalTime / moveTimeMultiplier)) * Time.deltaTime);
 
             yield return null;
         }
