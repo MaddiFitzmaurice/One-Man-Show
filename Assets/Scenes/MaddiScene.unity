@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 3
   _currentHealth: 0
-  _beatsTillRegen: 15
+  _beatsTillRegen: 0
   _attackSFXForward: {fileID: 8300000, guid: 27847916bf173a9409470aa8249e1825, type: 3}
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _attackSFXRight: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}

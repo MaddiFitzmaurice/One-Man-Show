@@ -60,9 +60,18 @@ public class Enemy : MonoBehaviour
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
         _lateWindow = (_hitTime + _startBeat) + beatDiff;
         Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
-        // TODO: DO A DEEP COPY HERE
-        _beats = _setBeats; // copy the beat events over to this instance
-        gameObject.SetActive(true);
+
+        // do a deep copy of the set beats, so the original set beats aren't destroyed for future enemies
+        _beats = new List<EnemyBeat>();
+        foreach (EnemyBeat beat in _setBeats)
+		{
+            EnemyBeat newBeat = new EnemyBeat();
+            newBeat.BeatOffset = beat.BeatOffset;
+            newBeat.Sound = beat.Sound;
+            newBeat.MoveByBeat = beat.MoveByBeat;
+            _beats.Add(newBeat);
+		}
+		gameObject.SetActive(true);
         CheckBeatAction(sb);
     }
 
