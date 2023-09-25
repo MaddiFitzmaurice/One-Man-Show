@@ -133,7 +133,10 @@ public class Enemy : MonoBehaviour
             if (relativeBeat >= b.BeatOffset)
             {
                 StopAllCoroutines();
-                StartCoroutine(MoveOnBeat(b.MoveByBeat));
+
+                float beatMoveTime = _beats.Count > 1 ? b.MoveByBeat : b.MoveByBeat + (_hitWindow * (float)Conductor.CurrentBPS);
+
+                StartCoroutine(MoveOnBeat(beatMoveTime));
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
                 EventManager.EventTrigger(EventType.SFX, thisSound);
@@ -172,7 +175,6 @@ public class Enemy : MonoBehaviour
             }
         }
         // if the player hasn't destroyed this enemy in time, deal damage
-        
         if (_currentBeat > _lateWindow)
         {
             Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
@@ -192,8 +194,8 @@ public class Enemy : MonoBehaviour
         float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
 
         // If this is the last beat before attacking player, get rid of multiplier
-        //float moveTimeMultiplier = _beats.Count > 1 ? 2 : 1;
-        float moveTimeMultiplier = 2;
+        float moveTimeMultiplier = _beats.Count > 1 ? 1.5f : 0.9f;
+        //float moveTimeMultiplier = 1.5f;
 
         Debug.Log("Start pos: " + startPos);
         //Debug.Log("Move Interval: " + _moveInterval);
