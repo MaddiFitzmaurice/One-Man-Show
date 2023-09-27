@@ -1607,7 +1607,7 @@ MonoBehaviour:
   songSource: {fileID: 240738075}
   broadcastNegativeBeats: 1
   _debugging: 1
-  _song: {fileID: 11400000, guid: e5b91ac5c5fa9c343a163c4faa460f4b, type: 2}
+  _song: {fileID: 11400000, guid: 72d30cafd8153634b843bb962d4303d7, type: 2}
   _debugMetronome: {fileID: 8300000, guid: d91934f444e8c784ba2bd80caeb8a661, type: 3}
 --- !u!4 &1854875625
 Transform:

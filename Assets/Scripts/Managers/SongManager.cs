@@ -95,7 +95,8 @@ public class SongManager : MonoBehaviour
 				//Broadcast beat and reset current time
 				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
 				//Debug.Log("Current beat number: " + Conductor.RawSongBeat);
-                currentTime = Conductor.RawSongTime;
+				currentTime += (Conductor.SecondsPerBeat / 2);
+				Debug.Log(currentTime);
             }
             else
             {
