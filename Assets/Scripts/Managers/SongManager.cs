@@ -9,9 +9,14 @@ public class SongManager : MonoBehaviour
 
 	// Decides whether to call Beat events before the song starts
 	public bool broadcastNegativeBeats = true;
+	// If true, play metronome clicks on each beat (to test sync)
+	[SerializeField] bool _debugging = false;
 
 	// Song Meta
 	[SerializeField] SongMeta _song;
+
+	// Metronome clicks for debugging
+	[SerializeField] AudioClip _debugMetronome; 
 
 	private int LastBeat
 	{
@@ -41,6 +46,12 @@ public class SongManager : MonoBehaviour
         _lastBeat = Conductor.RawLastBeat;
 		broadcastNegativeBeats = negativeBeats;
 
+		// if debugging, play metronome clicks on every beat
+		if (_debugging)
+		{
+			EventManager.EventSubscribe(EventType.BEAT, DebugMetronome);
+		}
+
 		if (_lastBeat < 0 && !negativeBeats) return;
 	}
 
@@ -49,6 +60,11 @@ public class SongManager : MonoBehaviour
 		EventManager.EventInitialise(EventType.BEAT);
 
 		StartSong(_song, false);
+	}
+
+	public void DebugMetronome(object data)
+	{
+		songSource.PlayOneShot(_debugMetronome);
 	}
 
 	private void Update()
