@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f76ecaea07daa4d9ace0f23ea5ad37, type: 3}
   m_Name: OMS_Test_Track
   m_EditorClassIdentifier: 
-  beats: []
+  beats:
+  - beat: 8
+    enemies:
+    - direction: 0
+      enemy_index: 0
+    events: []
+  song: {fileID: 11400000, guid: e5b91ac5c5fa9c343a163c4faa460f4b, type: 2}

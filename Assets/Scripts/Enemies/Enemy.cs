@@ -24,12 +24,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private StageDirection _direction;
     private bool _attackReadied = false; // set to true when the event to kill this enemy is added
     private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
-    
+
+    [SerializeField]
+    private AnimationCurve _movementAnimation;
+
+    private Vector3 _startPosition;
+    private Vector3 _endPosition;
+
     // set unique values for this enemy
-    public void Initialise(StageDirection dr, float sb)
-	{
+    public void Initialise(StageDirection dr, float sb, Vector3 startPos, Vector3 endPos)
+    {
         _startBeat = sb;
         _direction = dr;
+        _startPosition = startPos;
+        _endPosition = endPos;
+
+        transform.position = startPos;
 
         Debug.Log(Conductor.CurrentBPS); // TODO: why do you think this is 2?? it should be 1.33
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
@@ -38,8 +48,8 @@ public class Enemy : MonoBehaviour
         Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
     }
 
-	private void OnDisable()
-	{
+    private void OnDisable()
+    {
         switch (_direction)
         {
             case StageDirection.LEFT:
@@ -54,8 +64,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-	// perform movement and animations
-	void Update()
+    // perform movement and animations
+    void Update()
     {
         if (_attackReadied) { _debugTimeElapsed += Time.deltaTime; }
 
@@ -63,30 +73,42 @@ public class Enemy : MonoBehaviour
         //Debug.Log("Relative beat is " + relativeBeat);
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
+        transform.position = Vector3.Lerp(
+            _startPosition,
+            _endPosition,
+            Mathf.InverseLerp(
+                _startBeat,
+                _startBeat + _hitTime,
+                Conductor.RawLastBeat + _movementAnimation.Evaluate(
+                    Conductor.RawSongBeat - Conductor.RawLastBeat
+                )
+            )
+        );
+
         // check if any new beats/animations need to occur
         foreach (EnemyBeat b in _beats)
-		{
+        {
             if (relativeBeat > b.BeatOffset)
-			{
+            {
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
                 EventManager.EventTrigger(EventType.SFX, thisSound);
                 deleteBeats.Add(b); // queue the beat for deletion
-			}
-		}
+            }
+        }
 
         // delete all occurred beats
         foreach (EnemyBeat b in deleteBeats)
-		{
+        {
             _beats.Remove(b);
-		}
+        }
 
         // check if it's time to attack
         if (_earlyWindow < Conductor.SongBeat && Conductor.SongBeat < _lateWindow && !_attackReadied)
-		{
+        {
             _attackReadied = true;
             switch (_direction)
-			{
+            {
                 case StageDirection.LEFT:
                     // subscribe this enemy dying to EVENT_PARRY_LEFT
                     EventManager.EventSubscribe(EventType.PARRY_LEFT, DefeatMe);
@@ -103,7 +125,7 @@ public class Enemy : MonoBehaviour
         }
         // if the player hasn't destroyed this enemy in time, deal damage
         else if (Conductor.SongBeat > _lateWindow)
-		{
+        {
             Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");  
 
             // TODO: make this deal damage
@@ -115,7 +137,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void DefeatMe(object data)
-	{
+    {
         // print to console the timing window
         float ms = (float)((Conductor.SongBeat - (_hitTime + _startBeat)) * 1000.0 / Conductor.CurrentBPS);
         Debug.Log($"Enemy was hit! Timing was {ms}ms");
@@ -124,10 +146,10 @@ public class Enemy : MonoBehaviour
         SFXData deathClip = new SFXData(_deathSound, StageDirection.FORWARD);
         EventManager.EventTrigger(EventType.SFX, deathClip);
         gameObject.SetActive(false);
-	}
+    }
 
     public float HitTime
-	{
+    {
         get { return _hitTime; }
-	}
+    }
 }
