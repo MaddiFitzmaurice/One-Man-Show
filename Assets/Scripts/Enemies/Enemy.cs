@@ -28,10 +28,11 @@ public class Enemy : MonoBehaviour
     // Beat Tracking
     private float _currentBeat;
 
-    // Player-Related Data
-    private Vector3 _playerPos;
-    private float _playerBufferDist;
-    private float _moveIntervalDist; // How far in units an Enemy has to move
+    [SerializeField]
+    private AnimationCurve _movementAnimation;
+
+    private Vector3 _startPosition;
+    private Vector3 _endPosition;
 
     private void Awake()
     {
@@ -40,21 +41,14 @@ public class Enemy : MonoBehaviour
     }
 
     // set unique values for this enemy
-    public void Initialise(StageDirection dr, float sb, Vector3 playerPos, Vector2 playerSprite)
-	{
+    public void Initialise(StageDirection dr, float sb, Vector3 startPos, Vector3 endPos)
+    {
         _startBeat = sb;
         _direction = dr;
-        _playerPos = playerPos;
+        _startPosition = startPos;
+        _endPosition = endPos;
 
-        // Find out start distance from player
-        float startDistFromPlayer = Vector3.Distance(_playerPos, transform.position);
-
-        // Use either width or height depending on direction enemy is approaching and subtract from startDistFromPlayer
-        _playerBufferDist = dr == StageDirection.FORWARD ? playerSprite.y : playerSprite.x;
-        startDistFromPlayer -= _playerBufferDist;
-
-        //calculate movement intervals
-        _moveIntervalDist = startDistFromPlayer / _setBeats.Count;
+        transform.position = startPos;
 
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
         _earlyWindow = (_hitTime + _startBeat) - beatDiff;
@@ -64,14 +58,14 @@ public class Enemy : MonoBehaviour
         // do a deep copy of the set beats, so the original set beats aren't destroyed for future enemies
         _beats = new List<EnemyBeat>();
         foreach (EnemyBeat beat in _setBeats)
-		{
+        {
             EnemyBeat newBeat = new EnemyBeat();
             newBeat.BeatOffset = beat.BeatOffset;
             newBeat.Sound = beat.Sound;
             newBeat.MoveByBeat = beat.MoveByBeat;
             _beats.Add(newBeat);
-		}
-		gameObject.SetActive(true);
+        }
+        gameObject.SetActive(true);
         CheckBeatAction(sb);
     }
 
@@ -81,7 +75,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnDisable()
-	{
+    {
         StopAllCoroutines();
         EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
 
@@ -101,7 +95,7 @@ public class Enemy : MonoBehaviour
 
     // Handler for when Player has successfully hit enemy
     public void DefeatMeHandler(object data)
-	{
+    {
         // print to console the timing window
         float ms = (float)((Conductor.SongBeat - (_hitTime + _startBeat)) * 1000.0 / Conductor.CurrentBPS);
         Debug.Log($"Enemy was hit! Timing was {ms}ms");
@@ -109,7 +103,7 @@ public class Enemy : MonoBehaviour
         // TODO: any death animations go here
         EventManager.EventTrigger(EventType.SFX, _deathClip);
         gameObject.SetActive(false);
-	}
+    }
 
     // Listens every half beat, updates currentBeat, and performs actions (movement, sound, etc.)
     public void BeatHandler(object data)
@@ -132,11 +126,6 @@ public class Enemy : MonoBehaviour
         {
             if (relativeBeat >= b.BeatOffset)
             {
-                StopAllCoroutines();
-
-                float beatMoveTime = _beats.Count > 1 ? b.MoveByBeat : b.MoveByBeat + (_hitWindow * (float)Conductor.CurrentBPS);
-
-                StartCoroutine(MoveOnBeat(beatMoveTime));
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
                 EventManager.EventTrigger(EventType.SFX, thisSound);
@@ -187,30 +176,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator MoveOnBeat(float moveByBeat)
+    private void Update()
     {
-        Vector3 startPos = transform.position;
-        float distLeft = _moveIntervalDist * (_beats.Count - 1);
-        float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
-
-        // If this is the last beat before attacking player, get rid of multiplier
-        float moveTimeMultiplier = _beats.Count > 1 ? 1.5f : 0.9f;
-        //float moveTimeMultiplier = 1.5f;
-
-        Debug.Log("Start pos: " + startPos);
-        //Debug.Log("Move Interval: " + _moveInterval);
-        Debug.Log("Distance left: " + distLeft);
-
-        while (Vector3.Distance(_playerPos, transform.position) - _playerBufferDist > distLeft)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _playerPos, (_moveIntervalDist / (moveIntervalTime / moveTimeMultiplier)) * Time.deltaTime);
-
-            yield return null;
-        }
+        transform.position = Vector3.LerpUnclamped(
+            _startPosition,
+            _endPosition,
+            Mathf.InverseLerp(
+                _startBeat,
+                _startBeat + _hitTime,
+                (float)Conductor.RawLastBeat
+                + _movementAnimation.Evaluate(Conductor.RawSongBeat - Conductor.RawLastBeat)
+            )
+        );
     }
 
     public float HitTime
-	{
+    {
         get { return _hitTime; }
-	}
+    }
 }

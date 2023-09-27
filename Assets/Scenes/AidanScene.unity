@@ -390,10 +390,12 @@ MonoBehaviour:
   - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
     parent: {fileID: 2023658699}
   _maxNumToPool: 3
-  _spawnLocations:
-  - {fileID: 242818054}
-  - {fileID: 739362562}
-  - {fileID: 1449127457}
+  leftStartPosition: {x: -10, y: 0, z: 0}
+  leftEndPosition: {x: -1.5, y: 0, z: 0}
+  forwardStartPosition: {x: 0, y: 6, z: 0}
+  forwardEndPosition: {x: 0, y: 1.5, z: 0}
+  rightStartPosition: {x: 10, y: 0, z: 0}
+  rightEndPosition: {x: 1.5, y: 0, z: 0}
   _player: {fileID: 1282687932}
 --- !u!4 &241471651
 Transform:
