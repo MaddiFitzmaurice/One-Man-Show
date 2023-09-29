@@ -7,6 +7,9 @@ public class SongManager : MonoBehaviour
 
 	public AudioSource songSource;
 
+	// Whether the song loops (true during tutorials)
+	[SerializeField] private bool _doesSongLoop = false;
+
 	// Decides whether to call Beat events before the song starts
 	public bool broadcastNegativeBeats = true;
 	// If true, play metronome clicks on each beat (to test sync)
@@ -87,7 +90,7 @@ public class SongManager : MonoBehaviour
         double currentTime = Conductor.RawSongTime;
 
         // Broadcast until song finishes
-        while (Conductor.RawSongBeat < totalBeats)
+        while (Conductor.RawSongBeat < totalBeats || _doesSongLoop)
         {
             // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
             if (Conductor.RawSongTime >= currentTime + (Conductor.SecondsPerBeat / 2))
@@ -96,7 +99,7 @@ public class SongManager : MonoBehaviour
 				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
 				//Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 				currentTime += (Conductor.SecondsPerBeat / 2);
-				Debug.Log(currentTime);
+				//Debug.Log(currentTime);
             }
             else
             {
