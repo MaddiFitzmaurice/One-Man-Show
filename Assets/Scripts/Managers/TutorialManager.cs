@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour
                 if (_stageIndex >= _stages.Count)
 				{
                     Debug.Log("Final stage complete! Moving to the main game.");
-                    //SceneManager.LoadScene("MainScene");
+                    SceneManager.LoadScene("MainScene");
 				}
             }
             else
@@ -90,7 +90,9 @@ public class TutorialManager : MonoBehaviour
         {
             if (_currentBeat >= _spawns[0].Beat + _startBeat)
             {
-                EventManager.EventTrigger(EventType.SPAWN, _spawns[0]);
+                SpawnData spawnData = _spawns[0];
+                spawnData.Beat += _startBeat;
+                EventManager.EventTrigger(EventType.SPAWN, spawnData);
                 _spawns.RemoveAt(0);
             }
         }

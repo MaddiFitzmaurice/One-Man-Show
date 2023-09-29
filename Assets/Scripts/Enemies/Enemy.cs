@@ -48,6 +48,9 @@ public class Enemy : MonoBehaviour
         _startPosition = startPos;
         _endPosition = endPos;
 
+        _debugTimeElapsed = 0;
+        _attackReadied = false;
+
         transform.position = startPos;
 
         float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within

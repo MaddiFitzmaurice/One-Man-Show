@@ -7,7 +7,7 @@ public struct SpawnData
     [SerializeField] private StageDirection _direction;
     [SerializeField] private EnemyType _type;
 
-    public float Beat { get => _beat; }
+    public float Beat { get => _beat; set { _beat = value; } }
     public StageDirection Direction { get => _direction; }
     public EnemyType Type { get => _type; }
 

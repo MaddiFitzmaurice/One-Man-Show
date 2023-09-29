@@ -71,6 +71,6 @@ public class EnemyManager : MonoBehaviour
 
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
         newEnemy.transform.position = _spawnLocations[(int)spawnData.Direction].position;
-        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, _currentBeat, _player.transform.position, _player.GetSpriteSize());
+        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, _player.transform.position, _player.GetSpriteSize());
     }
 }
