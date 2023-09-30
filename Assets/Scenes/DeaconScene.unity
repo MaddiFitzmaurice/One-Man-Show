@@ -914,7 +914,6 @@ MonoBehaviour:
   _doesSongLoop: 0
   broadcastNegativeBeats: 1
   _debugging: 0
-  _song: {fileID: 0}
   _debugMetronome: {fileID: 8300000, guid: d91934f444e8c784ba2bd80caeb8a661, type: 3}
 --- !u!114 &1767100850
 MonoBehaviour:
