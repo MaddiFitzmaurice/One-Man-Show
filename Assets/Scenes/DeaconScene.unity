@@ -840,8 +840,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49f5e4f230e3f624f888f756137cb60d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   song: {fileID: 11400000, guid: af66dc0be888b9240a3b1a0e6a4e92f7, type: 2}
   clickSource: {fileID: 13219411}
 --- !u!114 &1767100849
@@ -854,10 +854,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12982951123d9634cb9ca39b566abab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   songSource: {fileID: 946583302}
   broadcastNegativeBeats: 1
+  _debugging: 0
+  _debugMetronome: {fileID: 8300000, guid: d91934f444e8c784ba2bd80caeb8a661, type: 3}
+--- !u!114 &1767100850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767100844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b29b392f2a18714b87a16bc0df00a44, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  trackData: {fileID: 11400000, guid: b181a0ea99813474183777d40e8a2cf9, type: 2}
+  songManager: {fileID: 1767100849}
+--- !u!114 &1767100853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767100844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e4d5e289799eb44ad6d1ce8ae0ace9, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+--- !u!114 &1767100854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767100844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1377b2e96fedd4d4bb9b45a2bdcc45ab, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  _enemyPrefabs:
+  - prefab: {fileID: 3448171117555816846, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
+    parent: {fileID: 668530539}
+  - prefab: {fileID: 6738559309489182079, guid: dbf845ce5bfdae642a66d77382b5c756, type: 3}
+    parent: {fileID: 2079861438}
+  - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
+    parent: {fileID: 1327259183}
+  _maxNumToPool: 32
+  leftStartPosition: {x: -17, y: -4, z: 0}
+  leftEndPosition: {x: -2, y: -4, z: 0}
+  forwardStartPosition: {x: 0, y: 10, z: 0}
+  forwardEndPosition: {x: 0, y: -2, z: 0}
+  rightStartPosition: {x: 17, y: -4, z: 0}
+  rightEndPosition: {x: 2, y: -4, z: 0}
+--- !u!114 &1767100855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767100844}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f5e4f230e3f624f888f756137cb60d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  song: {fileID: 11400000, guid: e5b91ac5c5fa9c343a163c4faa460f4b, type: 2}
+  clickSource: {fileID: 13219411}
 --- !u!1 &1821297839
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,8 +1048,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
@@ -1000,8 +1068,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
