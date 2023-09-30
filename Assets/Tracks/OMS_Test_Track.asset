@@ -16,6 +16,8 @@ MonoBehaviour:
   - beat: 8
     enemies:
     - direction: 0
-      enemy_index: 0
-    events: []
+      type: 0
+    events:
+    - type: 0
+      data: {fileID: 0}
   song: {fileID: 11400000, guid: e5b91ac5c5fa9c343a163c4faa460f4b, type: 2}

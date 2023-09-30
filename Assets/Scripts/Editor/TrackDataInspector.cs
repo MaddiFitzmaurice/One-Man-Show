@@ -14,13 +14,13 @@ public class EnemySpawnDrawer : PropertyDrawer
 		EditorGUI.indentLevel = 0;
 
 		// Create property fields.
-		var indField = property.FindPropertyRelative("enemy_index");
+		var typField = property.FindPropertyRelative("type");
 		var dirField = property.FindPropertyRelative("direction");
 
-		var indRect = new Rect(position.x, position.y, 30, position.height);
-		var dirRect = new Rect(position.x + 35, position.y, 80, position.height);
+		var indRect = new Rect(position.x, position.y, 150, position.height);
+		var dirRect = new Rect(position.x + 155, position.y, 80, position.height);
 
-		EditorGUI.PropertyField(indRect, indField, GUIContent.none);
+		EditorGUI.PropertyField(indRect, typField, GUIContent.none);
 		EditorGUI.PropertyField(dirRect, dirField, GUIContent.none);
 
 		EditorGUI.indentLevel = indent;

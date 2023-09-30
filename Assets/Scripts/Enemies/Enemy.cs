@@ -17,7 +17,6 @@ public class Enemy : MonoBehaviour
     private float _lateWindow; // how many beats the player can be late
     [SerializeField] private StageDirection _direction;
     private bool _attackReadied = false; // set to true when the event to kill this enemy is added
-    private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
 
     // Data
     private SFXData _deathClip;
@@ -48,7 +47,6 @@ public class Enemy : MonoBehaviour
         _startPosition = startPos;
         _endPosition = endPos;
 
-        _debugTimeElapsed = 0;
         _attackReadied = false;
 
         transform.position = startPos;
@@ -69,7 +67,9 @@ public class Enemy : MonoBehaviour
             _beats.Add(newBeat);
         }
         gameObject.SetActive(true);
-        CheckBeatAction(sb);
+
+        _currentBeat = sb;
+        CheckBeatAction();
     }
 
     private void OnEnable()
@@ -113,14 +113,14 @@ public class Enemy : MonoBehaviour
     {
         _currentBeat = (float)data;
 
-        CheckBeatAction(_currentBeat);
+        CheckBeatAction();
         CheckAttack();
     }
 
     // Check if any enemy-specific actions need to occur on beat
-    private void CheckBeatAction(double currentBeat)
+    private void CheckBeatAction()
     {
-        double relativeBeat = currentBeat - _startBeat;
+        double relativeBeat = Conductor.RawSongBeat - _startBeat;
 
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour
     private void CheckAttack()
     {
         // check if it's time to attack
-        if (_earlyWindow < _currentBeat && _currentBeat < _lateWindow && !_attackReadied)
+        if (!_attackReadied && _earlyWindow < Conductor.SongBeat && Conductor.SongBeat < _lateWindow)
         {
             _attackReadied = true;
             switch (_direction)
@@ -167,9 +167,9 @@ public class Enemy : MonoBehaviour
             }
         }
         // if the player hasn't destroyed this enemy in time, deal damage
-        if (_currentBeat > _lateWindow)
+        else if (Conductor.SongBeat >= _lateWindow)
         {
-            Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
+            Debug.Log($"Enemy has dealt damage on beat {Conductor.SongBeat}");
 
             // Deal damage to player
             EventManager.EventTrigger(EventType.PLAYER_HIT, null);

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct SpawnData
+public class SpawnData
 {
     [SerializeField] private float _beat;
     [SerializeField] private StageDirection _direction;

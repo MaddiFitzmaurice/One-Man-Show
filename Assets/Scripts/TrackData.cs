@@ -5,7 +5,7 @@ using UnityEngine;
 public struct EnemySpawn
 {
 	public StageDirection direction;
-	public uint enemy_index;
+	public EnemyType type;
 }
 
 [System.Serializable]
