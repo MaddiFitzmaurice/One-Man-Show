@@ -7,5 +7,6 @@ public enum EventType
 	SFX,
 	PLAYER_HIT,
 	PLAYER_DIED,
-	HEALTH_UI
+	HEALTH_UI,
+	SPAWN
 };

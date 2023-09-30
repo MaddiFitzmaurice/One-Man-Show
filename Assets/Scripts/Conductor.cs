@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Conductor
 {
-	[SerializeField] private static double _currentBPS = 2.0;   // Assigned beats-per-second
-	[SerializeField] private static double _currentBPM = 120.0; // Assigned beats-per-minute
+	[SerializeField] private static double _currentBPS;   // Assigned beats-per-second
+	[SerializeField] private static double _currentBPM; // Assigned beats-per-minute
 
 	[SerializeField] private static double _startOffset = 0.0; // The offset of the start of the song, in seconds
 	[SerializeField] private static double _inputOffset = 0.0; // The offset between a keypress and being processed by the program, in seconds
@@ -83,6 +83,12 @@ public class Conductor
 			_currentBPM = value;
 			_currentBPS = value / 60.0;
 		}
+	}
+
+	// Seconds per beat
+	public static float SecondsPerBeat
+	{
+		get => 1.0f / (float)_currentBPS;
 	}
 
 	// Sets the reference point for beats and time to be calculated relative to

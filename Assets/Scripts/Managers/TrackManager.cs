@@ -9,9 +9,8 @@ public class TrackManager : MonoBehaviour
 	private static SongMeta _cur_song = null;
 	private static uint _cur_beat = 0;
 
-	[SerializeField] private EnemyManager _enemyManager;
-
 	[SerializeField] private TrackData trackData;
+	[SerializeField] private SongManager songManager;
 
 	void Start()
 	{
@@ -39,7 +38,7 @@ public class TrackManager : MonoBehaviour
 
 		Array.Sort(_cur_track); // Ensure that the beat order is correct
 
-		SongManager.StartSong(track.song);
+		instance.songManager.StartSong(track.song);
 	}
 
 	public void Update()
@@ -54,7 +53,8 @@ public class TrackManager : MonoBehaviour
 		{
             foreach (EnemySpawn _enemy in _cur_track[_cur_beat].enemies)
 			{
-				_enemyManager.Spawn((int)_enemy.enemy_index, _enemy.direction, beat);
+				SpawnData spawn = new SpawnData(_cur_track[_cur_beat].beat, _enemy.direction, _enemy.type);
+				EventManager.EventTrigger(EventType.SPAWN, spawn);
 			}
 
 			foreach (SpawnEvent _event in _cur_track[_cur_beat].events)

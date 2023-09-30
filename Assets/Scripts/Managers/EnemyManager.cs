@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Stores the prefab and its associated parent
@@ -12,8 +13,6 @@ public struct EnemyPrefabType
 
 public class EnemyManager : MonoBehaviour
 {
-    //[SerializeField] List<EnemySpawner> _enemySpawns;
-
     // Enemy prefabs to pool
     [SerializeField] List<EnemyPrefabType> _enemyPrefabs;
 
@@ -22,9 +21,6 @@ public class EnemyManager : MonoBehaviour
 
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;
-
-    [SerializeField]
-    private bool _debugTestSpawn = true;
     
     // List of spawn locations
     public Vector3 leftStartPosition;
@@ -33,6 +29,21 @@ public class EnemyManager : MonoBehaviour
     public Vector3 forwardEndPosition;
     public Vector3 rightStartPosition;
     public Vector3 rightEndPosition;
+
+    // Track current beat number
+    private float _currentBeat;
+
+    private void OnEnable()
+    {
+        EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
+        EventManager.EventSubscribe(EventType.SPAWN, SpawnHandler);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
+        EventManager.EventUnsubscribe(EventType.SPAWN, SpawnHandler);
+    }
 
     private void Start()
     {
@@ -49,45 +60,43 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // TESTING ONLY: DELETE WHEN DONE
-    private void Update()
+    // Update current beat
+    public void BeatHandler(object data)
     {
-        if (_debugTestSpawn)
-        {
-            TestSpawn();
-            _debugTestSpawn = false;
-        }
-    }
-
-    // spawn an enemy, just to test that it works
-    public void TestSpawn()
-    {
-        Spawn(0, StageDirection.LEFT, 4);
+        _currentBeat = (float)data;
     }
     
     // Spawns an enemy from a type index and direction
-    public GameObject Spawn(int typeIndex, StageDirection direction, float startBeat)
+    public void SpawnHandler(object data)
     {
-        // Invalid type ID
-        if (typeIndex < 0 || typeIndex >= _typeEnemyList.Count)
+        SpawnData spawnData = (SpawnData)data;
+
+        if (spawnData == null)
         {
-            Debug.Log($"Attempted to spawn enemy with invalid ID! ({typeIndex})");
-            return null;
+            Debug.Log($"Attempted to spawn null data!");
+            return;
         }
 
-        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[typeIndex]);
+        // Invalid type ID
+        if ((int)spawnData.Type < 0 || (int)spawnData.Type >= _typeEnemyList.Count)
+        {
+            Debug.Log($"Attempted to spawn enemy with invalid ID! ({spawnData.Type})");
+            return;
+        }
+
+        GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
 
         // No more enemies in pool
         if (newEnemy == null)
         {
-            Debug.Log($"Attempted to spawn enemy but pool was empty! ({typeIndex})");
-            return null;
+            Debug.Log($"Attempted to spawn enemy but pool was empty! ({spawnData.Type})");
+            return;
         }
 
         Vector3 start = Vector3.zero;
         Vector3 end = Vector3.zero;
 
-        switch (direction)
+        switch (spawnData.Direction)
         {
             case StageDirection.LEFT:
                 start = leftStartPosition;
@@ -103,10 +112,9 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
 
-        newEnemy.GetComponent<Enemy>().Initialise(direction, startBeat, start, end);
+        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, start, end);
         newEnemy.SetActive(true);
 
-        Debug.Log($"Spawned enemy {typeIndex} on beat {startBeat} from {direction}");
-        return newEnemy;
+        Debug.Log($"Spawned enemy {spawnData.Type} on beat {spawnData.Beat} from {spawnData.Direction}");
     }
 }

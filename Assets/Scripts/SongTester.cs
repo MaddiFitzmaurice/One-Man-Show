@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SongTester : MonoBehaviour
 {
-	public SongMeta song;
 	public TrackData track;
 	public AudioSource clickSource;
 

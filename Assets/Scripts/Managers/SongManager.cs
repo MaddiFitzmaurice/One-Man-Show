@@ -1,19 +1,27 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SongManager : MonoBehaviour
 {
-	public static SongManager instance { get; private set; } = null;
-
 	private static int _lastBeat;
 
 	public AudioSource songSource;
 
+	// Whether the song loops (true during tutorials)
+	[SerializeField] private bool _doesSongLoop = false;
+
 	// Decides whether to call Beat events before the song starts
 	public bool broadcastNegativeBeats = true;
+	// If true, play metronome clicks on each beat (to test sync)
+	[SerializeField] bool _debugging = false;
 
-	private static int LastBeat
+	// Song Meta
+	[SerializeField] SongMeta _song;
+
+	// Metronome clicks for debugging
+	[SerializeField] AudioClip _debugMetronome; 
+
+	private int LastBeat
 	{
 		get => _lastBeat;
 		set
@@ -22,44 +30,44 @@ public class SongManager : MonoBehaviour
 
 			_lastBeat = value;
 
-			if (value < 0 && !instance.broadcastNegativeBeats) return;
-
-			EventManager.EventTrigger(EventType.BEAT, _lastBeat);
+			if (value < 0 && broadcastNegativeBeats) return;
 		}
 	}
 
-	public static void StartSong(SongMeta song, bool negativeBeats = true)
+	public void StartSong(SongMeta song, bool negativeBeats = true)
 	{
-		instance.songSource.Stop();
+		songSource.Stop();
 
-		instance.songSource.clip = song.clip;
-		instance.songSource.Play();
+		songSource.clip = song.clip;
 
-		Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
-		Conductor.StartTracking(song.BPM, song.startOffset);
+        Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
+        Conductor.StartTracking(song.BPM, song.startOffset);
 
-		_lastBeat = Conductor.RawLastBeat;
-		instance.broadcastNegativeBeats = negativeBeats;
+        songSource.Play();
+        StartCoroutine(BroadcastBeats());
+
+        _lastBeat = Conductor.RawLastBeat;
+		broadcastNegativeBeats = negativeBeats;
+
+		// if debugging, play metronome clicks on every beat
+		if (_debugging)
+		{
+			EventManager.EventSubscribe(EventType.BEAT, DebugMetronome);
+		}
 
 		if (_lastBeat < 0 && !negativeBeats) return;
-
-		EventManager.EventTrigger(EventType.BEAT, _lastBeat);
-	}
-
-	private void Awake()
-	{
-		if (instance != null && instance != this)
-		{
-			Destroy(this);
-			return;
-		}
-
-		instance = this;
 	}
 
 	private void Start()
 	{
 		EventManager.EventInitialise(EventType.BEAT);
+
+		StartSong(_song, false);
+	}
+
+	public void DebugMetronome(object data)
+	{
+		songSource.PlayOneShot(_debugMetronome);
 	}
 
 	private void Update()
@@ -68,4 +76,35 @@ public class SongManager : MonoBehaviour
 
 		LastBeat = Conductor.RawLastBeat;
 	}
+
+    IEnumerator BroadcastBeats()
+    {
+        // Calculate the total number of beats in the song
+        double totalBeats = _song.clip.length * Conductor.CurrentBPS;
+        //Debug.Log("Total number of beats in song: " + totalBeats);
+
+        // Broadcast starting beat
+        EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
+        //Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+
+        double currentTime = Conductor.RawSongTime;
+
+        // Broadcast until song finishes
+        while (Conductor.RawSongBeat < totalBeats || _doesSongLoop)
+        {
+            // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
+            if (Conductor.RawSongTime >= currentTime + (Conductor.SecondsPerBeat / 2))
+            {
+				//Broadcast beat and reset current time
+				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
+				//Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+				currentTime += (Conductor.SecondsPerBeat / 2);
+				//Debug.Log(currentTime);
+            }
+            else
+            {
+				yield return null;
+            }
+        }
+    }
 }
