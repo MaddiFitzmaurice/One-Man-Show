@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour
                 if (_stageIndex >= _stages.Count)
 				{
                     Debug.Log("Final stage complete! Moving to the main game.");
-                    SceneManager.LoadScene("MainScene");
+                    SceneManager.LoadScene("TitleScene");
 				}
             }
             else

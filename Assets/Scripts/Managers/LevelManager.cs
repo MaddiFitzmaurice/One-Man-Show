@@ -32,13 +32,25 @@ public class LevelManager : MonoBehaviour
 
     public void CheckBeat()
     {
-        if (_levelLayout.Count > 0)
+        // loop is needed if spawning multiple enemies on same beat
+        while (true)
         {
-            if (_currentBeat > _levelLayout[0].Beat)
+            if (_levelLayout.Count > 0)
             {
-                EventManager.EventTrigger(EventType.SPAWN, _levelLayout[0]);
-                _levelLayout.RemoveAt(0);
+                if (_currentBeat > _levelLayout[0].Beat)
+                {
+                    EventManager.EventTrigger(EventType.SPAWN, _levelLayout[0]);
+                    _levelLayout.RemoveAt(0);
+                }
+                else
+                {
+                    break;
+                }
             }
+            else
+			{
+                break;
+			}
         }
     }
 }

@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 509553370, guid: 5ab87d998d972b145a8855b7ad1b2b83, type: 3}
   m_Color: {r: 1, g: 0.04150939, b: 0.04150939, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
   _deathSound: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0
+  _attackReadied: 0
   _movementAnimation:
     serializedVersion: 2
     m_Curve:

@@ -39,14 +39,12 @@ public class SongManager : MonoBehaviour
 		songSource.Stop();
 
 		songSource.clip = song.clip;
+		songSource.Play();
 
-        Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
-        Conductor.StartTracking(song.BPM, song.startOffset);
+		Debug.Log("Starting song with BPM " + song.BPM + " and offset " + song.startOffset);
+		Conductor.StartTracking(song.BPM, song.startOffset);
 
-        songSource.Play();
-        StartCoroutine(BroadcastBeats());
-
-        _lastBeat = Conductor.RawLastBeat;
+		_lastBeat = Conductor.RawLastBeat;
 		broadcastNegativeBeats = negativeBeats;
 
 		// if debugging, play metronome clicks on every beat
@@ -54,6 +52,8 @@ public class SongManager : MonoBehaviour
 		{
 			EventManager.EventSubscribe(EventType.BEAT, DebugMetronome);
 		}
+
+		StartCoroutine(BroadcastBeats());
 
 		if (_lastBeat < 0 && !negativeBeats) return;
 	}
@@ -85,19 +85,20 @@ public class SongManager : MonoBehaviour
 
         // Broadcast starting beat
         EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
-        //Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+		Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 
-        double currentTime = Conductor.RawSongTime;
+		double currentTime = 0; // doesn't allow for broadcasting on negative beats, but should work for now
+		//double currentTime = Conductor.RawSongTime;
 
-        // Broadcast until song finishes
-        while (Conductor.RawSongBeat < totalBeats || _doesSongLoop)
+		// Broadcast until song finishes
+		while (Conductor.RawSongBeat < totalBeats || _doesSongLoop)
         {
             // Wait for the equivalent of a half-beat in seconds passing before broadcasting again
             if (Conductor.RawSongTime >= currentTime + (Conductor.SecondsPerBeat / 2))
             {
 				//Broadcast beat and reset current time
 				EventManager.EventTrigger(EventType.BEAT, Conductor.RawSongBeat);
-				//Debug.Log("Current beat number: " + Conductor.RawSongBeat);
+				Debug.Log("Current beat number: " + Conductor.RawSongBeat);
 				currentTime += (Conductor.SecondsPerBeat / 2);
 				//Debug.Log(currentTime);
             }

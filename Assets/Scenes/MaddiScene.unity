@@ -177,6 +177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThreeBeatEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6269349086873321759, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -467,12 +471,11 @@ MonoBehaviour:
   - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
     parent: {fileID: 2023658699}
   _maxNumToPool: 3
-  leftStartPosition: {x: 0, y: 0, z: 0}
-  leftEndPosition: {x: 0, y: 0, z: 0}
-  forwardStartPosition: {x: 0, y: 0, z: 0}
-  forwardEndPosition: {x: 0, y: 0, z: 0}
-  rightStartPosition: {x: 0, y: 0, z: 0}
-  rightEndPosition: {x: 0, y: 0, z: 0}
+  _spawnLocations:
+  - {fileID: 242818054}
+  - {fileID: 739362562}
+  - {fileID: 1449127457}
+  _player: {fileID: 1282687932}
 --- !u!4 &241471651
 Transform:
   m_ObjectHideFlags: 0
@@ -576,6 +579,10 @@ PrefabInstance:
     - target: {fileID: 3448171117555816846, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
       propertyPath: m_Name
       value: FourBeatEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448171117555816846, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
       propertyPath: m_FlipX
@@ -847,18 +854,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelLayout:
-  - _beat: 5
+  - _beat: 4
+    _direction: 1
+    _type: 0
+  - _beat: 8
+    _direction: 0
+    _type: 0
+  - _beat: 15
+    _direction: 2
+    _type: 0
+  - _beat: 16
+    _direction: 0
+    _type: 0
+  - _beat: 20
     _direction: 1
     _type: 2
-  - _beat: 15
+  - _beat: 22
     _direction: 0
-    _type: 0
-  - _beat: 25
-    _direction: 2
-    _type: 1
-  - _beat: 30
-    _direction: 0
-    _type: 0
+    _type: 2
 --- !u!1001 &515215912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -926,6 +939,10 @@ PrefabInstance:
     - target: {fileID: 6738559309489182079, guid: dbf845ce5bfdae642a66d77382b5c756, type: 3}
       propertyPath: m_Name
       value: HalfStepEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738559309489182079, guid: dbf845ce5bfdae642a66d77382b5c756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1592,8 +1609,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39890003, y: 1.90415, z: 0}
-    m_Extent: {x: 2.7926, y: 4.31945, z: 0}
+    m_Center: {x: -0.3973, y: 1.90515, z: 0}
+    m_Extent: {x: 2.7951, y: 4.32035, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -2139,8 +2156,9 @@ MonoBehaviour:
   songSource: {fileID: 240738075}
   _doesSongLoop: 0
   broadcastNegativeBeats: 1
-  _debugging: 0
-  _debugMetronome: {fileID: 0}
+  _debugging: 1
+  _song: {fileID: 11400000, guid: e5b91ac5c5fa9c343a163c4faa460f4b, type: 2}
+  _debugMetronome: {fileID: 8300000, guid: d91934f444e8c784ba2bd80caeb8a661, type: 3}
 --- !u!4 &1854875625
 Transform:
   m_ObjectHideFlags: 0

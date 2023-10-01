@@ -71,6 +71,10 @@ public class EnemyManager : MonoBehaviour
 
         GameObject newEnemy = ObjectPooler.GetPooledObject(_typeEnemyList[(int)spawnData.Type]);
         newEnemy.transform.position = _spawnLocations[(int)spawnData.Direction].position;
-        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, _player.transform.position, _player.GetSpriteSize());
+
+        // move a portion of your total distance from spawn to enemy (for now)
+        Vector3 dist = newEnemy.transform.position - _player.transform.position;
+        dist = dist * 0.25f;
+        newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, newEnemy.transform.position, _player.transform.position + dist);
     }
 }
