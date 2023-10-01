@@ -47,6 +47,16 @@ public class Enemy : MonoBehaviour
     {
         _startBeat = sb;
         _direction = dr;
+
+        if (_direction == StageDirection.LEFT && _sprite.flipX)
+        {
+            _sprite.flipX = false;
+        }
+        else if (_direction == StageDirection.RIGHT && !_sprite.flipX)
+        {
+            _sprite.flipX = true;
+        }
+
         _startPosition = startPos;
         _endPosition = endPos;
 
