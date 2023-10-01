@@ -1609,8 +1609,13 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
+<<<<<<< Updated upstream
     m_Center: {x: -0.3973, y: 1.90515, z: 0}
     m_Extent: {x: 2.7951, y: 4.32035, z: 0}
+=======
+    m_Center: {x: -0.39224994, y: 1.9095999, z: 0}
+    m_Extent: {x: 2.7820501, y: 4.3108, z: 0}
+>>>>>>> Stashed changes
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1651,6 +1656,7 @@ GameObject:
   - component: {fileID: 1282687931}
   - component: {fileID: 1282687932}
   - component: {fileID: 1282687933}
+  - component: {fileID: 1282687934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1744,6 +1750,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1282687934
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282687930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1449127456
 GameObject:
   m_ObjectHideFlags: 0
