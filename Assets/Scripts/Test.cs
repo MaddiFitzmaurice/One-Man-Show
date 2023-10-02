@@ -21,7 +21,7 @@ public class Test : MonoBehaviour
 
 	void OnBeat(object data)
 	{
-		if ((int)data < 0) return;
+		if ((float)data < 0) return;
 
 		clickSource.Play();
 	}
