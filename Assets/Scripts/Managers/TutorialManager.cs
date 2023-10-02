@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    [SerializeField] private List<StageData> _stages; // All the stages this tutorial contains
+    [SerializeField] private StageData[] _stages; // All the stages this tutorial contains
     [SerializeField] private int _stageIndex = 0; // DON'T CHANGE IN INSPECTOR
     [SerializeField] private float _currentBeat = 0; // DON'T CHANGE IN INSPECTOR
     [SerializeField] private float _startBeat = 0; // The beat on which this stage started
     private int _damageTaken = 0; // How much damage the player has taken during this stage
-    [SerializeField] private List<SpawnData> _spawns;
+    [SerializeField] private List<SpawnBeat> _spawns;
+    [SerializeField] private SongManager _songManager;
+    [SerializeField] private SongMeta _song;
 
     private void OnEnable()
     {
@@ -29,20 +31,26 @@ public class TutorialManager : MonoBehaviour
         LoadStage();
     }
 
+    private void Start()
+    {
+        _songManager.StartSong(_song, false, true);
+    }
+
     private StageData CurrentStage {
-        get { return _stages[_stageIndex]; }
+        get { return _stageIndex < _stages.Length ? _stages[_stageIndex] : null; }
     }
 
     // Create a deep copy of all spawns for the current stage
     private void LoadStage()
-	{
-        _spawns = new List<SpawnData>();
-        foreach (SpawnData s in CurrentStage.Spawns)
-		{
-            SpawnData newSpawn = new SpawnData(s.Beat, s.Direction, s.Type);
-            _spawns.Add(newSpawn);
-		}
-	}
+    {
+        if (CurrentStage == null) return;
+
+        _spawns = new List<SpawnBeat>();
+        foreach (SpawnBeat s in CurrentStage.Spawns)
+        {
+            _spawns.Add(s);
+        }
+    }
 
     // Register that the player has been damaged
     public void TrackDamage(object data)
@@ -60,6 +68,8 @@ public class TutorialManager : MonoBehaviour
 
     public void CheckBeat()
     {
+        if (CurrentStage == null) return;
+
         // Check whether the current stage is over or not
         if (Conductor.RawSongBeat >= _startBeat + CurrentStage.Length)
 		{
@@ -70,31 +80,35 @@ public class TutorialManager : MonoBehaviour
 			{
                 _stageIndex++;
                 // If there is no next stage to move to, move to the main scene (start the game!)
-                if (_stageIndex >= _stages.Count)
+                if (_stageIndex >= _stages.Length)
 				{
                     Debug.Log("Final stage complete! Moving to the main game.");
                     SceneManager.LoadScene("TitleScene");
 				}
+                else
+                {
+                    Debug.Log($"Progressing to stage {_stageIndex + 1}");
+                    LoadStage();
+                }
             }
             else
 			{
                 Debug.Log("Damage was taken! Repeating this stage.");
-			}
 
-            LoadStage();
-            _damageTaken = 0;
-		}
-
-        // Check whether to spawn enemies
-        if (_spawns.Count > 0)
-        {
-            if (_currentBeat >= _spawns[0].Beat + _startBeat)
-            {
-                SpawnData spawnData = _spawns[0];
-                spawnData.Beat += _startBeat;
-                EventManager.EventTrigger(EventType.SPAWN, spawnData);
-                _spawns.RemoveAt(0);
+                LoadStage();
+                _damageTaken = 0;
             }
         }
+
+        // Check whether to spawn enemies
+        if (_spawns.Count == 0) return;
+        if (_currentBeat < _spawns[0].beat + _startBeat) return;
+
+        SpawnBeat spawnData = _spawns[0];
+        _spawns.RemoveAt(0);
+
+        SpawnData data = new SpawnData(spawnData.beat + _startBeat, spawnData.direction, spawnData.type);
+
+        EventManager.EventTrigger(EventType.SPAWN, data);
     }
 }

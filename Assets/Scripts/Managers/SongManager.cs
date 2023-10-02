@@ -20,7 +20,7 @@ public class SongManager : MonoBehaviour
     // Metronome clicks for debugging
     [SerializeField] AudioClip _debugMetronome;
 
-    public void StartSong(SongMeta song, bool negativeBeats = true)
+    public void StartSong(SongMeta song, bool negativeBeats = true, bool loop = false)
     {
         if(_curSong != null)
         {
@@ -32,6 +32,7 @@ public class SongManager : MonoBehaviour
         double start = AudioSettings.dspTime;
 
         _curSong = song;
+        songSource.loop = loop;
         songSource.clip = song.clip;
         songSource.PlayScheduled(start + startDelay);
 
