@@ -2,28 +2,26 @@ using System;
 using UnityEngine;
 
 [System.Serializable]
-public struct EnemySpawn
-{
-	public StageDirection direction;
-	public EnemyType type;
-}
-
-[System.Serializable]
-public struct SpawnEvent
-{
-	public EventType type;
-	public UnityEngine.Object data;
-}
-
-[System.Serializable]
-public struct TrackBeat : IComparable<TrackBeat>
+public struct SpawnBeat : IComparable<SpawnBeat>
 {
 	public float beat;
+	public StageDirection direction;
+	public EnemyType type;
 
-	public EnemySpawn[] enemies; // Enemies to spawn
-	public SpawnEvent[] events; // Events to broadcast
+	public int CompareTo(SpawnBeat other)
+	{
+		return beat.CompareTo(other.beat);
+	}
+}
 
-	public int CompareTo(TrackBeat other)
+[System.Serializable]
+public struct EventBeat : IComparable<EventBeat>
+{
+	public float beat;
+	public EventType type;
+	public UnityEngine.Object data;
+
+	public int CompareTo(EventBeat other)
 	{
 		return beat.CompareTo(other.beat);
 	}
@@ -33,6 +31,7 @@ public struct TrackBeat : IComparable<TrackBeat>
 [CreateAssetMenu(fileName = "NewTrack", menuName = "Song Tracking/TrackData", order = 2)]
 public class TrackData : ScriptableObject
 {
-	public TrackBeat[] beats;
 	public SongMeta song;
+	public SpawnBeat[] enemies; // Enemies to spawn
+	public EventBeat[] events; // Events to broadcast
 }

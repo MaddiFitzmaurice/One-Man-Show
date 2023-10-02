@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Stores the prefab and its associated parent
@@ -21,7 +20,7 @@ public class EnemyManager : MonoBehaviour
 
     // Enemy pool lists for all prefabs
     List<List<GameObject>> _typeEnemyList;
-    
+
     // List of spawn locations
     public Vector3 leftStartPosition;
     public Vector3 leftEndPosition;
@@ -113,8 +112,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, start, end);
-        newEnemy.SetActive(true);
 
-        Debug.Log($"Spawned enemy {spawnData.Type} on beat {spawnData.Beat} from {spawnData.Direction}");
+        Debug.Log($"Spawned enemy {spawnData.Type} starting beat {spawnData.Beat} on beat {Conductor.RawSongBeat} from {spawnData.Direction}");
     }
 }

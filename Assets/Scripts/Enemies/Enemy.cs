@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour
     private float _earlyWindow; // how many beats the player can be early
     private float _lateWindow; // how many beats the player can be late
     [SerializeField] private StageDirection _direction;
-    private bool _attackReadied = false; // set to true when the event to kill this enemy is added
+    [SerializeField] private bool _attackReadied = false; // set to true when the event to kill this enemy is added
+    private bool _checkingForAttack = false;
+    private float _debugTimeElapsed = 0.0f; // how much time since the timing window opened
 
     // Data
     private SFXData _deathClip;
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour
     {
         _deathClip = new SFXData(_deathSound, StageDirection.FORWARD);
         _sprite = GetComponent<SpriteRenderer>();
+        _beats = new List<EnemyBeat>(); // just so it doesn't error out when the game starts
     }
 
     // set unique values for this enemy
@@ -44,10 +47,22 @@ public class Enemy : MonoBehaviour
     {
         _startBeat = sb;
         _direction = dr;
+
+        if (_direction == StageDirection.LEFT && _sprite.flipX)
+        {
+            _sprite.flipX = false;
+        }
+        else if (_direction == StageDirection.RIGHT && !_sprite.flipX)
+        {
+            _sprite.flipX = true;
+        }
+
         _startPosition = startPos;
         _endPosition = endPos;
 
+        _debugTimeElapsed = 0;
         _attackReadied = false;
+        _checkingForAttack = false;
 
         transform.position = startPos;
 
@@ -100,7 +115,7 @@ public class Enemy : MonoBehaviour
     public void DefeatMeHandler(object data)
     {
         // print to console the timing window
-        float ms = (float)((Conductor.SongBeat - (_hitTime + _startBeat)) * 1000.0 / Conductor.CurrentBPS);
+        float ms = (float)((Conductor.RawSongBeat - (_hitTime + _startBeat)) * 1000.0 / Conductor.CurrentBPS);
         Debug.Log($"Enemy was hit! Timing was {ms}ms");
 
         // TODO: any death animations go here
@@ -114,20 +129,19 @@ public class Enemy : MonoBehaviour
         _currentBeat = (float)data;
 
         CheckBeatAction();
-        CheckAttack();
     }
 
     // Check if any enemy-specific actions need to occur on beat
     private void CheckBeatAction()
     {
-        double relativeBeat = Conductor.RawSongBeat - _startBeat;
-
+        double relativeBeat = _currentBeat - _startBeat;
+        float nearestHalfBeat = Mathf.RoundToInt((float)relativeBeat * 2) / 2; // look idk man
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
         // check if any new beats/animations/movement needs to occur
         foreach (EnemyBeat b in _beats)
         {
-            if (relativeBeat >= b.BeatOffset)
+            if (nearestHalfBeat >= b.BeatOffset)
             {
                 // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
                 SFXData thisSound = new SFXData(b.Sound, _direction);
@@ -141,45 +155,61 @@ public class Enemy : MonoBehaviour
         {
             _beats.Remove(b);
         }
+
+        // if attack is coming up, start running the enumerator
+        if (!_checkingForAttack && _currentBeat + 1 > _earlyWindow)
+		{
+            StartCoroutine(CheckAttack());
+            _checkingForAttack = true;
+        }
     }
 
     // Check if player can attack enemy or vice versa
-    private void CheckAttack()
+    IEnumerator CheckAttack()
     {
-        // check if it's time to attack
-        if (!_attackReadied && _earlyWindow < Conductor.SongBeat && Conductor.SongBeat < _lateWindow)
-        {
-            _attackReadied = true;
-            switch (_direction)
+        // this object will get disabled eventually, so it's okay to have an infinite loop here
+        while (true)
+		{
+            float currentBeat = Conductor.SongBeat;
+            // check if it's time to attack
+            if (!_attackReadied && _earlyWindow < currentBeat)
             {
-                case StageDirection.LEFT:
-                    // subscribe this enemy dying to EVENT_PARRY_LEFT
-                    EventManager.EventSubscribe(EventType.PARRY_LEFT, DefeatMeHandler);
-                    break;
-                case StageDirection.RIGHT:
-                    // subscribe this enemy dying to EVENT_PARRY_RIGHT
-                    EventManager.EventSubscribe(EventType.PARRY_RIGHT, DefeatMeHandler);
-                    break;
-                case StageDirection.FORWARD:
-                    // subscribe this enemy dying to EVENT_PARRY_FORWARD
-                    EventManager.EventSubscribe(EventType.PARRY_FORWARD, DefeatMeHandler);
-                    break;
+                _attackReadied = true;
+                Debug.Log($"Ready to attack on beat {currentBeat}");
+                switch (_direction)
+                {
+                    case StageDirection.LEFT:
+                        // subscribe this enemy dying to EVENT_PARRY_LEFT
+                        EventManager.EventSubscribe(EventType.PARRY_LEFT, DefeatMeHandler);
+                        break;
+                    case StageDirection.RIGHT:
+                        // subscribe this enemy dying to EVENT_PARRY_RIGHT
+                        EventManager.EventSubscribe(EventType.PARRY_RIGHT, DefeatMeHandler);
+                        break;
+                    case StageDirection.FORWARD:
+                        // subscribe this enemy dying to EVENT_PARRY_FORWARD
+                        EventManager.EventSubscribe(EventType.PARRY_FORWARD, DefeatMeHandler);
+                        break;
+                }
             }
-        }
-        // if the player hasn't destroyed this enemy in time, deal damage
-        else if (Conductor.SongBeat >= _lateWindow)
-        {
-            Debug.Log($"Enemy has dealt damage on beat {Conductor.SongBeat}");
+            // if the player hasn't destroyed this enemy in time, deal damage
+            if (_attackReadied && currentBeat > _lateWindow)
+            {
+                Debug.Log($"Enemy has dealt damage! Beat was ({currentBeat}, {_startBeat}+{HitTime}->{_earlyWindow}|{_lateWindow})");
 
-            // Deal damage to player
-            EventManager.EventTrigger(EventType.PLAYER_HIT, null);
-            SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
-            EventManager.EventTrigger(EventType.SFX, hitClip);
-            gameObject.SetActive(false);
+                // Deal damage to player
+                EventManager.EventTrigger(EventType.PLAYER_HIT, null);
+                SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
+                EventManager.EventTrigger(EventType.SFX, hitClip);
+                gameObject.SetActive(false);
+
+                yield break;
+            }
+
+            yield return null;
         }
     }
 
-    // perform movement and animations
     private void Update()
     {
         transform.position = Vector3.LerpUnclamped(
@@ -188,9 +218,8 @@ public class Enemy : MonoBehaviour
             Mathf.InverseLerp(
                 _startBeat,
                 _startBeat + _hitTime,
-                Conductor.RawLastBeat + _movementAnimation.Evaluate(
-                    Conductor.RawSongBeat - Conductor.RawLastBeat
-                )
+                (float)Conductor.RawLastBeat
+                + _movementAnimation.Evaluate(Conductor.RawSongBeat - Conductor.RawLastBeat)
             )
         );
     }

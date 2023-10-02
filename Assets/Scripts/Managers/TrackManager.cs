@@ -1,18 +1,21 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
 	private static TrackManager instance = null;
 
-	private static TrackBeat[] _cur_track = null;
+	private static SpawnBeat[] _cur_enemies = null;
+	private static EventBeat[] _cur_events = null;
 	private static SongMeta _cur_song = null;
-	private static uint _cur_beat = 0;
+	private static uint _cur_enemy_beat = 0;
+	private static uint _cur_event_beat = 0;
 
 	[SerializeField] private TrackData trackData;
 	[SerializeField] private SongManager songManager;
 
-	void Start()
+	void Awake()
 	{
 		if (instance == this) return;
 
@@ -23,48 +26,98 @@ public class TrackManager : MonoBehaviour
 		else
 		{
 			instance = this;
-
-			// Hardcoded value for prototype - remove when a system is in place
-			// for selecting and passing a song/track to this manager
-			StartSong(trackData);
 		}
+	}
+
+	private void Start()
+	{
+		// Hardcoded value for prototype - remove when a system is in place
+		// for selecting and passing a song/track to this manager
+		StartSong(trackData);
 	}
 
 	public static void StartSong(TrackData track)
 	{
 		_cur_song = track.song;
-		_cur_track = (TrackBeat[])track.beats.Clone(); // Take a deep copy so that the track is not modified
-		_cur_beat = 0;
+		_cur_enemy_beat = 0;
+		_cur_event_beat = 0;
 
-		Array.Sort(_cur_track); // Ensure that the beat order is correct
+		if (track.enemies.Length > 0)
+		{
+			_cur_enemies = new SpawnBeat[track.enemies.Length];
+			track.enemies.CopyTo(_cur_enemies, 0);
+			Array.Sort(_cur_enemies); // Ensure that the beat order is correct
+		}
+		else
+		{
+			_cur_enemies = null;
+		}
 
-		instance.songManager.StartSong(track.song);
+		if (track.events.Length > 0)
+		{
+			_cur_events= new EventBeat[track.events.Length];
+			track.events.CopyTo(_cur_events, 0);
+			Array.Sort(_cur_events);
+		}
+		else
+		{
+			_cur_events = null;
+		}
+
+		instance.songManager.StartSong(_cur_song);
+		instance.StartCoroutine(ProcessEnemies());
+		instance.StartCoroutine(ProcessEvents());
 	}
 
-	public void Update()
+	public static IEnumerator ProcessEnemies()
 	{
-		if (_cur_track == null) return;
-		// No more beats
-		if (_cur_beat >= _cur_track.Length) return;
+		if (_cur_enemies == null) yield break;
+		if (_cur_enemy_beat >= _cur_enemies.Length) yield break;
 
-		float beat = Conductor.RawSongBeat;
-
-		while (beat >= _cur_track[_cur_beat].beat)
+		for (;;)
 		{
-            foreach (EnemySpawn _enemy in _cur_track[_cur_beat].enemies)
+			float beat = Conductor.RawSongBeat;
+
+			while (beat >= _cur_enemies[_cur_enemy_beat].beat)
 			{
-				SpawnData spawn = new SpawnData(_cur_track[_cur_beat].beat, _enemy.direction, _enemy.type);
+				SpawnData spawn = new SpawnData(
+					_cur_enemies[_cur_enemy_beat].beat,
+					_cur_enemies[_cur_enemy_beat].direction,
+					_cur_enemies[_cur_enemy_beat].type
+				);
+
 				EventManager.EventTrigger(EventType.SPAWN, spawn);
+
+				_cur_enemy_beat++;
+
+				if (_cur_enemy_beat >= _cur_enemies.Length) yield break;
 			}
 
-			foreach (SpawnEvent _event in _cur_track[_cur_beat].events)
+			yield return null;
+		}
+	}
+	public static IEnumerator ProcessEvents()
+	{
+		if (_cur_events == null) yield break;
+		if (_cur_event_beat >= _cur_events.Length) yield break;
+
+		for(;;)
+		{
+			float beat = Conductor.RawSongBeat;
+
+			while (beat >= _cur_events[_cur_event_beat].beat)
 			{
-				EventManager.EventTrigger(_event.type, _event.data);
+				EventManager.EventTrigger(
+					_cur_events[_cur_event_beat].type,
+					_cur_events[_cur_event_beat].data
+				);
+
+				_cur_event_beat++;
+
+				if (_cur_event_beat >= _cur_events.Length) yield break;
 			}
 
-			_cur_beat++;
-
-			if (_cur_beat >= _cur_track.Length) return;
+			yield return null;
 		}
 	}
 }
