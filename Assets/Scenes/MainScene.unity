@@ -471,11 +471,12 @@ MonoBehaviour:
   - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
     parent: {fileID: 2023658699}
   _maxNumToPool: 3
-  _spawnLocations:
-  - {fileID: 242818054}
-  - {fileID: 739362562}
-  - {fileID: 1449127457}
-  _player: {fileID: 1282687932}
+  leftStartPosition: {x: -10, y: -1.5, z: 0}
+  leftEndPosition: {x: -2, y: -0.5, z: 0}
+  forwardStartPosition: {x: 0, y: -5.5, z: 0}
+  forwardEndPosition: {x: 0, y: -2, z: 0}
+  rightStartPosition: {x: 10, y: -1.5, z: 0}
+  rightEndPosition: {x: 2, y: -0.5, z: 0}
 --- !u!4 &241471651
 Transform:
   m_ObjectHideFlags: 0
@@ -589,11 +590,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
+      propertyPath: m_Size.x
+      value: 16.305555
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
+      propertyPath: m_Size.y
+      value: 6.2244744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 719711428, guid: dd8931fce4c2a484da98d7bfd4087458, type: 3}
+      objectReference: {fileID: 90733885, guid: 956a3c8d20174c14cadc2c120b845374, type: 3}
     - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300863750329005227, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7454264562684816916, guid: dbde2d14bb9555c429158dd9d4839297, type: 3}
@@ -818,7 +831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 501539661}
-  - component: {fileID: 501539662}
+  - component: {fileID: 501539663}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -841,7 +854,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2089370706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &501539662
+--- !u!114 &501539663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -850,76 +863,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 501539660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5450397a92b478c41a7f294f2e200818, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b29b392f2a18714b87a16bc0df00a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelLayout:
-  - _beat: 4
-    _direction: 1
-    _type: 0
-  - _beat: 8
-    _direction: 0
-    _type: 0
-  - _beat: 11
-    _direction: 2
-    _type: 0
-  - _beat: 12
-    _direction: 0
-    _type: 0
-  - _beat: 16
-    _direction: 2
-    _type: 2
-  - _beat: 20.5
-    _direction: 0
-    _type: 1
-  - _beat: 24
-    _direction: 2
-    _type: 2
-  - _beat: 28.5
-    _direction: 1
-    _type: 1
-  - _beat: 32
-    _direction: 0
-    _type: 1
-  - _beat: 32
-    _direction: 2
-    _type: 2
-  - _beat: 34
-    _direction: 1
-    _type: 1
-  - _beat: 35
-    _direction: 0
-    _type: 0
-  - _beat: 40
-    _direction: 0
-    _type: 1
-  - _beat: 40
-    _direction: 2
-    _type: 2
-  - _beat: 42
-    _direction: 1
-    _type: 1
-  - _beat: 43
-    _direction: 0
-    _type: 0
-  - _beat: 48
-    _direction: 0
-    _type: 0
-  - _beat: 52
-    _direction: 1
-    _type: 0
-  - _beat: 56
-    _direction: 0
-    _type: 0
-  - _beat: 56
-    _direction: 2
-    _type: 2
-  - _beat: 60
-    _direction: 1
-    _type: 0
-  - _beat: 60
-    _direction: 2
-    _type: 2
+  trackData: {fileID: 11400000, guid: ee3b6dfd11079914cb834f5f11a0441d, type: 2}
+  songManager: {fileID: 1854875624}
 --- !u!1001 &515215912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1657,8 +1605,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39049995, y: 1.9101001, z: 0}
-    m_Extent: {x: 2.784, y: 4.3154, z: 0}
+    m_Center: {x: -0.38775003, y: 1.9079, z: 0}
+    m_Extent: {x: 2.79185, y: 4.3174, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1716,7 +1664,7 @@ Transform:
   m_GameObject: {fileID: 1282687930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.25, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2226,8 +2174,8 @@ MonoBehaviour:
   songSource: {fileID: 240738075}
   _doesSongLoop: 0
   broadcastNegativeBeats: 1
+  startDelay: 2
   _debugging: 0
-  _song: {fileID: 11400000, guid: 72d30cafd8153634b843bb962d4303d7, type: 2}
   _debugMetronome: {fileID: 8300000, guid: d91934f444e8c784ba2bd80caeb8a661, type: 3}
 --- !u!4 &1854875625
 Transform:

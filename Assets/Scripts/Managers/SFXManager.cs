@@ -41,10 +41,10 @@ public class SFXManager : MonoBehaviour
     {
         if (data == null) return;
 
-        SFXData sfxData = (SFXData)data;
-        if (_cues.ContainsKey(sfxData.Dir))
+        SFXData sfxData = data as SFXData;
+        if (_cues.ContainsKey(sfxData.dir))
         {
-            _cues[sfxData.Dir].PlayOneShot(sfxData.Clip);
+            _cues[sfxData.dir].PlayOneShot(sfxData.clip);
         }
     }
 }

@@ -82,7 +82,9 @@ public class Enemy : MonoBehaviour
             _beats.Add(newBeat);
         }
         gameObject.SetActive(true);
-        CheckBeatAction(sb);
+
+        _currentBeat = sb;
+        CheckBeatAction();
     }
 
     private void OnEnable()
@@ -126,13 +128,13 @@ public class Enemy : MonoBehaviour
     {
         _currentBeat = (float)data;
 
-        CheckBeatAction(_currentBeat);
+        CheckBeatAction();
     }
 
     // Check if any enemy-specific actions need to occur on beat
-    private void CheckBeatAction(double currentBeat)
+    private void CheckBeatAction()
     {
-        double relativeBeat = currentBeat - _startBeat;
+        double relativeBeat = _currentBeat - _startBeat;
         float nearestHalfBeat = Mathf.RoundToInt((float)relativeBeat * 2) / 2; // look idk man
         List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
@@ -155,7 +157,7 @@ public class Enemy : MonoBehaviour
         }
 
         // if attack is coming up, start running the enumerator
-        if (_currentBeat + 1 > _earlyWindow && !_checkingForAttack)
+        if (!_checkingForAttack && _currentBeat + 1 > _earlyWindow)
 		{
             StartCoroutine(CheckAttack());
             _checkingForAttack = true;
@@ -168,11 +170,12 @@ public class Enemy : MonoBehaviour
         // this object will get disabled eventually, so it's okay to have an infinite loop here
         while (true)
 		{
+            float currentBeat = Conductor.SongBeat;
             // check if it's time to attack
-            if (_earlyWindow < Conductor.RawSongBeat && Conductor.RawSongBeat < _lateWindow && !_attackReadied)
+            if (!_attackReadied && _earlyWindow < currentBeat)
             {
                 _attackReadied = true;
-                Debug.Log("Ready to attack on beat " + Conductor.RawSongBeat);
+                Debug.Log($"Ready to attack on beat {currentBeat}");
                 switch (_direction)
                 {
                     case StageDirection.LEFT:
@@ -190,15 +193,17 @@ public class Enemy : MonoBehaviour
                 }
             }
             // if the player hasn't destroyed this enemy in time, deal damage
-            if (_currentBeat > _lateWindow)
+            if (_attackReadied && currentBeat > _lateWindow)
             {
-                Debug.Log("Enemy has dealt damage! Time elapsed was " + _debugTimeElapsed + "ms");
+                Debug.Log($"Enemy has dealt damage! Beat was ({currentBeat}, {_startBeat}+{HitTime}->{_earlyWindow}|{_lateWindow})");
 
                 // Deal damage to player
                 EventManager.EventTrigger(EventType.PLAYER_HIT, null);
                 SFXData hitClip = new SFXData(_hitSound, StageDirection.FORWARD);
                 EventManager.EventTrigger(EventType.SFX, hitClip);
                 gameObject.SetActive(false);
+
+                yield break;
             }
 
             yield return null;

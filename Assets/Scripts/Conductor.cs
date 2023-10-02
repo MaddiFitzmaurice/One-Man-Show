@@ -6,10 +6,15 @@ public class Conductor
 	[SerializeField] private static double _currentBPS;   // Assigned beats-per-second
 	[SerializeField] private static double _currentBPM; // Assigned beats-per-minute
 
-	[SerializeField] private static double _startOffset = 0.0; // The offset of the start of the song, in seconds
 	[SerializeField] private static double _inputOffset = 0.0; // The offset between a keypress and being processed by the program, in seconds
 
+	[SerializeField] private static double _realStartedTime = 0.0;
 	[SerializeField] private static double _startedTime = 0.0;
+
+	public static double RealStartedTime
+	{
+		get => _realStartedTime;
+	}
 
 	public static double StartedTime
 	{
@@ -21,7 +26,7 @@ public class Conductor
 	// input delay, such as graphics and sound effects
 	public static double RawSongTime
 	{
-		get => (AudioSettings.dspTime - _startedTime - _startOffset);
+		get => (AudioSettings.dspTime - _startedTime);
 	}
 	public static float RawSongBeat
 	{
@@ -45,7 +50,7 @@ public class Conductor
 	// being checked, such as deciding whether to attack or take damage.
 	public static double SongTime
 	{
-		get => (AudioSettings.dspTime - _startedTime - _startOffset - _inputOffset); // The current position in the song in seconds
+		get => (AudioSettings.dspTime - _startedTime - _inputOffset); // The current position in the song in seconds
 	}
 	public static float SongBeat
 	{
@@ -92,10 +97,10 @@ public class Conductor
 	}
 
 	// Sets the reference point for beats and time to be calculated relative to
-	public static void StartTracking(double bpm, double startOffset)
+	public static void StartTracking(double bpm, double start, double offset)
 	{
 		CurrentBPM = bpm;
-		_startOffset = startOffset;
-		_startedTime = AudioSettings.dspTime;
+		_realStartedTime = start;
+		_startedTime = start + offset;
 	}
 }
