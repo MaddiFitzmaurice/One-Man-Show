@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.3972, y: 1.9045, z: 0}
-    m_Extent: {x: 2.7884998, y: 4.3164, z: 0}
+    m_Center: {x: -0.38975, y: 1.9079499, z: 0}
+    m_Extent: {x: 2.79435, y: 4.32085, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1409,7 +1409,7 @@ Transform:
   m_GameObject: {fileID: 1282687930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1434,6 +1434,7 @@ MonoBehaviour:
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _attackSFXRight: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _hitSFX: {fileID: 8300000, guid: 3e0f5704bbe577944b4102e18173a53d, type: 3}
+  _parryParticle: {fileID: 9212880111150450131, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
 --- !u!212 &1282687933
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2051,71 +2052,6 @@ Transform:
   - {fileID: 1884387594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &4606862532045941751
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7398599940704300099, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140751367024666149, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: LightsModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140751367024666149, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 9212880111150450131, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
-      propertyPath: m_Name
-      value: ParrySparks
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2127,4 +2063,3 @@ SceneRoots:
   - {fileID: 209512469}
   - {fileID: 356051479}
   - {fileID: 1210831719}
-  - {fileID: 4606862532045941751}

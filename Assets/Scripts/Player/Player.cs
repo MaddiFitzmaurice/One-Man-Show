@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
     // Components
     SpriteRenderer _sprite;
 
+    // Particles
+    [SerializeField] private GameObject _parryParticle;
+
     private void OnEnable()
     {
         EventManager.EventSubscribe(EventType.PARRY_LEFT, ParryLeftHandler);
@@ -77,18 +80,30 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Test Parry Left");
         SendSFXData(_SFXDataLeft);
+        // spawn particle
+        Vector3 particlePos = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+        GameObject particle = Instantiate(_parryParticle);
+        particle.transform.position = particlePos;
     }
 
     public void ParryRightHandler(object data)
     {
         Debug.Log("Test Parry Right");
         SendSFXData(_SFXDataRight);
+        // spawn particle
+        Vector3 particlePos = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+        GameObject particle = Instantiate(_parryParticle);
+        particle.transform.position = particlePos;
     }
 
     public void ParryForwardHandler(object data)
     {
         Debug.Log("Test Parry Forward " + (int)data);
         SendSFXData(_SFXDataForward);
+        // spawn particle
+        Vector3 particlePos = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+        GameObject particle = Instantiate(_parryParticle);
+        particle.transform.position = particlePos;
     }
 
     public void BeatHandler(object data)
