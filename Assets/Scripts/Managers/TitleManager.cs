@@ -14,4 +14,9 @@ public class TitleManager : MonoBehaviour
 	{
 		SceneManager.LoadScene("TutorialScene");
 	}
+
+	public void StartCalibration()
+	{
+		SceneManager.LoadScene("CalibrationScene");
+	}
 }

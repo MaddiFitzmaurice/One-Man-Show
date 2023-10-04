@@ -802,7 +802,7 @@ SpriteRenderer:
   m_Size: {x: 51.2, y: 28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &739362561
@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39929998, y: 1.90125, z: 0}
-    m_Extent: {x: 2.7915, y: 4.31675, z: 0}
+    m_Center: {x: -0.39074993, y: 1.6988001, z: 0}
+    m_Extent: {x: 2.78425, y: 4.5334, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1366,6 +1366,9 @@ MonoBehaviour:
   - {x: 0.10788548, y: 5.2252913, z: 0}
   - {x: -2.1828876, y: 5.1194577, z: 0}
   - {x: -0.664472, y: -1.4108077, z: 0}
+  - {x: -0.23521519, y: -1.739783, z: 0}
+  - {x: 0.4144439, y: -1.8445665, z: 0}
+  - {x: 1.02219, y: -1.7188262, z: 0}
 --- !u!4 &1210831719
 Transform:
   m_ObjectHideFlags: 0
@@ -1434,6 +1437,7 @@ MonoBehaviour:
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _attackSFXRight: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _hitSFX: {fileID: 8300000, guid: 3e0f5704bbe577944b4102e18173a53d, type: 3}
+  _parryParticle: {fileID: 9212880111150450131, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
 --- !u!212 &1282687933
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1475,15 +1479,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1d93c62363c08444c810178648d62460, type: 3}
+  m_Sprite: {fileID: 1251577131, guid: 3fd7c4f95ab264249a7826fc94f4b663, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.053331, y: 19.034723}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1282687934

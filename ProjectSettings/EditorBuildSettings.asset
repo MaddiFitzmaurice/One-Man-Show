@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 4bcb469e140cb13448df81298c0d4e8d
+  - enabled: 1
+    path: Assets/Scenes/CalibrationScene.unity
+    guid: 84a3617e378541f479eda35e2cdfb33e
   m_configObjects: {}

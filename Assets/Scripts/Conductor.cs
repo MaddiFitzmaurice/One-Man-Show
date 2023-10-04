@@ -69,6 +69,11 @@ public class Conductor
 		get => (SongBeat - NearestBeat) / (float)_currentBPS; // Offset of the closest beat in seconds
 	}
 
+	public static double InputOffset
+	{
+		get => _inputOffset; set => _inputOffset = value;
+	}
+
 	// Beats per second
 	public static double CurrentBPS
 	{
@@ -97,10 +102,10 @@ public class Conductor
 	}
 
 	// Sets the reference point for beats and time to be calculated relative to
-	public static void StartTracking(double bpm, double start, double offset)
+	public static void StartTracking(double bpm, double start, double startOffset)
 	{
 		CurrentBPM = bpm;
 		_realStartedTime = start;
-		_startedTime = start + offset;
+		_startedTime = start + startOffset;
 	}
 }
