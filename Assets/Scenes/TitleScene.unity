@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 1736296991}
   - component: {fileID: 1736296990}
   - component: {fileID: 1736296992}
+  - component: {fileID: 1736296993}
   m_Layer: 0
   m_Name: TitleLight
   m_TagString: Untagged
@@ -869,7 +870,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.431
   m_Color: {r: 1, g: 0.68083966, b: 0.4292453, a: 1}
-  m_Intensity: 0
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -954,6 +955,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _openingLightAnimTiming: 1.5
+--- !u!111 &1736296993
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736296989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 17659566e8a17b24abd23dc3c4209f8f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 17659566e8a17b24abd23dc3c4209f8f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1854923248
 GameObject:
   m_ObjectHideFlags: 0
