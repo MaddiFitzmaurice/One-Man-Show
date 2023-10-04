@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
-	private float _start_time;
+	[SerializeField] private float _start_time;
 
 	public float lifetime = 1.0f;
 	public AnimationCurve transparency;
@@ -16,7 +16,7 @@ public class Fader : MonoBehaviour
 
 	private void OnEnable()
 	{
-		_start_time = Time.time;
+		//_start_time = Time.time;
 	}
 
 	void Update()
