@@ -1435,8 +1435,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39785004, y: 1.9043499, z: 0}
-    m_Extent: {x: 2.78815, y: 4.32455, z: 0}
+    m_Center: {x: -0.39900005, y: 1.8998001, z: 0}
+    m_Extent: {x: 2.7891998, y: 4.3170004, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1519,6 +1519,7 @@ MonoBehaviour:
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _attackSFXRight: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _hitSFX: {fileID: 8300000, guid: 3e0f5704bbe577944b4102e18173a53d, type: 3}
+  _parryParticle: {fileID: 0}
 --- !u!212 &1282687933
 SpriteRenderer:
   m_ObjectHideFlags: 0
