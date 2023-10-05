@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 57575675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0666664, y: -6.666666, z: 0}
+  m_LocalPosition: {x: 0, y: -6.666666, z: 0}
   m_LocalScale: {x: 6.666666, y: 6.666666, z: 6.666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -421,12 +421,12 @@ MonoBehaviour:
   - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
     parent: {fileID: 2023658699}
   _maxNumToPool: 3
-  leftStartPosition: {x: -10, y: -1.5, z: 0}
-  leftEndPosition: {x: -2, y: -0.5, z: 0}
+  leftStartPosition: {x: -10, y: -2.5, z: 0}
+  leftEndPosition: {x: -2, y: -1.5, z: 0}
   forwardStartPosition: {x: 0, y: -5.5, z: 0}
   forwardEndPosition: {x: 0, y: -2, z: 0}
-  rightStartPosition: {x: 10, y: -1.5, z: 0}
-  rightEndPosition: {x: 2, y: -0.5, z: 0}
+  rightStartPosition: {x: 10, y: -2.5, z: 0}
+  rightEndPosition: {x: 2, y: -1.5, z: 0}
 --- !u!4 &241471651
 Transform:
   m_ObjectHideFlags: 0
@@ -519,6 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e4d5e289799eb44ad6d1ce8ae0ace9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputBeatSeparation: 0
+  _parryMissPunishment: 0.5
 --- !u!1 &332614911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1208,7 @@ Transform:
   m_GameObject: {fileID: 847341420}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.733333, y: -3.3333328, z: 0}
+  m_LocalPosition: {x: 6.666666, y: -3.3333325, z: 0}
   m_LocalScale: {x: 6.666666, y: 6.666666, z: 6.666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1412,8 +1414,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39225006, y: 1.69695, z: 0}
-    m_Extent: {x: 2.78405, y: 4.53155, z: 0}
+    m_Center: {x: -0.3917501, y: 1.6829, z: 0}
+    m_Extent: {x: 2.78265, y: 4.534, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1474,7 +1476,7 @@ Transform:
   m_GameObject: {fileID: 1282687930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1606,7 +1608,7 @@ Transform:
   m_GameObject: {fileID: 1440620075}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5999994, y: -3.3333328, z: 0}
+  m_LocalPosition: {x: -6.666666, y: -3.3333325, z: 0}
   m_LocalScale: {x: 6.666666, y: 6.666666, z: 6.666666}
   m_ConstrainProportionsScale: 0
   m_Children: []

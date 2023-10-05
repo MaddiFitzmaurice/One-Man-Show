@@ -1,67 +1,92 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour, GameInput.IGameplayActions
 {
-    // Input
-    [SerializeField]
-    private GameInput _inputActions;
+	// Input
+	[SerializeField]
+	private GameInput _inputActions;
+	[SerializeField,Min(0)]
+	private double _inputBeatSeparation = 0.25; // Quarter beat
+	[SerializeField, Min(0)]
+	private double _parryMissPunishment = 0.5; // Half beat
 
-    private void Awake()
-    {
-        InputInit();
-        EventInit();
-    }
+	private double _timeRemaining = 0;
 
-    private void OnEnable()
-    {
-        _inputActions.Enable();
-    }
+	private void Awake()
+	{
+		InputInit();
+		EventInit();
+	}
 
-    private void OnDisable()
-    {
-        _inputActions.Disable();
-    }
+	private void OnEnable()
+	{
+		_inputActions.Enable();
+		EventManager.EventSubscribe(EventType.PARRY_MISS, HandleMiss);
+	}
 
-    // Set up input
-    public void InputInit()
-    {
-        _inputActions = new GameInput();
-        _inputActions.Gameplay.SetCallbacks(this);
-        _inputActions.Gameplay.Enable();
-    }
+	private void OnDisable()
+	{
+		_inputActions.Disable();
+		EventManager.EventUnsubscribe(EventType.PARRY_MISS, HandleMiss);
+	}
 
-    // Create events
-    public void EventInit()
-    {
-        EventManager.EventInitialise(EventType.PARRY_INPUT);
-    }
+	private void HandleMiss(object data)
+	{
+		_timeRemaining = _parryMissPunishment / Conductor.CurrentBPS;
+	}
 
-    public void OnLeftParry(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.LEFT);
-        }    
-    }
+	// Set up input
+	public void InputInit()
+	{
+		_inputActions = new GameInput();
+		_inputActions.Gameplay.SetCallbacks(this);
+		_inputActions.Gameplay.Enable();
+	}
 
-    public void OnRightParry(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.RIGHT);
-        }
-    }
+	// Create events
+	public void EventInit()
+	{
+		EventManager.EventInitialise(EventType.PARRY_INPUT);
+	}
 
-    public void OnForwardParry(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            // To test if it can take data
-            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.FORWARD);
-        }
-    }
+	public void OnLeftParry(InputAction.CallbackContext context)
+	{
+		if (_timeRemaining != 0) return;
+
+		if (context.started)
+		{
+			_timeRemaining = _inputBeatSeparation / Conductor.CurrentBPS;
+			EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.LEFT);
+		}
+	}
+
+	public void OnRightParry(InputAction.CallbackContext context)
+	{
+		if (_timeRemaining > 0) return;
+
+		if (context.started)
+		{
+			_timeRemaining = _inputBeatSeparation / Conductor.CurrentBPS;
+			EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.RIGHT);
+		}
+	}
+
+	public void OnForwardParry(InputAction.CallbackContext context)
+	{
+		if (_timeRemaining > 0) return;
+
+		if (context.started)
+		{
+			_timeRemaining = _inputBeatSeparation / Conductor.CurrentBPS;
+			// To test if it can take data
+			EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.FORWARD);
+		}
+	}
+
+	private void Update()
+	{
+		_timeRemaining = Math.Max(0.0, _timeRemaining - Time.deltaTime);
+	}
 }
