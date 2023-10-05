@@ -88,7 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
+  targetGraphic: {fileID: 8030246412664496609}
+  delay: 4
+  lifetime: 1
+  destroyOnEnd: 1
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -113,5 +116,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  image: {fileID: 8030246412664496609}
-  destroyOnEnd: 1

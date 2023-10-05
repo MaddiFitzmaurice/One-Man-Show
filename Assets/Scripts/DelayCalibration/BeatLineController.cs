@@ -40,9 +40,9 @@ public class BeatLineController : MonoBehaviour
 
 			if (fader == null) return;
 
-			if (fader.image != null)
+			if (fader.targetGraphic != null)
 			{
-				fader.image.color = beatGradient.Evaluate(t);
+				fader.targetGraphic.color = beatGradient.Evaluate(t);
 			}
 
 			fader.enabled = true;

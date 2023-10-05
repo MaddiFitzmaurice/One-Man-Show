@@ -7,21 +7,30 @@ public class Fader : MonoBehaviour
 {
 	private float _start_time;
 
+	public Graphic targetGraphic;
+
+	[Min(0)]
+	public float delay = 0.0f;
+	[Min(0)]
 	public float lifetime = 1.0f;
-	public AnimationCurve transparency;
-
-	public Graphic image;
-
 	public bool destroyOnEnd = true;
+
+	public AnimationCurve transparency;
 
 	private void OnEnable()
 	{
-		_start_time = Time.time;
+		_start_time = Time.time + delay;
+
+		Color c = targetGraphic.color;
+		c.a = transparency.Evaluate(0);
+		targetGraphic.color = c;
 	}
 
 	void Update()
 	{
-		if(Time.time - _start_time > lifetime)
+		if (Time.time <= _start_time) return;
+
+		if (Time.time - _start_time > lifetime)
 		{
 			if (destroyOnEnd)
 			{
@@ -29,11 +38,12 @@ public class Fader : MonoBehaviour
 			}
 
 			enabled = false;
-			return;
 		}
-
-		Color c = image.color;
-		c.a = transparency.Evaluate((Time.time - _start_time) / lifetime);
-		image.color = c;
+		else
+		{
+			Color c = targetGraphic.color;
+			c.a = transparency.Evaluate((Time.time - _start_time) / lifetime);
+			targetGraphic.color = c;
+		}
 	}
 }
