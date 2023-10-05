@@ -108,7 +108,7 @@ MonoBehaviour:
     Sound: {fileID: 8300000, guid: 825efcfab88bcce40a80af65279083bf, type: 3}
     MoveByBeat: 2
   _hitTime: 4
-  _hitClip: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+  _hitClip: {fileID: 0}
   _deathClip: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0
   _attackReadied: 0
