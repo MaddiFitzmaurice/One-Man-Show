@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f41056c96fb1747a8a9c0726e0b885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   _startBeat: 0
   _setBeats:
   - BeatOffset: 0
@@ -107,8 +108,8 @@ MonoBehaviour:
     Sound: {fileID: 8300000, guid: cbbc5585ae3dd5f4689b3cfcfe79a69d, type: 3}
     MoveByBeat: 0.5
   _hitTime: 1.5
-  _hitSound: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
-  _deathSound: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
+  _hitClip: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+  _deathClip: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0
   _attackReadied: 0
   _movementAnimation:

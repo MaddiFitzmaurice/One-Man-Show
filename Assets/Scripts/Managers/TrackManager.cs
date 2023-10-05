@@ -112,10 +112,13 @@ public class TrackManager : MonoBehaviour
 					_cur_events[_cur_event_beat].data
 				);
 
+				Debug.Log($"Track Event: {_cur_events[_cur_event_beat].type}, {_cur_events[_cur_event_beat].data}");
+
 				_cur_event_beat++;
 
 				if (_cur_event_beat >= _cur_events.Length) yield break;
 			}
+
 
 			yield return null;
 		}

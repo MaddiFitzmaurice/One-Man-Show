@@ -78,6 +78,7 @@ public class SongManager : MonoBehaviour
             if (Conductor.RawSongBeat >= currentBeat + 0.5)
             {
                 currentBeat += 0.5f;
+
                 //Broadcast beat and reset current time
                 EventManager.EventTrigger(EventType.BEAT, currentBeat);
             }

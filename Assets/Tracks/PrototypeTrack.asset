@@ -80,4 +80,10 @@ MonoBehaviour:
   - beat: 60
     direction: 2
     type: 2
-  events: []
+  events:
+  - beat: 0
+    type: 9
+    data: {fileID: 0}
+  - beat: 70
+    type: 10
+    data: {fileID: 0}

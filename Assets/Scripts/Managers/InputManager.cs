@@ -37,19 +37,14 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
     // Create events
     public void EventInit()
     {
-        EventManager.EventInitialise(EventType.PARRY_LEFT);
-        EventManager.EventInitialise(EventType.PARRY_RIGHT);
-        EventManager.EventInitialise(EventType.PARRY_FORWARD);
-
-        // TEST
-        EventManager.EventInitialise(EventType.PLAYER_HIT);
+        EventManager.EventInitialise(EventType.PARRY_INPUT);
     }
 
     public void OnLeftParry(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            EventManager.EventTrigger(EventType.PARRY_LEFT, null);
+            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.LEFT);
         }    
     }
 
@@ -57,7 +52,7 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
     {
         if (context.started)
         {
-            EventManager.EventTrigger(EventType.PARRY_RIGHT, null);
+            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.RIGHT);
         }
     }
 
@@ -66,16 +61,7 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
         if (context.started)
         {
             // To test if it can take data
-            EventManager.EventTrigger(EventType.PARRY_FORWARD, 1);
-        }
-    }
-
-    public void OnTESTPLAYERHIT(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            // To test player being hit
-            EventManager.EventTrigger(EventType.PLAYER_HIT, null);
+            EventManager.EventTrigger(EventType.PARRY_INPUT, StageDirection.FORWARD);
         }
     }
 }

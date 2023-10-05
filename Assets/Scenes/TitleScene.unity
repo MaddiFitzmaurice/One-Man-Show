@@ -286,12 +286,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 4
+  targetGraphic: {fileID: 80749717}
+  delay: 2
+  lifetime: 2
+  destroyOnEnd: 1
   transparency:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.5
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -302,17 +305,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -5.2109733
-      outSlope: -5.2109733
+      inSlope: -2.717011
+      outSlope: -2.717011
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.028957486
+      inWeight: 0.026061773
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  image: {fileID: 80749717}
-  destroyOnEnd: 1
 --- !u!1 &432515286
 GameObject:
   m_ObjectHideFlags: 0

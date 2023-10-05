@@ -53,15 +53,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TESTPLAYERHIT"",
-                    ""type"": ""Button"",
-                    ""id"": ""f72b0171-710a-4aca-834d-537a7be318ac"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,17 +154,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""ForwardParry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0c3f4bd7-9f4f-47df-8c70-b80d357fe287"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TESTPLAYERHIT"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,7 +165,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_LeftParry = m_Gameplay.FindAction("LeftParry", throwIfNotFound: true);
         m_Gameplay_RightParry = m_Gameplay.FindAction("RightParry", throwIfNotFound: true);
         m_Gameplay_ForwardParry = m_Gameplay.FindAction("ForwardParry", throwIfNotFound: true);
-        m_Gameplay_TESTPLAYERHIT = m_Gameplay.FindAction("TESTPLAYERHIT", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -250,7 +229,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_LeftParry;
     private readonly InputAction m_Gameplay_RightParry;
     private readonly InputAction m_Gameplay_ForwardParry;
-    private readonly InputAction m_Gameplay_TESTPLAYERHIT;
     public struct GameplayActions
     {
         private @GameInput m_Wrapper;
@@ -258,7 +236,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @LeftParry => m_Wrapper.m_Gameplay_LeftParry;
         public InputAction @RightParry => m_Wrapper.m_Gameplay_RightParry;
         public InputAction @ForwardParry => m_Wrapper.m_Gameplay_ForwardParry;
-        public InputAction @TESTPLAYERHIT => m_Wrapper.m_Gameplay_TESTPLAYERHIT;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -277,9 +254,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @ForwardParry.started += instance.OnForwardParry;
             @ForwardParry.performed += instance.OnForwardParry;
             @ForwardParry.canceled += instance.OnForwardParry;
-            @TESTPLAYERHIT.started += instance.OnTESTPLAYERHIT;
-            @TESTPLAYERHIT.performed += instance.OnTESTPLAYERHIT;
-            @TESTPLAYERHIT.canceled += instance.OnTESTPLAYERHIT;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -293,9 +267,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @ForwardParry.started -= instance.OnForwardParry;
             @ForwardParry.performed -= instance.OnForwardParry;
             @ForwardParry.canceled -= instance.OnForwardParry;
-            @TESTPLAYERHIT.started -= instance.OnTESTPLAYERHIT;
-            @TESTPLAYERHIT.performed -= instance.OnTESTPLAYERHIT;
-            @TESTPLAYERHIT.canceled -= instance.OnTESTPLAYERHIT;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -318,6 +289,5 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnLeftParry(InputAction.CallbackContext context);
         void OnRightParry(InputAction.CallbackContext context);
         void OnForwardParry(InputAction.CallbackContext context);
-        void OnTESTPLAYERHIT(InputAction.CallbackContext context);
     }
 }
