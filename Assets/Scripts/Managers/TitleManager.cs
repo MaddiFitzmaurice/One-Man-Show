@@ -8,6 +8,12 @@ using UnityEditor;
 
 public class TitleManager : MonoBehaviour
 {
+	private void Awake()
+	{
+		// If using the Unity editor or development build, enable debug logs
+        Debug.unityLogger.logEnabled = Debug.isDebugBuild;
+    }
+
     public void StartGame()
 	{
 		SceneManager.LoadScene("MainScene");
