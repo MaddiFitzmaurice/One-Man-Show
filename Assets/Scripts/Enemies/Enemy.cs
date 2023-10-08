@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
 
 	// Components
 	private SpriteRenderer _sprite;
+	private Animator _anim;
 
 	// Beat Tracking
 	private float _currentBeat;
@@ -42,6 +43,7 @@ public class Enemy : MonoBehaviour
 		_deathSFX = new SFXData(_deathClip, StageDirection.FORWARD);
 		_hitSFX = new SFXData(_hitClip, StageDirection.FORWARD);
 		_sprite = GetComponent<SpriteRenderer>();
+		_anim = GetComponent<Animator>();
 		_beats = new List<EnemyBeat>(); // just so it doesn't error out when the game starts
 	}
 
@@ -166,6 +168,7 @@ public class Enemy : MonoBehaviour
 		{
 			StartCoroutine(CheckAttack());
 			_checkingForAttack = true;
+			_anim.SetTrigger("IsAttacking");
 		}
 	}
 
