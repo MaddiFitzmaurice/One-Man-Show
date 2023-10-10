@@ -488,6 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e4d5e289799eb44ad6d1ce8ae0ace9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputBeatSeparation: 0.25
+  _parryMissPunishment: 0.5
 --- !u!1 &332614911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,8 +1437,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39900005, y: 1.8998001, z: 0}
-    m_Extent: {x: 2.7891998, y: 4.3170004, z: 0}
+    m_Center: {x: -0.39265, y: 1.8991, z: 0}
+    m_Extent: {x: 2.7940502, y: 4.3171, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1518,7 +1520,12 @@ MonoBehaviour:
   _attackSFXForward: {fileID: 8300000, guid: 27847916bf173a9409470aa8249e1825, type: 3}
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
   _attackSFXRight: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
-  _hitSFX: {fileID: 8300000, guid: 3e0f5704bbe577944b4102e18173a53d, type: 3}
+  _playerHitSFX: {fileID: 0}
+  _parryMissSFX: {fileID: 0}
+  _parryHitSFX: {fileID: 0}
+  _particleParentForward: {fileID: 0}
+  _particleParentLeft: {fileID: 0}
+  _particleParentRight: {fileID: 0}
   _parryParticle: {fileID: 0}
 --- !u!212 &1282687933
 SpriteRenderer:
