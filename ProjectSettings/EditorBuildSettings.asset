@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: d6a9f23bc8ed91d4da1b5f800365838c
   - enabled: 1
+    path: Assets/Scenes/CalibrationScene.unity
+    guid: 84a3617e378541f479eda35e2cdfb33e
+  - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
     guid: 75f801c481a7d7e4f8985ef12dcd1bb0
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 4bcb469e140cb13448df81298c0d4e8d
-  - enabled: 1
-    path: Assets/Scenes/CalibrationScene.unity
-    guid: 84a3617e378541f479eda35e2cdfb33e
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: d4aeb2471a39b04448361bcafcfe16f5
