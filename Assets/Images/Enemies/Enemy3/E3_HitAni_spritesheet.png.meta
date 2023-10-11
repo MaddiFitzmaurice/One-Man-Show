@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,11 +198,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 491
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 982
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,11 +282,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_9
       rect:
         serializedVersion: 2
-        x: 491
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
+        x: 500
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: E3_HitAni_spritesheet_11
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

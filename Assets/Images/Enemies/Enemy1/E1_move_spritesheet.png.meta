@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: E1_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: E1_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: E1_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: E1_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 1964
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        x: 2000
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: E1_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 2455
-        y: 983.3334
-        width: 491.66666
-        height: 491.66666
+        x: 2500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,11 +240,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: E1_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 491
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: E1_spritesheet_8
       rect:
         serializedVersion: 2
-        x: 982
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,17 +302,17 @@ TextureImporter:
       name: E1_spritesheet_9
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
+      bones: [] 
       spriteID: a43d5ec72c376a345b22e916fb8f81a6
       internalID: -374247410
       vertices: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: E1_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 1964
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: E1_spritesheet_11
       rect:
         serializedVersion: 2
-        x: 2455
-        y: 492.33334
-        width: 491.66666
-        height: 491.66666
+        x: 2500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,11 +366,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,12 +386,12 @@ TextureImporter:
       name: E1_spritesheet_13
       rect:
         serializedVersion: 2
-        x: 491
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        x: 500
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -407,12 +407,12 @@ TextureImporter:
       name: E1_spritesheet_14
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -428,12 +428,12 @@ TextureImporter:
       name: E1_spritesheet_15
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -449,12 +449,12 @@ TextureImporter:
       name: E1_spritesheet_16
       rect:
         serializedVersion: 2
-        x: 1964
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,12 +470,12 @@ TextureImporter:
       name: E1_spritesheet_17
       rect:
         serializedVersion: 2
-        x: 2455
-        y: 1.3333435
-        width: 491.66666
-        height: 491.66666
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.49, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

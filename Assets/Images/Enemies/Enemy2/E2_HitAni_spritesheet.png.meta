@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 492
-        width: 491.75
-        height: 492
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: E2_HitAni_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 492
-        width: 491.75
-        height: 492
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: E2_HitAni_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 492
-        width: 491.75
-        height: 492
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: E2_HitAni_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 492
-        width: 491.75
-        height: 492
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,10 +199,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 491.75
-        height: 492
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: E2_HitAni_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 491
+        x: 500
         y: 0
-        width: 491.75
-        height: 492
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: E2_HitAni_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 982
+        x: 1000
         y: 0
-        width: 491.75
-        height: 492
+        width: 500
+        height: 500
       alignment: 9
-      pivot: {x: 0.5, y: 0.41}
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
