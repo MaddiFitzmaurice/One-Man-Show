@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	private float _currentBeat;
 	private float _beatHitOn;
 	[SerializeField] float _beatsTillRegen;
+	[SerializeField] bool _regenEnabled = true;
 
 	public uint MaxHealth { get => _maxHealth; }
 	public uint CurrentHealth
@@ -25,7 +26,10 @@ public class Player : MonoBehaviour
 			EventManager.EventTrigger(EventType.HEALTH_UI, _currentHealth);
 
 			if (value != 0) return;
+			EventManager.EventUnsubscribe(EventType.BEAT, CheckHealthRegen);
 			EventManager.EventTrigger(EventType.PLAYER_DIED, null);
+
+			Debug.Log("Player died");
 		}
 	}
 	public bool IsDead { get => _currentHealth == 0; }
@@ -57,6 +61,11 @@ public class Player : MonoBehaviour
 		EventManager.EventSubscribe(EventType.PARRY_MISS, ParryMissHandler);
 		EventManager.EventSubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
 		EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
+
+		if (_regenEnabled)
+		{
+			EventManager.EventSubscribe(EventType.BEAT, CheckHealthRegen);
+		}
 	}
 
 	private void OnDisable()
@@ -65,6 +74,11 @@ public class Player : MonoBehaviour
 		EventManager.EventUnsubscribe(EventType.PARRY_MISS, ParryMissHandler);
 		EventManager.EventUnsubscribe(EventType.PLAYER_HIT, PlayerHitHandler);
 		EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
+
+		if (_regenEnabled && !IsDead)
+		{
+			EventManager.EventUnsubscribe(EventType.BEAT, CheckHealthRegen);
+		}
 	}
 
 	public void Awake()
@@ -82,13 +96,13 @@ public class Player : MonoBehaviour
 	{
 		if (data == null) return;
 
-		StageDirection direction = (StageDirection)data;
+		(StageDirection, double) pair = ((StageDirection, double))data;
 
-		SFXData sfx = new SFXData(_parryHitSFX, direction);
+		SFXData sfx = new SFXData(_parryHitSFX, pair.Item1);
 
 		SendSFXData(sfx);
 
-		switch (direction)
+		switch (pair.Item1)
 		{
 			case StageDirection.FORWARD:
 				Instantiate(_parryParticle, _particleParentForward);
@@ -135,8 +149,6 @@ public class Player : MonoBehaviour
 	public void BeatHandler(object data)
 	{
 		_currentBeat = (float)data;
-
-		CheckHealthRegen();
 	}
 
 	public void PlayerHitHandler(object data)
@@ -150,12 +162,10 @@ public class Player : MonoBehaviour
 
 		// Play hit sfx
 		SendSFXData(_playerHitSFXData);
-
-		CheckHealthLeft();
 	}
 
 	#region HEALTH
-	void CheckHealthRegen()
+	void CheckHealthRegen(object data)
 	{
 		if (IsDead) return;
 
@@ -163,15 +173,6 @@ public class Player : MonoBehaviour
 		{
 			RegenHealth();
 		}
-	}
-
-	// Check if player has died
-	void CheckHealthLeft()
-	{
-		if (!IsDead) return;
-
-		// Signal end game Event
-		Debug.Log("You lose");
 	}
 
 	// Regen player's health to full

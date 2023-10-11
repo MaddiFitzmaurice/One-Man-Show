@@ -104,11 +104,11 @@ public class Enemy : MonoBehaviour
 	{
 		StopAllCoroutines();
 		EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
-		EventManager.EventUnsubscribe(EventType.PARRY_HIT, DefeatMeHandler);
+		EventManager.EventUnsubscribe(EventType.PARRY_INPUT, InputHandler);
 	}
 
 	// Handler for when Player has successfully hit enemy
-	public void DefeatMeHandler(object data)
+	public void InputHandler(object data)
 	{
 		if (data == null) return;
 
@@ -124,6 +124,10 @@ public class Enemy : MonoBehaviour
 		{
 			EventManager.EventTrigger(EventType.SFX, _deathSFX);
 		}
+
+		(StageDirection, double) pair = (dir, (Conductor.SongBeat - (_hitTime + _startBeat)) / Conductor.CurrentBPS);
+
+		EventManager.EventTrigger(EventType.PARRY_HIT, pair);
 
 		gameObject.SetActive(false);
 	}
@@ -184,7 +188,7 @@ public class Enemy : MonoBehaviour
 			{
 				_attackReadied = true;
 				Debug.Log($"Ready to attack on beat {currentBeat}");
-				EventManager.EventSubscribe(EventType.PARRY_HIT, DefeatMeHandler);
+				EventManager.EventSubscribe(EventType.PARRY_INPUT, InputHandler);
 				manager._awaitingInput[_direction]++;
 			}
 			// if the player hasn't destroyed this enemy in time, deal damage

@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/AidanScene.unity
-    guid: 964db83e9fdb5d145bddf9b0094c6445
-  - enabled: 0
-    path: Assets/Scenes/DeaconScene.unity
-    guid: 32400584f4fc61b4da03ed1d76569cd7
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: d6a9f23bc8ed91d4da1b5f800365838c
@@ -26,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CalibrationScene.unity
     guid: 84a3617e378541f479eda35e2cdfb33e
+  - enabled: 1
+    path: Assets/Scenes/DeathScene.unity
+    guid: d4aeb2471a39b04448361bcafcfe16f5
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 6a13c03e0f5aefd43992db6623f4a08e
   m_configObjects: {}

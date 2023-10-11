@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine;	
 
 public class TutorialManager : MonoBehaviour
 {
@@ -66,6 +65,7 @@ public class TutorialManager : MonoBehaviour
 
 	public void TrackMiss(object data)
 	{
+		if (_spawns.Count == 0) return;
 		_misses++;
 	}
 
@@ -106,7 +106,7 @@ public class TutorialManager : MonoBehaviour
 				if (_stageIndex >= _stages.Length)
 				{
 					Debug.Log("Final stage complete! Moving to the main game.");
-					SceneManager.LoadScene("TitleScene");
+					EventManager.EventTrigger(EventType.SONG_END, null);
 				}
 				else
 				{

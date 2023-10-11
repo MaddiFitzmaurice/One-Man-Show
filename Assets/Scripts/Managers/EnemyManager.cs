@@ -96,7 +96,6 @@ public class EnemyManager : MonoBehaviour
 		else
 		{
 			_awaitingInput[dir]--;
-			EventManager.EventTrigger(EventType.PARRY_HIT, data);
 		}
 	}
 

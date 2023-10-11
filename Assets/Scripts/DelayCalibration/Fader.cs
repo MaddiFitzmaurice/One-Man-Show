@@ -13,7 +13,9 @@ public class Fader : MonoBehaviour
 	public float delay = 0.0f;
 	[Min(0)]
 	public float lifetime = 1.0f;
-	public bool destroyOnEnd = true;
+	public bool destroyScript = true;
+	public bool destroyGraphic = true;
+	public bool destroyObject = false;
 
 	public AnimationCurve transparency;
 
@@ -32,7 +34,15 @@ public class Fader : MonoBehaviour
 
 		if (Time.time - _start_time > lifetime)
 		{
-			if (destroyOnEnd)
+			if (destroyGraphic)
+			{
+				Destroy(targetGraphic);
+			}
+			if (destroyScript)
+			{
+				Destroy(this);
+			}
+			if(destroyObject)
 			{
 				Destroy(gameObject);
 			}
