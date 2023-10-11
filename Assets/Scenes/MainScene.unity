@@ -1414,8 +1414,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.3923, y: 1.68935, z: 0}
-    m_Extent: {x: 2.7812, y: 4.53295, z: 0}
+    m_Center: {x: -0.39515007, y: 1.6941001, z: 0}
+    m_Extent: {x: 2.7950501, y: 4.5392, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1510,6 +1510,7 @@ MonoBehaviour:
   _particleParentLeft: {fileID: 1440620076}
   _particleParentRight: {fileID: 847341421}
   _parryParticle: {fileID: 9212880111150450131, guid: 77c2aaaa17fba7a418bb094d4db2cb9d, type: 3}
+  _missParticle: {fileID: 4791495106558902957, guid: 33cb76b30743f9845932627b6d16ebf6, type: 3}
 --- !u!212 &1282687933
 SpriteRenderer:
   m_ObjectHideFlags: 0

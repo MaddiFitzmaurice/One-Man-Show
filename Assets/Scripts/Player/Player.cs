@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
 	// Particles
 	[SerializeField] private GameObject _parryParticle;
+	[SerializeField] private GameObject _missParticle;
 
 	SFXData _playerHitSFXData;
 
@@ -110,6 +111,25 @@ public class Player : MonoBehaviour
 		SFXData sfx = new SFXData(_parryMissSFX, direction);
 
 		SendSFXData(sfx);
+
+		GameObject particle;
+		switch (direction)
+		{
+			case StageDirection.FORWARD:
+				particle = Instantiate(_missParticle, _particleParentForward);
+				// rotate the particle by 90 degrees
+				particle.transform.localRotation = Quaternion.Euler(0, 0, -90);
+				break;
+			case StageDirection.LEFT:
+				particle = Instantiate(_missParticle, _particleParentLeft);
+				// flip the particle horizontally
+				Vector3 scale = particle.transform.localScale;
+				particle.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+				break;
+			case StageDirection.RIGHT:
+				Instantiate(_missParticle, _particleParentRight);
+				break;
+		}
 	}
 
 	public void BeatHandler(object data)
