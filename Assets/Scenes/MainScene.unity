@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: 600536317}
   - component: {fileID: 600536316}
   - component: {fileID: 600536315}
+  - component: {fileID: 600536319}
   m_Layer: 5
   m_Name: DeathFadeOut
   m_TagString: Untagged
@@ -700,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetGraphic: {fileID: 600536316}
   delay: 0
-  lifetime: 1
+  lifetime: 2
   destroyScript: 1
   destroyGraphic: 0
   destroyObject: 0
@@ -785,6 +786,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &600536319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600536314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c36e88d1d5d7b44cbda63a7c2cf7ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fader: {fileID: 600536314}
+  switchDelay: 2
 --- !u!1 &608632622
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +812,7 @@ GameObject:
   - component: {fileID: 608632625}
   - component: {fileID: 608632624}
   - component: {fileID: 608632623}
+  - component: {fileID: 608632627}
   m_Layer: 5
   m_Name: WinFadeOut
   m_TagString: Untagged
@@ -817,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphic: {fileID: 608632624}
-  delay: 0
+  delay: 1
   lifetime: 1
   destroyScript: 1
   destroyGraphic: 0
@@ -903,6 +919,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &608632627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608632622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c36e88d1d5d7b44cbda63a7c2cf7ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fader: {fileID: 608632622}
+  switchDelay: 2
 --- !u!1 &730307234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1474,7 @@ RectTransform:
   - {fileID: 1833359789}
   - {fileID: 608632626}
   - {fileID: 600536318}
+  - {fileID: 1701635216}
   m_Father: {fileID: 767624928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1565,8 +1596,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.38915002, y: 1.6901501, z: 0}
-    m_Extent: {x: 2.7894502, y: 4.54035, z: 0}
+    m_Center: {x: -0.3890499, y: 1.6908001, z: 0}
+    m_Extent: {x: 2.7841501, y: 4.5329, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -1780,37 +1811,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f03bb2208872143b2645aeebbd4793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  win_fader: {fileID: 608632622}
-  death_fader: {fileID: 600536314}
-  min_volume: -80
-  max_volume: 0
-  volume_curve:
+  winSwitcher: {fileID: 608632627}
+  deathSwitcher: {fileID: 600536319}
+  minVolume: -80
+  maxVolume: 0
+  volumeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.05932328
-      outSlope: -0.05932328
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1042471
+      outWeight: 0.06949807
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2.7870162
-      outSlope: -2.7870162
+      inSlope: -2.9984376
+      outSlope: -2.9984376
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.01930499
+      inWeight: 0.024131298
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  switch_delay: 1
-  end_scene: WinScene
-  death_scene: DeathScene
+  muteDelay: 2
+  winScene: WinScene
+  deathScene: DeathScene
 --- !u!1 &1440620075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2251,124 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8034f98451fd240ab3f15cd7792c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1701635215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701635216}
+  - component: {fileID: 1701635219}
+  - component: {fileID: 1701635218}
+  - component: {fileID: 1701635217}
+  m_Layer: 5
+  m_Name: FadeIn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1701635216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701635215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1127211727}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1701635217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701635215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetGraphic: {fileID: 1701635218}
+  delay: 0
+  lifetime: 1
+  destroyScript: 1
+  destroyGraphic: 1
+  destroyObject: 1
+  transparency:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1701635218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701635215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1701635219
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701635215}
+  m_CullTransparentMesh: 1
 --- !u!1 &1833359788
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,35 +6,27 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
+[RequireComponent(typeof(SceneSwitcher))]
 public class TitleManager : MonoBehaviour
 {
+	SceneSwitcher switcher;
+	[SerializeField]
+	float quitDelay = 1f;
+
 	private void Awake()
 	{
 		// If using the Unity editor or development build, enable debug logs
-        Debug.unityLogger.logEnabled = Debug.isDebugBuild;
-    }
-
-    public void StartGame()
-	{
-		SceneManager.LoadScene("MainScene");
-	}
-
-	public void StartTutorial()
-	{
-		SceneManager.LoadScene("TutorialScene");
-	}
-
-	public void StartCalibration()
-	{
-		SceneManager.LoadScene("CalibrationScene");
+		Debug.unityLogger.logEnabled = Debug.isDebugBuild;
+		switcher = GetComponent<SceneSwitcher>();
 	}
 
 	public void QuitGame()
 	{
+		switcher.StartFade();
 #if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
+		this.Invoke(() => EditorApplication.isPlaying = false, quitDelay);
 #else
-        Application.Quit();
+		this.Invoke(() => Application.Quit(), quitDelay);
 #endif
-    }
+	}
 }

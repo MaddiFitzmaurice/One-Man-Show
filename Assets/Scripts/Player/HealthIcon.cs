@@ -22,6 +22,7 @@ public class HealthIcon : MonoBehaviour
 
 	private void SetImage()
 	{
+		if (_image == null) return;
 		_image.color = _isFull ? Color.red : Color.gray;
 	}
 

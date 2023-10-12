@@ -27,7 +27,6 @@ public class CalibrationManager : MonoBehaviour
 	public BeatLineController beatLine;
 
 	public GameObject menuButton;
-	public string menuSceneName;
 
 	public string delayMessageFormat = "Average delay: {0:N2}ms {1}";
 
@@ -136,10 +135,5 @@ public class CalibrationManager : MonoBehaviour
 		pressMessage.gameObject.SetActive(false);
 		menuButton.SetActive(true);
 		beatLine.enabled = false;
-	}
-
-	public void ReturnToMenu()
-	{
-		SceneManager.LoadScene(menuSceneName);
 	}
 }

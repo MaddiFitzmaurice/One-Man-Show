@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
 	[SerializeField] private float _startBeat = 0; // The beat on which this stage started
 	private uint _damageTaken = 0; // How much damage the player has taken during this stage
 	private uint _misses = 0;      // How many times the player missed a parry during this stage
+	private uint _enemies_spawned = 0;
 	[SerializeField] private bool _repeatOnDamage = true;
 	[SerializeField] private bool _repeatOnMiss = true;
 	[SerializeField] private List<SpawnBeat> _spawns;
@@ -21,6 +22,7 @@ public class TutorialManager : MonoBehaviour
 		EventManager.EventSubscribe(EventType.BEAT, BeatHandler);
 		EventManager.EventSubscribe(EventType.PLAYER_HIT, TrackDamage);
 		EventManager.EventSubscribe(EventType.PARRY_MISS, TrackMiss);
+		EventManager.EventSubscribe(EventType.PARRY_HIT, RemoveEnemy);
 	}
 
 	private void OnDisable()
@@ -28,6 +30,12 @@ public class TutorialManager : MonoBehaviour
 		EventManager.EventUnsubscribe(EventType.BEAT, BeatHandler);
 		EventManager.EventUnsubscribe(EventType.PLAYER_HIT, TrackDamage);
 		EventManager.EventUnsubscribe(EventType.PARRY_MISS, TrackMiss);
+		EventManager.EventUnsubscribe(EventType.PARRY_HIT, RemoveEnemy);
+	}
+
+	private void RemoveEnemy(object data)
+	{
+		_enemies_spawned--;
 	}
 
 	private void Awake()
@@ -61,11 +69,12 @@ public class TutorialManager : MonoBehaviour
 	public void TrackDamage(object data)
 	{
 		_damageTaken++;
+		_enemies_spawned--;
 	}
 
 	public void TrackMiss(object data)
 	{
-		if (_spawns.Count == 0) return;
+		if (_enemies_spawned == 0) return;
 		_misses++;
 	}
 
@@ -129,5 +138,6 @@ public class TutorialManager : MonoBehaviour
 		SpawnData data = new SpawnData(spawnData.beat + _startBeat, spawnData.direction, spawnData.type);
 
 		EventManager.EventTrigger(EventType.SPAWN, data);
+		_enemies_spawned++;
 	}
 }

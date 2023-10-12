@@ -1,24 +1,19 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class SceneEnder	 : MonoBehaviour
 {
-	public GameObject win_fader;
-	public GameObject death_fader;
+	public SceneSwitcher winSwitcher;
+	public SceneSwitcher deathSwitcher;
 
-	public float min_volume;
-	public float max_volume;
+	public float minVolume;
+	public float maxVolume;
 
-	public AnimationCurve volume_curve;
+	public AnimationCurve volumeCurve;
+	public float muteDelay;
 
-	[Min(0)]
-	public float switch_delay = 1.0f;
-
-	public string end_scene;
-	public string death_scene;
+	public string winScene;
+	public string deathScene;
 
 	private void Start()
 	{
@@ -34,33 +29,31 @@ public class SceneEnder	 : MonoBehaviour
 
 	private void OnSongEnd(object data)
 	{
-		win_fader.SetActive(true);
-		StartCoroutine(SwitchScene(Time.time, end_scene));
+		winSwitcher.SetScene(winScene);
+		StartCoroutine(FadeVolume(Time.time));
 	}
 
 	private void OnPlayerDied(object data)
 	{
-		death_fader.SetActive(true);
-		StartCoroutine(SwitchScene(Time.time, death_scene));
+		winSwitcher.SetScene(deathScene);
+		StartCoroutine(FadeVolume(Time.time));
 	}
 
-	private IEnumerator SwitchScene(float start_time, string scene)
+	private IEnumerator FadeVolume(float start_time)
 	{
-		while (Time.time - start_time < switch_delay)
+		while (Time.time - start_time < muteDelay)
 		{
 			EventManager.EventTrigger
 			(
 				EventType.VOLUME_SET,
 				Mathf.Lerp
 				(
-					min_volume,
-					max_volume,
-					volume_curve.Evaluate((Time.time - start_time) / switch_delay)
+					minVolume,
+					maxVolume,
+					volumeCurve.Evaluate((Time.time - start_time) / muteDelay)
 				)
 			);
 			yield return null;
 		}
-
-		SceneManager.LoadScene(scene);
 	}
 }
