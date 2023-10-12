@@ -22,13 +22,13 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
 
 	private void OnEnable()
 	{
-		_inputActions.Enable();
+		if (_inputActions != null) _inputActions.Enable();
 		EventManager.EventSubscribe(EventType.PARRY_MISS, HandleMiss);
 	}
 
 	private void OnDisable()
 	{
-		_inputActions.Disable();
+		if (_inputActions != null) _inputActions.Disable();
 		EventManager.EventUnsubscribe(EventType.PARRY_MISS, HandleMiss);
 	}
 
@@ -40,6 +40,7 @@ public class InputManager : MonoBehaviour, GameInput.IGameplayActions
 	// Set up input
 	public void InputInit()
 	{
+		if (_inputActions != null) return;
 		_inputActions = new GameInput();
 		_inputActions.Gameplay.SetCallbacks(this);
 		_inputActions.Gameplay.Enable();

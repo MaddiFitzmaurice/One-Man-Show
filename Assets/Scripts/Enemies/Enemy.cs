@@ -21,6 +21,13 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private bool _attackReadied = false; // set to true when the event to kill this enemy is added
 	private bool _checkingForAttack = false;
 
+	[SerializeField]
+	private GameObject _spawnOnDeath = null;
+	[SerializeField]
+	public Vector3 _rightSpawnOffset = Vector3.zero;
+	[SerializeField]
+	public Vector3 _forwardSpawnOffset = Vector3.zero;
+
 	// Data
 	private SFXData _deathSFX;
 	private SFXData _hitSFX;
@@ -128,6 +135,21 @@ public class Enemy : MonoBehaviour
 		(StageDirection, double) pair = (dir, (Conductor.SongBeat - (_hitTime + _startBeat)) / Conductor.CurrentBPS);
 
 		EventManager.EventTrigger(EventType.PARRY_HIT, pair);
+
+		if(_spawnOnDeath != null)
+		{
+			if(_direction == StageDirection.FORWARD)
+			{
+				Instantiate(_spawnOnDeath, transform.TransformPoint(_forwardSpawnOffset), transform.rotation, null);
+			}
+			else
+			{
+				Vector3 offset = _rightSpawnOffset;
+				if (_sprite.flipX) offset.x = -offset.x;
+
+				Instantiate(_spawnOnDeath, transform.TransformPoint(offset), transform.rotation, null);
+			}
+		}
 
 		gameObject.SetActive(false);
 	}
