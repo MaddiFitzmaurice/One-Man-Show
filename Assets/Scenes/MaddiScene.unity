@@ -815,7 +815,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: efb2fa8348d20ab468483f5ad303d58f, type: 2}
+  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1499,7 +1499,7 @@ ParticleSystem:
     enabled: 1
     type: 8
     angle: 1
-    length: 21
+    length: 16
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -5598,7 +5598,7 @@ Transform:
   m_GameObject: {fileID: 649610378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.43, y: 1.61, z: 0}
+  m_LocalPosition: {x: -8.2, y: -0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6267,8 +6267,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.67615, y: 2.74275, z: 0}
-    m_Extent: {x: 2.62885, y: 3.79505, z: 0}
+    m_Center: {x: -0.67789996, y: 2.74155, z: 0}
+    m_Extent: {x: 2.6248999, y: 3.7901502, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
