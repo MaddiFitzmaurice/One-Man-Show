@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 691911309
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 525364528, guid: 8f7ea95d42a605f448b68314a94ede2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -115,6 +115,7 @@ MonoBehaviour:
   _deathClip: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
   _direction: 0
   _attackReadied: 0
+  _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
   _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
   _rightSpawnOffset: {x: 0.5, y: 1.6, z: 0}
   _forwardSpawnOffset: {x: 0.5, y: 1.6, z: 0}

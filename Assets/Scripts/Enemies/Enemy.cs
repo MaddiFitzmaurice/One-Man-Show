@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private StageDirection _direction;
 	[SerializeField] private bool _attackReadied = false; // set to true when the event to kill this enemy is added
 	private bool _checkingForAttack = false;
+	private bool _tutorialMode = false; // when true, show a red flash for the correct timing
+	[SerializeField] private GameObject _tutorialIndicatorPrefab; // the object to spawn to show timings during the tutorial
+	private GameObject _tutorialIndicator; // where the instance of the tutorial indicator is stored
 
 	[SerializeField]
 	private GameObject _spawnOnDeath = null;
@@ -55,11 +58,12 @@ public class Enemy : MonoBehaviour
 	}
 
 	// set unique values for this enemy
-	public void Initialise(StageDirection dr, float sb, Vector3 startPos, Vector3 endPos)
+	public void Initialise(StageDirection dr, float sb, Vector3 startPos, Vector3 endPos, bool tutorial)
 	{
 		_startBeat = sb;
 		_direction = dr;
-
+		_tutorialMode = tutorial;
+		
 		if (_direction == StageDirection.LEFT && _sprite.flipX)
 		{
 			_sprite.flipX = false;
@@ -81,6 +85,19 @@ public class Enemy : MonoBehaviour
 		_earlyWindow = (_hitTime + _startBeat) - beatDiff;
 		_lateWindow = (_hitTime + _startBeat) + beatDiff;
 		Debug.Log($"Early window is beat {_earlyWindow}, late window is {_lateWindow}");
+
+		// handle the tutorial indicator if needed
+		if (_tutorialMode)
+		{
+			// if the tutorial indicator does not exist and it should, create it
+			if (_tutorialIndicator == null)
+			{
+				_tutorialIndicator = Instantiate(_tutorialIndicatorPrefab, transform); // create indicator as child of this enemy
+				_tutorialIndicator.transform.localPosition = new Vector3(0, 3.5f, 0);
+			}
+			_tutorialIndicator.GetComponent<TutorialIndicator>().SetTimings(_earlyWindow, _lateWindow);
+			_tutorialIndicator.SetActive(false); // deactivate until the attack is about to happen
+		}
 
 		// do a deep copy of the set beats, so the original set beats aren't destroyed for future enemies
 		_beats = new List<EnemyBeat>();
@@ -195,6 +212,12 @@ public class Enemy : MonoBehaviour
 			StartCoroutine(CheckAttack());
 			_checkingForAttack = true;
 			_anim.SetTrigger("IsAttacking");
+
+			// if in tutorial, since the timing window's about to happen, show the tutorial indicator to give the player a warning
+			if (_tutorialMode)
+			{
+				_tutorialIndicator.SetActive(true);
+			}
 		}
 	}
 

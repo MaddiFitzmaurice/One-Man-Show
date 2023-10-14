@@ -538,6 +538,7 @@ MonoBehaviour:
   forwardEndPosition: {x: 0, y: -2, z: 0}
   rightStartPosition: {x: 10, y: -2.5, z: 0}
   rightEndPosition: {x: 2, y: -1.5, z: 0}
+  _tutorialMode: 1
 --- !u!4 &241471651
 Transform:
   m_ObjectHideFlags: 0
@@ -1657,8 +1658,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.38605, y: 1.9052501, z: 0}
-    m_Extent: {x: 6.7885504, y: 8.321751, z: 0}
+    m_Center: {x: -0.3938501, y: 1.9059498, z: 0}
+    m_Extent: {x: 6.78695, y: 8.31795, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6

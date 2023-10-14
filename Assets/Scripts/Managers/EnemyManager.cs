@@ -34,6 +34,9 @@ public class EnemyManager : MonoBehaviour
 	// Track current beat number
 	private float _currentBeat;
 
+	// If true, spawn all enemies in tutorial mode
+	[SerializeField] private bool _tutorialMode = false;
+
 	private void Awake()
 	{
 		_awaitingInput[StageDirection.LEFT   ] = 0;
@@ -145,7 +148,7 @@ public class EnemyManager : MonoBehaviour
 				break;
 		}
 
-		newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, start, end);
+		newEnemy.GetComponent<Enemy>().Initialise(spawnData.Direction, spawnData.Beat, start, end, _tutorialMode);
 
 		Debug.Log($"Spawned enemy {spawnData.Type} starting beat {spawnData.Beat} on beat {Conductor.RawSongBeat} from {spawnData.Direction}");
 	}
