@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
 	[SerializeField] private List<SpawnBeat> _spawns;
 	[SerializeField] private SongManager _songManager;
 	[SerializeField] private SongMeta _song;
+	[SerializeField] private GameObject _tutorialPrompts; // the object containing all tutorial keys
 
 	private void OnEnable()
 	{
@@ -111,6 +112,12 @@ public class TutorialManager : MonoBehaviour
 			else
 			{
 				_stageIndex++;
+				// Since it's no longer the first stage, destroy the key prompts if they're still there
+				if (_tutorialPrompts != null)
+				{
+					Destroy(_tutorialPrompts);
+				}
+
 				// If there is no next stage to move to, move to the main scene (start the game!)
 				if (_stageIndex >= _stages.Length)
 				{
