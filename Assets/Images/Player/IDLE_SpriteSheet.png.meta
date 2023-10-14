@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_1
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        x: 2048
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_2
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        x: 4096
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_3
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        x: 6144
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_4
       rect:
         serializedVersion: 2
-        x: 8228
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        x: 8192
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_5
       rect:
         serializedVersion: 2
-        x: 10285
-        y: 6167.25
-        width: 2057.1667
-        height: 2055.75
+        x: 10240
+        y: 6144
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,11 +240,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_7
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        x: 2048
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_8
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        x: 4096
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_9
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        x: 6144
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_10
       rect:
         serializedVersion: 2
-        x: 8228
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        x: 8192
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_11
       rect:
         serializedVersion: 2
-        x: 10285
-        y: 4112.25
-        width: 2057.1667
-        height: 2055.75
+        x: 10240
+        y: 4096
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,11 +366,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2057.25
-        width: 2057.1667
-        height: 2055.75
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,12 +386,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_13
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 2057.25
-        width: 2057.1667
-        height: 2055.75
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -407,12 +407,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_14
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 2057.25
-        width: 2057.1667
-        height: 2055.75
+        x: 4096
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -428,12 +428,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_15
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 2057.25
-        width: 2057.1667
-        height: 2055.75
+        x: 6144
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -450,11 +450,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,12 +470,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_19
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -491,12 +491,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_20
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -512,12 +512,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_21
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        x: 6144
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -533,12 +533,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_22
       rect:
         serializedVersion: 2
-        x: 8228
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        x: 8192
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -554,12 +554,12 @@ TextureImporter:
       name: IDLE_SpriteSheet02_23
       rect:
         serializedVersion: 2
-        x: 10285
-        y: 2.25
-        width: 2057.1667
-        height: 2055.75
+        x: 10240
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
