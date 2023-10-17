@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
 	// Components
 	private SpriteRenderer _sprite;
 	private Animator _anim;
+	[SerializeField] private List<AnimatorOverrideController> _overrideControllers;
 
 	// Beat Tracking
 	private float _currentBeat;
@@ -63,15 +64,8 @@ public class Enemy : MonoBehaviour
 		_startBeat = sb;
 		_direction = dr;
 		_tutorialMode = tutorial;
-		
-		if (_direction == StageDirection.LEFT && _sprite.flipX)
-		{
-			_sprite.flipX = false;
-		}
-		else if (_direction == StageDirection.RIGHT && !_sprite.flipX)
-		{
-			_sprite.flipX = true;
-		}
+
+		SetAnimDirection();
 
 		_startPosition = startPos;
 		_endPosition = endPos;
@@ -118,6 +112,49 @@ public class Enemy : MonoBehaviour
 		_currentBeat = sb;
 		CheckBeatAction();
 	}
+
+	void SetAnimDirection()
+	{
+		// Has overrides
+		if (_overrideControllers.Count > 0)
+		{
+			// Set front override
+			if (_direction == StageDirection.FORWARD)
+			{
+				_anim.runtimeAnimatorController = _overrideControllers[1];
+			}
+			// Set side override
+			else
+			{
+				_anim.runtimeAnimatorController = _overrideControllers[0];
+
+                if (_direction == StageDirection.LEFT && _sprite.flipX)
+                {
+                    _sprite.flipX = false;
+                }
+                else if (_direction == StageDirection.RIGHT && !_sprite.flipX)
+                {
+                    _sprite.flipX = true;
+                }
+            }
+		}
+		// Has no overrides (not direction-reliant)
+		else
+		{
+            if (_direction == StageDirection.FORWARD)
+            {
+				transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+            }
+            else if (_direction == StageDirection.RIGHT)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 145f);
+            }
+			else if (_direction == StageDirection.LEFT)
+			{
+                transform.rotation = Quaternion.Euler(0f, 0f, 35f);
+            }
+        }
+    }
 
 	private void OnEnable()
 	{

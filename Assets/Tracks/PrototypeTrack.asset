@@ -80,6 +80,9 @@ MonoBehaviour:
   - beat: 60
     direction: 2
     type: 2
+  - beat: 65
+    direction: 2
+    type: 1
   events:
   - beat: 0
     type: 9

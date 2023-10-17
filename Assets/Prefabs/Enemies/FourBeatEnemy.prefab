@@ -119,6 +119,9 @@ MonoBehaviour:
   _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
   _rightSpawnOffset: {x: 0.5, y: 1.6, z: 0}
   _forwardSpawnOffset: {x: 0.5, y: 1.6, z: 0}
+  _overrideControllers:
+  - {fileID: 22100000, guid: a7f7432ec16d7e44290d703f12e5e411, type: 2}
+  - {fileID: 22100000, guid: 8fda149de7e41e34eb3f479970829dce, type: 2}
   _movementAnimation:
     serializedVersion: 2
     m_Curve:
