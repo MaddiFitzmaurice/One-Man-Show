@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 5f9720516538bb0478a3bbb6dbd3f8c8
+guid: 89e5f83ff32536541b6ce716530bb1f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -110,148 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_0
+      name: Enemy03_Move_Side_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 492
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1afefda2a8ec204696ba6f3fea54932
-      internalID: -758238321
+      spriteID: 4e3e53eaf968f7344980be3871b76fd3
+      internalID: -1974425528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_1
+      name: Enemy03_Move_Side_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 492
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8916568c49732b249ab13bcb4059ffbf
-      internalID: 759539221
+      spriteID: 5a54873a2c1e6c54c8b7a2f5aded6826
+      internalID: 1250192405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_2
-      rect:
-        serializedVersion: 2
-        x: 982
-        y: 492
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2edbb0ebd7503fc4c9adafa69d4e596a
-      internalID: 1679802562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_3
-      rect:
-        serializedVersion: 2
-        x: 1473
-        y: 492
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed9bbd6887a2b074f85a5b2e3530ad4c
-      internalID: -541204666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_4
+      name: Enemy03_Move_Side_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cabb70686895be44bad8eab26f981f11
-      internalID: 1792579571
+      spriteID: d10d0c9814106b84b9bdb46af30577cf
+      internalID: 1821042520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_5
+      name: Enemy03_Move_Side_3
       rect:
         serializedVersion: 2
-        x: 491
+        x: 500
         y: 0
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef0892997b12dad44a5222d76883fa7c
-      internalID: -1535426333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy02_HitAni_spritesheet02_6
-      rect:
-        serializedVersion: 2
-        x: 982
-        y: 0
-        width: 491.75
-        height: 492
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a35280fa53868e429f415330c1bee90
-      internalID: -1753873293
+      spriteID: b9abe3d86e9f438438ec7c8854448234
+      internalID: 1559327083
       vertices: []
       indices: 
       edges: []
@@ -267,13 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy02_HitAni_spritesheet02_0: -758238321
-      Enemy02_HitAni_spritesheet02_1: 759539221
-      Enemy02_HitAni_spritesheet02_2: 1679802562
-      Enemy02_HitAni_spritesheet02_3: -541204666
-      Enemy02_HitAni_spritesheet02_4: 1792579571
-      Enemy02_HitAni_spritesheet02_5: -1535426333
-      Enemy02_HitAni_spritesheet02_6: -1753873293
+      Enemy03_Move_Side_0: -1974425528
+      Enemy03_Move_Side_1: 1250192405
+      Enemy03_Move_Side_2: 1821042520
+      Enemy03_Move_Side_3: 1559327083
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

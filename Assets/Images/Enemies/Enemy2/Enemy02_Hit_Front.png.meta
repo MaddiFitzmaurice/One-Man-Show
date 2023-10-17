@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 43cc3f1a3f84ead4d943d9b29ed02084
+guid: bc9ea1223273cf441939b600c8b0b030
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -110,274 +110,232 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_0
+      name: Enemy02_Hit_Front_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1475.25
-        width: 491.75
-        height: 491.75
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 864c616e4f162784db44fe2f57228e6b
-      internalID: -1986097016
+      spriteID: 98a82f2c17ae12e499eff96f323dba04
+      internalID: 1431034730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_1
+      name: Enemy02_Hit_Front_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 1475.25
-        width: 491.75
-        height: 491.75
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baee4f93645742a448f5be90e302a113
-      internalID: -405029725
+      spriteID: 837f4645dd9c0144a8da3a4b929da525
+      internalID: 88602470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_2
+      name: Enemy02_Hit_Front_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1475.25
-        width: 491.75
-        height: 491.75
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd22518b303855b48b199f9ece8d3359
-      internalID: 121429934
+      spriteID: 11e466d8cd49c214990299b5fdca8e8b
+      internalID: -1275576997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_3
+      name: Enemy02_Hit_Front_3
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 1475.25
-        width: 491.75
-        height: 491.75
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cc98bea8e6ee854e9f54a56f165ecab
-      internalID: -257786257
+      spriteID: 585747a78022dd94a997d46575055bef
+      internalID: -1670719948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 984.25
-        width: 491.75
-        height: 491.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f4ce9d785242c447af1fa5e14fe92ca
-      internalID: 624265332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_5
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 984.25
-        width: 491.75
-        height: 491.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88b7d95e7d5234648b08eeb77ec7e68f
-      internalID: -2018398488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_6
-      rect:
-        serializedVersion: 2
-        x: 982
-        y: 984.25
-        width: 491.75
-        height: 491.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cb2f6a6a8238a94fb694141600ca3ff
-      internalID: -225851464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_7
-      rect:
-        serializedVersion: 2
-        x: 1473
-        y: 984.25
-        width: 491.75
-        height: 491.75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e128bcc00791a97449c89f703d7e04e3
-      internalID: -2033094863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_8
+      name: Enemy02_Hit_Front_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 493.25
-        width: 491.75
-        height: 491.75
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c3cc623bc83064f8e643018c915949
-      internalID: -1301096824
+      spriteID: e43476470fd2dab4d82784063cb71a13
+      internalID: 1886494884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_9
+      name: Enemy02_Hit_Front_5
       rect:
         serializedVersion: 2
-        x: 491
-        y: 493.25
-        width: 491.75
-        height: 491.75
+        x: 500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0997c1aa40662c843af541ef1337af5f
-      internalID: -2101846518
+      spriteID: 027d4a3e4cda8214f9b19cfdf96bb2d7
+      internalID: 1591312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_10
+      name: Enemy02_Hit_Front_6
       rect:
         serializedVersion: 2
-        x: 982
-        y: 493.25
-        width: 491.75
-        height: 491.75
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6ba201748b747e4e977da0fc9264b6c
-      internalID: -1337733678
+      spriteID: a907f4901c87a24448331d9bfd73796c
+      internalID: 662382344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_11
+      name: Enemy02_Hit_Front_7
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 493.25
-        width: 491.75
-        height: 491.75
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc388937b49145d4884a5913a813d5f7
-      internalID: 120636109
+      spriteID: 3c3976f563259004c8c9cd4ead49fce1
+      internalID: -553645433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy03_Front_Hit_Ani_12
+      name: Enemy02_Hit_Front_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 2.25
-        width: 491.75
-        height: 491.75
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96ce0c2cf51411c479adb0e430def8a8
-      internalID: 1653527314
+      spriteID: b2af9436fee20054a9c4ec92c7a2f2ef
+      internalID: 1010998638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy02_Hit_Front_9
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a23deae9e3226f4e87a517112b0e9df
+      internalID: 282948390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy02_Hit_Front_10
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27977cb543130ab4b9d61778b15fa076
+      internalID: -1185413950
       vertices: []
       indices: 
       edges: []
@@ -393,19 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy03_Front_Hit_Ani_0: -1986097016
-      Enemy03_Front_Hit_Ani_1: -405029725
-      Enemy03_Front_Hit_Ani_10: -1337733678
-      Enemy03_Front_Hit_Ani_11: 120636109
-      Enemy03_Front_Hit_Ani_12: 1653527314
-      Enemy03_Front_Hit_Ani_2: 121429934
-      Enemy03_Front_Hit_Ani_3: -257786257
-      Enemy03_Front_Hit_Ani_4: 624265332
-      Enemy03_Front_Hit_Ani_5: -2018398488
-      Enemy03_Front_Hit_Ani_6: -225851464
-      Enemy03_Front_Hit_Ani_7: -2033094863
-      Enemy03_Front_Hit_Ani_8: -1301096824
-      Enemy03_Front_Hit_Ani_9: -2101846518
+      Enemy02_Hit_Front_0: 1431034730
+      Enemy02_Hit_Front_1: 88602470
+      Enemy02_Hit_Front_10: -1185413950
+      Enemy02_Hit_Front_2: -1275576997
+      Enemy02_Hit_Front_3: -1670719948
+      Enemy02_Hit_Front_4: 1886494884
+      Enemy02_Hit_Front_5: 1591312
+      Enemy02_Hit_Front_6: 662382344
+      Enemy02_Hit_Front_7: -553645433
+      Enemy02_Hit_Front_8: 1010998638
+      Enemy02_Hit_Front_9: 282948390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

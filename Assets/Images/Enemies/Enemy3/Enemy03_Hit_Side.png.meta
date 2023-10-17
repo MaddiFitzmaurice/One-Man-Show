@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -110,15 +110,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_0
+      name: Enemy03_Hit_Side_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,15 +131,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_1
+      name: Enemy03_Hit_Side_1
       rect:
         serializedVersion: 2
-        x: 491
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,15 +152,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_2
+      name: Enemy03_Hit_Side_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,15 +173,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_3
+      name: Enemy03_Hit_Side_3
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 983.3334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,15 +194,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_4
+      name: Enemy03_Hit_Side_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,15 +215,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_5
+      name: Enemy03_Hit_Side_5
       rect:
         serializedVersion: 2
-        x: 491
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,15 +236,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_6
+      name: Enemy03_Hit_Side_6
       rect:
         serializedVersion: 2
-        x: 982
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,15 +257,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_7
+      name: Enemy03_Hit_Side_7
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 492.33334
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -278,15 +278,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_8
+      name: Enemy03_Hit_Side_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,15 +299,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_9
+      name: Enemy03_Hit_Side_9
       rect:
         serializedVersion: 2
-        x: 491
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -320,15 +320,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_10
+      name: Enemy03_Hit_Side_10
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,15 +341,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E3_HitAni_spritesheet_11
+      name: Enemy03_Hit_Side_11
       rect:
         serializedVersion: 2
-        x: 1473
-        y: 1.3333435
-        width: 491.75
-        height: 491.66666
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,18 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      E3_HitAni_spritesheet_0: 1168954374
-      E3_HitAni_spritesheet_1: 1389240423
-      E3_HitAni_spritesheet_10: -1901862754
-      E3_HitAni_spritesheet_11: 1687149870
-      E3_HitAni_spritesheet_2: -354595990
-      E3_HitAni_spritesheet_3: 818364829
-      E3_HitAni_spritesheet_4: -952511193
-      E3_HitAni_spritesheet_5: 1838213066
-      E3_HitAni_spritesheet_6: 1087061356
-      E3_HitAni_spritesheet_7: 1697184166
-      E3_HitAni_spritesheet_8: -1460851644
-      E3_HitAni_spritesheet_9: 1633992890
+      Enemy03_Hit_Side_0: 1168954374
+      Enemy03_Hit_Side_1: 1389240423
+      Enemy03_Hit_Side_10: -1901862754
+      Enemy03_Hit_Side_11: 1687149870
+      Enemy03_Hit_Side_2: -354595990
+      Enemy03_Hit_Side_3: 818364829
+      Enemy03_Hit_Side_4: -952511193
+      Enemy03_Hit_Side_5: 1838213066
+      Enemy03_Hit_Side_6: 1087061356
+      Enemy03_Hit_Side_7: 1697184166
+      Enemy03_Hit_Side_8: -1460851644
+      Enemy03_Hit_Side_9: 1633992890
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

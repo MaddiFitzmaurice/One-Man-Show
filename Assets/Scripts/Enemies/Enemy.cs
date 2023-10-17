@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 	private SFXData _hitSFX;
 
 	// Components
+	[SerializeField]
 	private SpriteRenderer _sprite;
 	private Animator _anim;
 	[SerializeField] private List<AnimatorOverrideController> _overrideControllers;
@@ -53,7 +54,6 @@ public class Enemy : MonoBehaviour
 	{
 		_deathSFX = new SFXData(_deathClip, StageDirection.FORWARD);
 		_hitSFX = new SFXData(_hitClip, StageDirection.FORWARD);
-		_sprite = GetComponent<SpriteRenderer>();
 		_anim = GetComponent<Animator>();
 		_beats = new List<EnemyBeat>(); // just so it doesn't error out when the game starts
 	}
@@ -143,15 +143,15 @@ public class Enemy : MonoBehaviour
 		{
             if (_direction == StageDirection.FORWARD)
             {
-				transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+				_sprite.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
             }
             else if (_direction == StageDirection.RIGHT)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, 145f);
+                _sprite.transform.rotation = Quaternion.Euler(0f, 0f, 145f);
             }
 			else if (_direction == StageDirection.LEFT)
 			{
-                transform.rotation = Quaternion.Euler(0f, 0f, 35f);
+                _sprite.transform.rotation = Quaternion.Euler(0f, 0f, 35f);
             }
         }
     }
