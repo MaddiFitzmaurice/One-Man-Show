@@ -610,8 +610,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.015450001, y: -0.16004992, z: 0}
-    m_Extent: {x: 10.895849, y: 6.74855, z: 0}
+    m_Center: {x: -0.017799854, y: -0.15004992, z: 0}
+    m_Extent: {x: 10.8985, y: 6.75255, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -1060,7 +1060,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.49019608, g: 0.5324081, b: 0.78431374, a: 1}
+      maxColor: {r: 0.40784314, g: 0.42352942, b: 0.5294118, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6271,8 +6271,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.68195, y: 2.7437, z: 0}
-    m_Extent: {x: 2.62085, y: 3.8014998, z: 0}
+    m_Center: {x: -0.67805, y: 2.73905, z: 0}
+    m_Extent: {x: 2.62195, y: 3.80225, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6

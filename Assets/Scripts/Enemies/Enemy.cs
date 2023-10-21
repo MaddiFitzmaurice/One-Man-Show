@@ -44,13 +44,15 @@ public class Enemy : MonoBehaviour
 	// Beat Tracking
 	private float _currentBeat;
 
-	[SerializeField]
-	private AnimationCurve _movementAnimation;
+	[SerializeField] private AnimationCurve _accelCurve;
+	[SerializeField] private float _maxAccel;
 
 	private Vector3 _startPosition;
 	private Vector3 _endPosition;
+	private float _travelDistance;
+    private float _moveIntervalDist; // How far in units an Enemy has to move
 
-	private void Awake()
+    private void Awake()
 	{
 		_deathSFX = new SFXData(_deathClip, StageDirection.FORWARD);
 		_hitSFX = new SFXData(_hitClip, StageDirection.FORWARD);
@@ -69,8 +71,10 @@ public class Enemy : MonoBehaviour
 
 		_startPosition = startPos;
 		_endPosition = endPos;
+		_travelDistance = Vector3.Distance(_startPosition, _endPosition);
+        _moveIntervalDist = _travelDistance / _setBeats.Count;
 
-		_attackReadied = false;
+        _attackReadied = false;
 		_checkingForAttack = false;
 
 		transform.position = startPos;
@@ -223,18 +227,37 @@ public class Enemy : MonoBehaviour
 		float nearestHalfBeat = Mathf.RoundToInt((float)relativeBeat * 2) / 2; // look idk man
 		List<EnemyBeat> deleteBeats = new List<EnemyBeat>();
 
-		// check if any new beats/animations/movement needs to occur
-		foreach (EnemyBeat b in _beats)
+        // check if any new beats/animations/movement needs to occur
+        foreach (EnemyBeat b in _beats)
 		{
-			if (b.Sound == null) continue;
+            if (b.Sound == null) continue;
 
 			if (nearestHalfBeat >= b.BeatOffset)
 			{
-				// TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
-				SFXData thisSound = new SFXData(b.Sound, _direction);
+				// Movement
+				StopCoroutine("MoveOnBeat");
+
+				float beatMoveTime;
+
+				if (_beats.Count > 1)
+				{
+					beatMoveTime = b.MoveByBeat;
+				}
+				// If final beat, trigger attack animation and account for hit window
+				else
+				{
+					beatMoveTime = b.MoveByBeat + (_hitWindow * (float)Conductor.CurrentBPS);
+                    _anim.SetTrigger("IsAttacking");
+                }
+
+				// Start movement
+                StartCoroutine(MoveOnBeat(beatMoveTime));
+
+                // TODO: play the sound associated with this beat (ideally skipping partway into the sound based on time difference)
+                SFXData thisSound = new SFXData(b.Sound, _direction);
 				EventManager.EventTrigger(EventType.SFX, thisSound);
 				deleteBeats.Add(b); // queue the beat for deletion
-			}
+            }
 		}
 
 		// delete all occurred beats
@@ -248,7 +271,6 @@ public class Enemy : MonoBehaviour
 		{
 			StartCoroutine(CheckAttack());
 			_checkingForAttack = true;
-			_anim.SetTrigger("IsAttacking");
 
 			// if in tutorial, since the timing window's about to happen, show the tutorial indicator to give the player a warning
 			if (_tutorialMode)
@@ -295,19 +317,52 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
-	private void Update()
+	IEnumerator MoveOnBeat(float moveByBeat)
 	{
-		transform.position = Vector3.LerpUnclamped(
-			_startPosition,
-			_endPosition,
-			Mathf.InverseLerp(
-				_startBeat,
-				_startBeat + _hitTime,
-				(float)Conductor.RawLastBeat
-				+ _movementAnimation.Evaluate(Conductor.RawSongBeat - Conductor.RawLastBeat)
-			)
-		);
+		float distLeft = _moveIntervalDist * (_beats.Count - 1);
+		float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
+		float moveStartBeat = _currentBeat;
+
+		_accelCurve.ClearKeys();
+
+		Keyframe startKey = new Keyframe(0, 0);
+		startKey.weightedMode = WeightedMode.Both;
+		startKey.outWeight = 0.5f;
+		Keyframe middleKey = new Keyframe(moveIntervalTime * 0.33f, 0); // Appears to wait for a third of the move interval time
+		middleKey.weightedMode = WeightedMode.Both;
+        middleKey.inWeight = 0.5f;
+		middleKey.outWeight = 0.5f;
+        Keyframe endKey = new Keyframe(moveIntervalTime, _maxAccel);
+		endKey.weightedMode = WeightedMode.Both;
+		endKey.outWeight = 0.5f;
+
+		_accelCurve.AddKey(startKey);
+		_accelCurve.AddKey(middleKey);
+		_accelCurve.AddKey(endKey);
+
+		while (Vector3.Distance(_endPosition, transform.position) > distLeft)
+		{
+			float velocity = _accelCurve.Evaluate(Conductor.RawSongBeat - moveStartBeat);
+			transform.position = Vector3.MoveTowards(transform.position, _endPosition, 
+				(velocity * Time.deltaTime));
+
+			yield return null;
+		}
 	}
+
+	//private void Update()
+	//{
+	//	transform.position = Vector3.LerpUnclamped(
+	//		_startPosition,
+	//		_endPosition,
+	//		Mathf.InverseLerp(
+	//			_startBeat,
+	//			_startBeat + _hitTime,
+	//			(float)Conductor.RawLastBeat
+	//			+ _movementAnimation.Evaluate(Conductor.RawSongBeat - Conductor.RawLastBeat)
+	//		)
+	//	);
+	//}
 
 	public float HitTime
 	{
