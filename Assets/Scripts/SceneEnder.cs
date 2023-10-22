@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneEnder	 : MonoBehaviour
 {
@@ -33,10 +34,10 @@ public class SceneEnder	 : MonoBehaviour
 		StartCoroutine(FadeVolume(Time.time));
 	}
 
+	// On death, immediately switch scenes to make it punchy
 	private void OnPlayerDied(object data)
 	{
-		winSwitcher.SetScene(deathScene);
-		StartCoroutine(FadeVolume(Time.time));
+		SceneManager.LoadScene(deathScene);
 	}
 
 	private IEnumerator FadeVolume(float start_time)

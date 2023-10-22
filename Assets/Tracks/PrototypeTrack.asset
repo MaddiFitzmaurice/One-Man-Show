@@ -29,13 +29,13 @@ MonoBehaviour:
   - beat: 16
     direction: 2
     type: 2
-  - beat: 21
+  - beat: 20.5
     direction: 0
     type: 1
   - beat: 24
     direction: 2
     type: 2
-  - beat: 28
+  - beat: 28.5
     direction: 1
     type: 1
   - beat: 32

@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 3
   _currentHealth: 0
-  _beatsTillRegen: 0
+  _beatsTillRegen: 8
   _regenEnabled: 1
   _attackSFXForward: {fileID: 8300000, guid: 27847916bf173a9409470aa8249e1825, type: 3}
   _attackSFXLeft: {fileID: 8300000, guid: fb3c0e27bf55f664681d3ffce8793833, type: 3}
@@ -6527,8 +6527,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.021149635, y: -0.15534997, z: 0}
-    m_Extent: {x: 10.89645, y: 6.7528496, z: 0}
+    m_Center: {x: -0.014650345, y: -0.15855002, z: 0}
+    m_Extent: {x: 10.89645, y: 6.7534504, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -7186,8 +7186,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.6815, y: 2.7429001, z: 0}
-    m_Extent: {x: 2.6205, y: 3.793, z: 0}
+    m_Center: {x: -0.67625004, y: 2.7449498, z: 0}
+    m_Extent: {x: 2.6254501, y: 3.80405, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
