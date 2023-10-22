@@ -241,7 +241,7 @@ public class Enemy : MonoBehaviour
 
 			if (nearestHalfBeat >= b.BeatOffset)
 			{
-				// Movement
+				// Stop movement
 				StopCoroutine("MoveOnBeat");
 
 				float beatMoveTime;
@@ -316,10 +316,7 @@ public class Enemy : MonoBehaviour
 					EventManager.EventTrigger(EventType.SFX, _hitSFX);
 				}
 
-				// Start fading out the enemy
-                _anim.SetTrigger("IsFading");
-                //StartCoroutine(FadeOut());
-                gameObject.SetActive(false);
+                StartCoroutine(FadeOut());
 
                 yield break;
 			}
@@ -363,14 +360,20 @@ public class Enemy : MonoBehaviour
 
 	IEnumerator FadeOut()
 	{
-		float time = 0;
-        //AnimatorStateInfo info = _anim.GetCurrentAnimatorStateInfo(0);
-		while (time < 0.3f)
+        StopCoroutine("MoveOnBeat");
+        // Start fading out the enemy
+        _anim.SetTrigger("IsFading");
+
+        while (true)
 		{
-			time += Time.deltaTime;
+			transform.position = Vector3.MoveTowards(transform.position, _startPosition, 0.5f * Time.deltaTime);
 			yield return null;
 		}
+	}
 
+	public void DisableEnemy()
+	{
+		StopAllCoroutines();
         gameObject.SetActive(false);
     }
 
