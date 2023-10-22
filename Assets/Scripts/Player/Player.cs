@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
 	[SerializeField] float _beatsTillRegen;
 	[SerializeField] bool _regenEnabled = true;
 
+	// Components
+	Animator _anim;
+
 	public uint MaxHealth { get => _maxHealth; }
 	public uint CurrentHealth
 	{
@@ -84,6 +87,7 @@ public class Player : MonoBehaviour
 	public void Awake()
 	{
 		_sprite = GetComponent<SpriteRenderer>();
+		_anim = GetComponent<Animator>();
 	}
 
 	private void Start()
@@ -105,13 +109,16 @@ public class Player : MonoBehaviour
 		switch (pair.Item1)
 		{
 			case StageDirection.FORWARD:
+				_anim.SetTrigger("FrontAttack");
 				Instantiate(_parryParticle, _particleParentForward);
 				break;
 			case StageDirection.LEFT:
-				Instantiate(_parryParticle, _particleParentLeft);
+                _anim.SetTrigger("LeftAttack");
+                Instantiate(_parryParticle, _particleParentLeft);
 				break;
 			case StageDirection.RIGHT:
-				Instantiate(_parryParticle, _particleParentRight);
+                _anim.SetTrigger("RightAttack");
+                Instantiate(_parryParticle, _particleParentRight);
 				break;
 		}
 	}
@@ -130,18 +137,21 @@ public class Player : MonoBehaviour
 		switch (direction)
 		{
 			case StageDirection.FORWARD:
-				particle = Instantiate(_missParticle, _particleParentForward);
+                _anim.SetTrigger("FrontAttack");
+                particle = Instantiate(_missParticle, _particleParentForward);
 				// rotate the particle by 90 degrees
 				particle.transform.localRotation = Quaternion.Euler(0, 0, -90);
 				break;
 			case StageDirection.LEFT:
-				particle = Instantiate(_missParticle, _particleParentLeft);
+                _anim.SetTrigger("LeftAttack");
+                particle = Instantiate(_missParticle, _particleParentLeft);
 				// flip the particle horizontally
 				Vector3 scale = particle.transform.localScale;
 				particle.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
 				break;
 			case StageDirection.RIGHT:
-				Instantiate(_missParticle, _particleParentRight);
+                _anim.SetTrigger("RightAttack");
+                Instantiate(_missParticle, _particleParentRight);
 				break;
 		}
 	}
