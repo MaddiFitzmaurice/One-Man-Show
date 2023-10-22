@@ -24,4 +24,19 @@ public class SceneSwitcher : MonoBehaviour
 	{
 		fader.SetActive(true);
 	}
+
+	public void playButton()
+	{
+		// Find the manager GameObject with the AudioSource and play the audio.
+		GameObject audioManager = GameObject.Find("AudioManager");
+		if (audioManager != null)
+		{
+			AudioSource audioSource = audioManager.GetComponent<AudioSource>();
+			if (audioSource != null)
+			{
+				audioSource.Play();
+			}
+		}
+	}
+
 }
