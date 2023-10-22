@@ -8,6 +8,8 @@ public class HealthIcon : MonoBehaviour
 {
 	bool _isFull;
 	Image _image;
+	[SerializeField] Sprite _HPFull;
+	[SerializeField] Sprite _HPEmpty;
 
 	private void Awake()
 	{
@@ -23,7 +25,7 @@ public class HealthIcon : MonoBehaviour
 	private void SetImage()
 	{
 		if (_image == null) return;
-		_image.color = _isFull ? Color.white : Color.black;
+		_image.sprite = _isFull ? _HPFull : _HPEmpty;
 	}
 
 	public bool IsFull
