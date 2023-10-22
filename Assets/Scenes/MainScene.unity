@@ -6527,8 +6527,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.014650345, y: -0.15855002, z: 0}
-    m_Extent: {x: 10.89645, y: 6.7534504, z: 0}
+    m_Center: {x: -0.012049675, y: -0.16004992, z: 0}
+    m_Extent: {x: 10.90425, y: 6.74885, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -7186,8 +7186,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.67625004, y: 2.7449498, z: 0}
-    m_Extent: {x: 2.6254501, y: 3.80405, z: 0}
+    m_Center: {x: -0.67700005, y: 2.73825, z: 0}
+    m_Extent: {x: 2.6264, y: 3.80245, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -7452,8 +7452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1833359790
 MonoBehaviour:
