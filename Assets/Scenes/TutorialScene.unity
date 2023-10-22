@@ -534,11 +534,11 @@ MonoBehaviour:
   - prefab: {fileID: 2042207053542287042, guid: 43c674d9608ca094397c0be322c3aa69, type: 3}
     parent: {fileID: 2023658699}
   _maxNumToPool: 3
-  leftStartPosition: {x: -11, y: -4, z: 0}
-  leftEndPosition: {x: -1.9, y: -0.5, z: 0}
-  forwardStartPosition: {x: 0, y: -6, z: -2}
-  forwardEndPosition: {x: 0, y: -1, z: -0.5}
-  rightStartPosition: {x: 11, y: -4, z: 0}
+  leftStartPosition: {x: -10.527441, y: -4, z: 0}
+  leftEndPosition: {x: -1.6308007, y: -0.5, z: 0}
+  forwardStartPosition: {x: 0, y: -6, z: -4.559752}
+  forwardEndPosition: {x: 0, y: -1, z: 0}
+  rightStartPosition: {x: 10.362349, y: -4, z: 0}
   rightEndPosition: {x: 1.9, y: -0.5, z: 0}
   _tutorialMode: 1
 --- !u!4 &241471651

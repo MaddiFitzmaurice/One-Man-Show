@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private StageDirection _direction;
 	[SerializeField] private bool _attackReadied = false; // set to true when the event to kill this enemy is added
 	private bool _checkingForAttack = false;
+	private bool _hasAttacked = false;
 	private bool _tutorialMode = false; // when true, show a red flash for the correct timing
 	[SerializeField] private GameObject _tutorialIndicatorPrefab; // the object to spawn to show timings during the tutorial
 	private GameObject _tutorialIndicator; // where the instance of the tutorial indicator is stored
@@ -44,9 +45,11 @@ public class Enemy : MonoBehaviour
 	// Beat Tracking
 	private float _currentBeat;
 
+	// Accel
 	[SerializeField] private AnimationCurve _accelCurve;
 	[SerializeField] private float _maxAccel;
 
+	// Positioning
 	private Vector3 _startPosition;
 	private Vector3 _endPosition;
 	private float _travelDistance;
@@ -63,6 +66,7 @@ public class Enemy : MonoBehaviour
 	// set unique values for this enemy
 	public void Initialise(StageDirection dr, float sb, Vector3 startPos, Vector3 endPos, bool tutorial)
 	{
+		_sprite.color = Color.white;
 		_startBeat = sb;
 		_direction = dr;
 		_tutorialMode = tutorial;
@@ -76,8 +80,9 @@ public class Enemy : MonoBehaviour
 
         _attackReadied = false;
 		_checkingForAttack = false;
+		_hasAttacked = false;
 
-		transform.position = startPos;
+        transform.position = startPos;
 
 		float beatDiff = _hitWindow * (float)Conductor.CurrentBPS; // what percentage of a beat the hit window falls within
 		_earlyWindow = (_hitTime + _startBeat) - beatDiff;
@@ -175,7 +180,9 @@ public class Enemy : MonoBehaviour
 	// Handler for when Player has successfully hit enemy
 	public void InputHandler(object data)
 	{
-		if (data == null) return;
+		if (_hasAttacked) return; // Do not process player hitting enemy if enemy has already attacked
+
+        if (data == null) return;
 
 		StageDirection dir = (StageDirection)data;
 
@@ -283,8 +290,7 @@ public class Enemy : MonoBehaviour
 	// Check if player can attack enemy or vice versa
 	IEnumerator CheckAttack()
 	{
-		// this object will get disabled eventually, so it's okay to have an infinite loop here
-		while (true)
+		while (!_hasAttacked)
 		{
 			float currentBeat = Conductor.SongBeat;
 			// check if it's time to attack
@@ -300,6 +306,7 @@ public class Enemy : MonoBehaviour
 			{
 				Debug.Log($"Enemy has dealt damage! Beat was ({currentBeat}, {_startBeat}+{HitTime}->{_earlyWindow}|{_lateWindow})", this);
 
+				_hasAttacked = true;
 				manager._awaitingInput[_direction]--;
 
 				// Deal damage to player
@@ -308,9 +315,13 @@ public class Enemy : MonoBehaviour
 				{
 					EventManager.EventTrigger(EventType.SFX, _hitSFX);
 				}
-				gameObject.SetActive(false);
 
-				yield break;
+				// Start fading out the enemy
+                _anim.SetTrigger("IsFading");
+                //StartCoroutine(FadeOut());
+                gameObject.SetActive(false);
+
+                yield break;
 			}
 
 			yield return null;
@@ -350,21 +361,20 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
-	//private void Update()
-	//{
-	//	transform.position = Vector3.LerpUnclamped(
-	//		_startPosition,
-	//		_endPosition,
-	//		Mathf.InverseLerp(
-	//			_startBeat,
-	//			_startBeat + _hitTime,
-	//			(float)Conductor.RawLastBeat
-	//			+ _movementAnimation.Evaluate(Conductor.RawSongBeat - Conductor.RawLastBeat)
-	//		)
-	//	);
-	//}
+	IEnumerator FadeOut()
+	{
+		float time = 0;
+        //AnimatorStateInfo info = _anim.GetCurrentAnimatorStateInfo(0);
+		while (time < 0.3f)
+		{
+			time += Time.deltaTime;
+			yield return null;
+		}
 
-	public float HitTime
+        gameObject.SetActive(false);
+    }
+
+    public float HitTime
 	{
 		get { return _hitTime; }
 	}
