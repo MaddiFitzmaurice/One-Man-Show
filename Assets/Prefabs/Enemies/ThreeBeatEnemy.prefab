@@ -102,14 +102,14 @@ MonoBehaviour:
   _startBeat: 0
   _setBeats:
   - BeatOffset: 0
-    Sound: {fileID: 8300000, guid: 1e43036875bbbc24c84c4655c66ad603, type: 3}
+    Sound: {fileID: 8300000, guid: 4af4c931bcd96eb488abcacb39d55b6c, type: 3}
     MoveByBeat: 2
   - BeatOffset: 2
-    Sound: {fileID: 8300000, guid: 1e43036875bbbc24c84c4655c66ad603, type: 3}
+    Sound: {fileID: 8300000, guid: 4af4c931bcd96eb488abcacb39d55b6c, type: 3}
     MoveByBeat: 2
   _hitTime: 4
   _hitClip: {fileID: 0}
-  _deathClip: {fileID: 8300000, guid: 250b5adc05b5e1a4e8455fa56878707b, type: 3}
+  _deathClip: {fileID: 8300000, guid: 9dda6ae021e6f2941ae52bce942297cd, type: 3}
   _direction: 0
   _attackReadied: 0
   _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
