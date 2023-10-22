@@ -102,10 +102,10 @@ MonoBehaviour:
   _startBeat: 0
   _setBeats:
   - BeatOffset: 0
-    Sound: {fileID: 8300000, guid: 65ba58cb5063fb94c990b2ba7ed6e05f, type: 3}
+    Sound: {fileID: 8300000, guid: 1e43036875bbbc24c84c4655c66ad603, type: 3}
     MoveByBeat: 2
   - BeatOffset: 2
-    Sound: {fileID: 8300000, guid: 65ba58cb5063fb94c990b2ba7ed6e05f, type: 3}
+    Sound: {fileID: 8300000, guid: 1e43036875bbbc24c84c4655c66ad603, type: 3}
     MoveByBeat: 2
   _hitTime: 4
   _hitClip: {fileID: 0}

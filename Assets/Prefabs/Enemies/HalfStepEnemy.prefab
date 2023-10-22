@@ -158,11 +158,11 @@ MonoBehaviour:
     Sound: {fileID: 8300000, guid: 6728ef104fd9fab4da1d141dc944f013, type: 3}
     MoveByBeat: 1
   - BeatOffset: 1
-    Sound: {fileID: 8300000, guid: cbbc5585ae3dd5f4689b3cfcfe79a69d, type: 3}
+    Sound: {fileID: 8300000, guid: 74f2be8a6c9aba140a6e2bd38b0653a1, type: 3}
     MoveByBeat: 0.5
   _hitTime: 1.5
   _hitClip: {fileID: 0}
-  _deathClip: {fileID: 8300000, guid: bd8d16e247dd67042a271094828b4115, type: 3}
+  _deathClip: {fileID: 8300000, guid: 199517e7e1e218347b1c273158717e32, type: 3}
   _direction: 0
   _attackReadied: 0
   _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
