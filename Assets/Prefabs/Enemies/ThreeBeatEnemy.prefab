@@ -126,7 +126,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxAccel: 6
+  _maxAccel: 7
 --- !u!95 &3904061110208074134
 Animator:
   serializedVersion: 5

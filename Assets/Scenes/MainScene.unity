@@ -5918,7 +5918,7 @@ MonoBehaviour:
   _maxNumToPool: 3
   leftStartPosition: {x: -10.527441, y: -4, z: 0}
   leftEndPosition: {x: -1.6308007, y: -0.5, z: 0}
-  forwardStartPosition: {x: 0, y: -6, z: -4.559752}
+  forwardStartPosition: {x: 0, y: -6, z: -5.211771}
   forwardEndPosition: {x: 0, y: -1, z: 0}
   rightStartPosition: {x: 10.362349, y: -4, z: 0}
   rightEndPosition: {x: 1.9, y: -0.5, z: 0}
@@ -6527,8 +6527,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.022850037, y: -0.15860009, z: 0}
-    m_Extent: {x: 10.90025, y: 6.7487, z: 0}
+    m_Center: {x: -0.017699718, y: -0.15234995, z: 0}
+    m_Extent: {x: 10.892099, y: 6.75465, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -7186,8 +7186,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.68179995, y: 2.7426, z: 0}
-    m_Extent: {x: 2.6171, y: 3.8037, z: 0}
+    m_Center: {x: -0.6816, y: 2.7369, z: 0}
+    m_Extent: {x: 2.6289, y: 3.7966, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6

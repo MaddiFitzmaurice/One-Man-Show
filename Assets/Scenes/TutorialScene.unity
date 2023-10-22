@@ -536,7 +536,7 @@ MonoBehaviour:
   _maxNumToPool: 3
   leftStartPosition: {x: -10.527441, y: -4, z: 0}
   leftEndPosition: {x: -1.6308007, y: -0.5, z: 0}
-  forwardStartPosition: {x: 0, y: -6, z: -4.559752}
+  forwardStartPosition: {x: 0, y: -6, z: -5.211771}
   forwardEndPosition: {x: 0, y: -1, z: 0}
   rightStartPosition: {x: 10.362349, y: -4, z: 0}
   rightEndPosition: {x: 1.9, y: -0.5, z: 0}
