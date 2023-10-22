@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 9e81ad3d073a32649a6fcf124fff587b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 108
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4122.667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5fda67f70e6f84984f1e159aa3c038
+      internalID: -1325859853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_1
+      rect:
+        serializedVersion: 2
+        x: 2726
+        y: 4122.667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1898954a02bf34593054bc6676e5f9
+      internalID: -1332187408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_2
+      rect:
+        serializedVersion: 2
+        x: 5452
+        y: 4122.667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533a004fbbdce214cada3adc253f4f7e
+      internalID: -1385583740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_3
+      rect:
+        serializedVersion: 2
+        x: 8178
+        y: 4122.667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975bd8f9f1904e1479678428ba5831f6
+      internalID: 1956096906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2061.6667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd55ba37c648beb4387cb93216589c23
+      internalID: 403981574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_5
+      rect:
+        serializedVersion: 2
+        x: 2726
+        y: 2061.6667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b4af115e494234486c7e093c3ce5bb
+      internalID: 1052727022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_6
+      rect:
+        serializedVersion: 2
+        x: 5452
+        y: 2061.6667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6cd2b269fddaf4394642b865bc4156
+      internalID: -619160759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_7
+      rect:
+        serializedVersion: 2
+        x: 8178
+        y: 2061.6667
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd0a1c79991dda4683a4a8d25cf8c6e
+      internalID: -1939362134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.66674805
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37bed6978d6740942be77ad728e3e1a4
+      internalID: 1384567743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_9
+      rect:
+        serializedVersion: 2
+        x: 2726
+        y: 0.66674805
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d463898b20d47c94cbda7b8557e2ba13
+      internalID: 1570012866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_10
+      rect:
+        serializedVersion: 2
+        x: 5452
+        y: 0.66674805
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2bd45aee45d1543985965ae84b40eb
+      internalID: -657489558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AcrossBodyAttack_SpriteSheet01_11
+      rect:
+        serializedVersion: 2
+        x: 8178
+        y: 0.66674805
+        width: 2726.5
+        height: 2061.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd8c5ed3b9898548822fc848d746ff7
+      internalID: 1148413996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      AcrossBodyAttack_SpriteSheet01_0: -1325859853
+      AcrossBodyAttack_SpriteSheet01_1: -1332187408
+      AcrossBodyAttack_SpriteSheet01_10: -657489558
+      AcrossBodyAttack_SpriteSheet01_11: 1148413996
+      AcrossBodyAttack_SpriteSheet01_2: -1385583740
+      AcrossBodyAttack_SpriteSheet01_3: 1956096906
+      AcrossBodyAttack_SpriteSheet01_4: 403981574
+      AcrossBodyAttack_SpriteSheet01_5: 1052727022
+      AcrossBodyAttack_SpriteSheet01_6: -619160759
+      AcrossBodyAttack_SpriteSheet01_7: -1939362134
+      AcrossBodyAttack_SpriteSheet01_8: 1384567743
+      AcrossBodyAttack_SpriteSheet01_9: 1570012866
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

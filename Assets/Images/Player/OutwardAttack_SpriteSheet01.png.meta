@@ -1,0 +1,457 @@
+fileFormatVersion: 2
+guid: 5a86be57fd7c0d1428dab1f82e615847
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 108
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4096.667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf770e984e4dad84ab2d46ac64478f74
+      internalID: -1891407540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_1
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 4096.667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99f0c897af609c34ab84373a8981f11b
+      internalID: 1112257261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_2
+      rect:
+        serializedVersion: 2
+        x: 4802
+        y: 4096.667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5948c07762f7e104a93892cd8313f656
+      internalID: 474584869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_3
+      rect:
+        serializedVersion: 2
+        x: 7203
+        y: 4096.667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dfb135ce3535c4fbe365017e21681f
+      internalID: -1188578762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_4
+      rect:
+        serializedVersion: 2
+        x: 9604
+        y: 4096.667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84301939cdcb89b48aaa9cb7f746a04a
+      internalID: 862489763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048.6667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580320814d269834299e6eb68df122cf
+      internalID: -823860481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_6
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 2048.6667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcded039aeae524c9f76fd7a583167a
+      internalID: -1100358430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_7
+      rect:
+        serializedVersion: 2
+        x: 4802
+        y: 2048.6667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df086d88064d0943ad294567b42f97d
+      internalID: 1912985540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_8
+      rect:
+        serializedVersion: 2
+        x: 7203
+        y: 2048.6667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318bfcf42284fb845bd5162c760a96d2
+      internalID: 808831091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_9
+      rect:
+        serializedVersion: 2
+        x: 9604
+        y: 2048.6667
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c993abe9d932ad4b804c2f7b0b6355f
+      internalID: 1373480642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.66674805
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee59996b6f79a14fb066832a8d1d9b5
+      internalID: 1777597089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_11
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 0.66674805
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba197ebb726fb648b254c95610690b6
+      internalID: 1269456488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_12
+      rect:
+        serializedVersion: 2
+        x: 4802
+        y: 0.66674805
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a48dcbd4df6b7541a72ab6eabb755ec
+      internalID: 795857047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_13
+      rect:
+        serializedVersion: 2
+        x: 7203
+        y: 0.66674805
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36963c77a595c644580cc7fdead50e17
+      internalID: -774989918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutwardAttack_SpriteSheet01_14
+      rect:
+        serializedVersion: 2
+        x: 9604
+        y: 0.66674805
+        width: 2401
+        height: 2048.3333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3397c722392ae142bb9bd46c39c427b
+      internalID: 2051069624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      OutwardAttack_SpriteSheet01_0: -1891407540
+      OutwardAttack_SpriteSheet01_1: 1112257261
+      OutwardAttack_SpriteSheet01_10: 1777597089
+      OutwardAttack_SpriteSheet01_11: 1269456488
+      OutwardAttack_SpriteSheet01_12: 795857047
+      OutwardAttack_SpriteSheet01_13: -774989918
+      OutwardAttack_SpriteSheet01_14: 2051069624
+      OutwardAttack_SpriteSheet01_2: 474584869
+      OutwardAttack_SpriteSheet01_3: -1188578762
+      OutwardAttack_SpriteSheet01_4: 862489763
+      OutwardAttack_SpriteSheet01_5: -823860481
+      OutwardAttack_SpriteSheet01_6: -1100358430
+      OutwardAttack_SpriteSheet01_7: 1912985540
+      OutwardAttack_SpriteSheet01_8: 808831091
+      OutwardAttack_SpriteSheet01_9: 1373480642
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

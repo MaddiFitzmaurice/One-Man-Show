@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 33c14b9e043efbd45bf24363577b00d2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 108
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1468aebfdb99eb543b5419eb1899b41c
+      internalID: 2027606054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_1
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ae25cad61c74a409f52a2c1819a433
+      internalID: 2038418704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_2
+      rect:
+        serializedVersion: 2
+        x: 4114
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c215feb2db8cda4082935f9a101ca0f
+      internalID: 1607778129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_3
+      rect:
+        serializedVersion: 2
+        x: 6171
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c2a85b87ffd434cacd35ad40601bb8
+      internalID: -435041188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_4
+      rect:
+        serializedVersion: 2
+        x: 8228
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6941b3e60bcb8f7448554a760913d485
+      internalID: 1291284026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_5
+      rect:
+        serializedVersion: 2
+        x: 10285
+        y: 2059.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed0ccc4316f03647a6c755bb8fc9056
+      internalID: 21460953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85468149b814f744a92996e76bfffe5e
+      internalID: -734412321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_7
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5734d1db5bb0144b2e6af5088bfb31
+      internalID: 992125123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_8
+      rect:
+        serializedVersion: 2
+        x: 4114
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8775a67a50a0e8a4cb8464aaabe068d2
+      internalID: -724105029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_9
+      rect:
+        serializedVersion: 2
+        x: 6171
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34dff1cc608822b44b7ca748f8a1e8dc
+      internalID: -1746605174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_10
+      rect:
+        serializedVersion: 2
+        x: 8228
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3992d1dc1765c33499df28a9e5093a60
+      internalID: -1182929227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownardAttack_SpriteSheet01_11
+      rect:
+        serializedVersion: 2
+        x: 10285
+        y: 0.5
+        width: 2057.6667
+        height: 2059.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5390fe0ef3f0b8e419e66d9791d2841c
+      internalID: 291135074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DownardAttack_SpriteSheet01_0: 2027606054
+      DownardAttack_SpriteSheet01_1: 2038418704
+      DownardAttack_SpriteSheet01_10: -1182929227
+      DownardAttack_SpriteSheet01_11: 291135074
+      DownardAttack_SpriteSheet01_2: 1607778129
+      DownardAttack_SpriteSheet01_3: -435041188
+      DownardAttack_SpriteSheet01_4: 1291284026
+      DownardAttack_SpriteSheet01_5: 21460953
+      DownardAttack_SpriteSheet01_6: -734412321
+      DownardAttack_SpriteSheet01_7: 992125123
+      DownardAttack_SpriteSheet01_8: -724105029
+      DownardAttack_SpriteSheet01_9: -1746605174
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
