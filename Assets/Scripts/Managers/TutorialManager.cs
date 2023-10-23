@@ -16,7 +16,7 @@ public class TutorialManager : MonoBehaviour
 	[SerializeField] private List<SpawnBeat> _spawns;
 	[SerializeField] private SongManager _songManager;
 	[SerializeField] private SongMeta _song;
-	[SerializeField] private GameObject _tutorialPrompts; // the object containing all tutorial keys
+	[SerializeField] private Fader _promptKeysFader;
 
 	private void OnEnable()
 	{
@@ -112,10 +112,10 @@ public class TutorialManager : MonoBehaviour
 			else
 			{
 				_stageIndex++;
-				// Since it's no longer the first stage, destroy the key prompts if they're still there
-				if (_tutorialPrompts != null)
+				// Since it's no longer the first stage, fade out the key prompts if they're still there
+				if (_promptKeysFader != null)
 				{
-					Destroy(_tutorialPrompts);
+					_promptKeysFader.enabled = true;
 				}
 
 				// If there is no next stage to move to, move to the main scene (start the game!)

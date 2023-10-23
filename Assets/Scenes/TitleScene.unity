@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 80749718}
   - component: {fileID: 80749717}
   - component: {fileID: 80749719}
+  - component: {fileID: 80749720}
   m_Layer: 5
   m_Name: Fader
   m_TagString: Untagged
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -286,12 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGraphic: {fileID: 80749717}
   delay: 2
   lifetime: 2
-  destroyScript: 1
-  destroyGraphic: 1
-  destroyObject: 1
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -316,6 +313,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  destroyObject: 1
+  destroyScript: 1
+  destroyGroup: 0
+--- !u!225 &80749720
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80749715}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &97754048
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +340,7 @@ GameObject:
   - component: {fileID: 97754051}
   - component: {fileID: 97754050}
   - component: {fileID: 97754049}
+  - component: {fileID: 97754053}
   m_Layer: 5
   m_Name: FadeOut
   m_TagString: Untagged
@@ -347,12 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGraphic: {fileID: 97754050}
   delay: 0
   lifetime: 1
-  destroyScript: 1
-  destroyGraphic: 0
-  destroyObject: 0
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -377,6 +386,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  destroyObject: 0
+  destroyScript: 1
+  destroyGroup: 1
 --- !u!114 &97754050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -434,6 +446,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &97754053
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97754048}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &337351689
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +488,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4c832b475f182644096989830821a6c2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -585,7 +609,6 @@ GameObject:
   m_Component:
   - component: {fileID: 406035472}
   - component: {fileID: 406035471}
-  - component: {fileID: 406035470}
   - component: {fileID: 406035469}
   m_Layer: 5
   m_Name: FadeCanvas
@@ -611,29 +634,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &406035470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406035468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &406035471
 Canvas:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 3
@@ -1240,7 +1240,7 @@ ParticleSystemRenderer:
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
-  m_SortMode: 0
+  m_SortMode: 1
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
@@ -6479,6 +6479,7 @@ GameObject:
   - component: {fileID: 1409769475}
   - component: {fileID: 1409769474}
   - component: {fileID: 1409769476}
+  - component: {fileID: 1409769477}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -6503,7 +6504,7 @@ RectTransform:
   m_Father: {fileID: 1928175495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6571,6 +6572,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1409769477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409769472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.7777778
 --- !u!1 &1567226496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7022,7 +7037,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 108
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7434,8 +7449,8 @@ Camera:
   m_GameObject: {fileID: 2147304387}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

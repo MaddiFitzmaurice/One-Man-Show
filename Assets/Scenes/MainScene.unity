@@ -5610,6 +5610,7 @@ GameObject:
   - component: {fileID: 600536316}
   - component: {fileID: 600536315}
   - component: {fileID: 600536319}
+  - component: {fileID: 600536320}
   m_Layer: 5
   m_Name: DeathFadeOut
   m_TagString: Untagged
@@ -5629,12 +5630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGraphic: {fileID: 600536316}
   delay: 0
   lifetime: 2
-  destroyScript: 1
-  destroyGraphic: 0
-  destroyObject: 0
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -5659,6 +5656,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  destroyObject: 0
+  destroyScript: 1
+  destroyGroup: 1
 --- !u!114 &600536316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5672,7 +5672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.101960786, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.101960786, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5730,6 +5730,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 600536314}
   switchDelay: 2
+--- !u!225 &600536320
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600536314}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &608632622
 GameObject:
   m_ObjectHideFlags: 0
@@ -5743,6 +5755,7 @@ GameObject:
   - component: {fileID: 608632624}
   - component: {fileID: 608632623}
   - component: {fileID: 608632627}
+  - component: {fileID: 608632628}
   m_Layer: 5
   m_Name: WinFadeOut
   m_TagString: Untagged
@@ -5762,12 +5775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGraphic: {fileID: 608632624}
   delay: 1
   lifetime: 1
-  destroyScript: 1
-  destroyGraphic: 0
-  destroyObject: 0
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -5792,6 +5801,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  destroyObject: 0
+  destroyScript: 1
+  destroyGroup: 1
 --- !u!114 &608632624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5805,7 +5817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5863,6 +5875,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 608632622}
   switchDelay: 2
+--- !u!225 &608632628
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608632622}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &613233725
 GameObject:
   m_ObjectHideFlags: 0
@@ -6527,8 +6551,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.015300274, y: -0.15849996, z: 0}
-    m_Extent: {x: 10.9006, y: 6.7513, z: 0}
+    m_Center: {x: -0.015699863, y: -0.16429996, z: 0}
+    m_Extent: {x: 10.898399, y: 6.7512, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -7186,8 +7210,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.6857, y: 2.74175, z: 0}
-    m_Extent: {x: 2.6238, y: 3.79755, z: 0}
+    m_Center: {x: -0.6875, y: 2.7463999, z: 0}
+    m_Extent: {x: 2.6218, y: 3.7971, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6
@@ -7229,6 +7253,7 @@ GameObject:
   - component: {fileID: 1701635219}
   - component: {fileID: 1701635218}
   - component: {fileID: 1701635217}
+  - component: {fileID: 1701635220}
   m_Layer: 5
   m_Name: FadeIn
   m_TagString: Untagged
@@ -7267,12 +7292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9252886e4f7c469ee4d41bdacd75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGraphic: {fileID: 1701635218}
   delay: 0
   lifetime: 1
-  destroyScript: 1
-  destroyGraphic: 1
-  destroyObject: 1
   transparency:
     serializedVersion: 2
     m_Curve:
@@ -7297,6 +7318,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  destroyObject: 1
+  destroyScript: 0
+  destroyGroup: 0
 --- !u!114 &1701635218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7310,7 +7334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7335,6 +7359,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701635215}
   m_CullTransparentMesh: 1
+--- !u!225 &1701635220
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701635215}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1776228261
 GameObject:
   m_ObjectHideFlags: 0

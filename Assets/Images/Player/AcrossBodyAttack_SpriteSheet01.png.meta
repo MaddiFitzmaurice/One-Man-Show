@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4122.667
-        width: 2726.5
-        height: 2061.3333
+        y: 4096
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_1
       rect:
         serializedVersion: 2
-        x: 2726
-        y: 4122.667
-        width: 2726.5
-        height: 2061.3333
+        x: 2560
+        y: 4096
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_2
       rect:
         serializedVersion: 2
-        x: 5452
-        y: 4122.667
-        width: 2726.5
-        height: 2061.3333
+        x: 5120
+        y: 4096
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_3
       rect:
         serializedVersion: 2
-        x: 8178
-        y: 4122.667
-        width: 2726.5
-        height: 2061.3333
+        x: 7680
+        y: 4096
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,11 +198,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2061.6667
-        width: 2726.5
-        height: 2061.3333
+        y: 2048
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_5
       rect:
         serializedVersion: 2
-        x: 2726
-        y: 2061.6667
-        width: 2726.5
-        height: 2061.3333
+        x: 2560
+        y: 2048
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_6
       rect:
         serializedVersion: 2
-        x: 5452
-        y: 2061.6667
-        width: 2726.5
-        height: 2061.3333
+        x: 5120
+        y: 2048
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_7
       rect:
         serializedVersion: 2
-        x: 8178
-        y: 2061.6667
-        width: 2726.5
-        height: 2061.3333
+        x: 7680
+        y: 2048
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,11 +282,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0.66674805
-        width: 2726.5
-        height: 2061.3333
+        y: 0
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_9
       rect:
         serializedVersion: 2
-        x: 2726
-        y: 0.66674805
-        width: 2726.5
-        height: 2061.3333
+        x: 2560
+        y: 0
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_10
       rect:
         serializedVersion: 2
-        x: 5452
-        y: 0.66674805
-        width: 2726.5
-        height: 2061.3333
+        x: 5120
+        y: 0
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: AcrossBodyAttack_SpriteSheet01_11
       rect:
         serializedVersion: 2
-        x: 8178
-        y: 0.66674805
-        width: 2726.5
-        height: 2061.3333
+        x: 7680
+        y: 0
+        width: 2560
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.375, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

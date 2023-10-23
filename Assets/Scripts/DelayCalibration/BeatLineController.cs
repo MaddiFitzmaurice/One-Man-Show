@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatLineController : MonoBehaviour
 {
@@ -36,16 +37,11 @@ public class BeatLineController : MonoBehaviour
 			rt.anchorMin = lineTransform.anchorMin;
 			rt.anchorMax = lineTransform.anchorMax;
 
-			Fader fader = line.GetComponent<Fader>();
+			Graphic graphic;
 
-			if (fader == null) return;
+			if (!line.TryGetComponent(out graphic)) return;
 
-			if (fader.targetGraphic != null)
-			{
-				fader.targetGraphic.color = beatGradient.Evaluate(t);
-			}
-
-			fader.enabled = true;
+			graphic.color = beatGradient.Evaluate(t);
 		}
 	}
 }

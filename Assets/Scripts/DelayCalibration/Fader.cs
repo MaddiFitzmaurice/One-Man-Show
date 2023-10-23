@@ -1,59 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class Fader : MonoBehaviour
 {
 	private float _start_time;
 
-	public Graphic targetGraphic;
+	private CanvasGroup _targetGroup;
 
 	[Min(0)]
 	public float delay = 0.0f;
 	[Min(0)]
 	public float lifetime = 1.0f;
-	public bool destroyScript = true;
-	public bool destroyGraphic = true;
-	public bool destroyObject = false;
 
 	public AnimationCurve transparency;
+
+	public bool destroyObject = false;
+	public bool destroyScript = true;
+	public bool destroyGroup = false;
+
+	private void Awake()
+	{
+		_targetGroup = GetComponent<CanvasGroup>();
+	}
 
 	private void OnEnable()
 	{
 		_start_time = Time.time + delay;
 
-		Color c = targetGraphic.color;
-		c.a = transparency.Evaluate(0);
-		targetGraphic.color = c;
+		_targetGroup.alpha = transparency.Evaluate(0);
 	}
 
 	void Update()
 	{
 		if (Time.time <= _start_time) return;
 
-		if (Time.time - _start_time > lifetime)
+		if (Time.time < _start_time + lifetime)
 		{
-			if (destroyGraphic)
-			{
-				Destroy(targetGraphic);
-			}
-			if (destroyScript)
-			{
-				Destroy(this);
-			}
-			if(destroyObject)
-			{
-				Destroy(gameObject);
-			}
+			_targetGroup.alpha = transparency.Evaluate((Time.time - _start_time) / lifetime);
+			return;
+		}
 
-			enabled = false;
-		}
-		else
+		if (destroyObject)
 		{
-			Color c = targetGraphic.color;
-			c.a = transparency.Evaluate((Time.time - _start_time) / lifetime);
-			targetGraphic.color = c;
+			_targetGroup = null;
+			Destroy(gameObject);
+			return;
 		}
+
+		_targetGroup.alpha = transparency.Evaluate(1);
+
+		if (destroyScript)
+		{
+			Destroy(this);
+			if (destroyGroup && _targetGroup != null)
+			{
+				Destroy(_targetGroup);
+				_targetGroup = null;
+			}
+		}
+
+		enabled = false;
 	}
 }

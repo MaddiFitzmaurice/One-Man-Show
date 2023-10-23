@@ -47,7 +47,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 108
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_1
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_2
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        x: 4096
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_3
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        x: 6144
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_4
       rect:
         serializedVersion: 2
-        x: 8228
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        x: 8192
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_5
       rect:
         serializedVersion: 2
-        x: 10285
-        y: 2059.5
-        width: 2057.6667
-        height: 2059.5
+        x: 10240
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,11 +240,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_7
       rect:
         serializedVersion: 2
-        x: 2057
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_8
       rect:
         serializedVersion: 2
-        x: 4114
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_9
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        x: 6144
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_10
       rect:
         serializedVersion: 2
-        x: 8228
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        x: 8192
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: DownardAttack_SpriteSheet01_11
       rect:
         serializedVersion: 2
-        x: 10285
-        y: 0.5
-        width: 2057.6667
-        height: 2059.5
+        x: 10240
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 9
-      pivot: {x: 0.497, y: 0.02}
+      pivot: {x: 0.66, y: 0.02}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

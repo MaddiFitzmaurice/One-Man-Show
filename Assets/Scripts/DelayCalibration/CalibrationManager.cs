@@ -110,7 +110,7 @@ public class CalibrationManager : MonoBehaviour
 
 				double avg = inputOffsets.Average();
 
-				Conductor.InputOffset = -avg;
+				Conductor.InputOffset = avg;
 
 				if (avg < 0)
 				{
@@ -120,6 +120,7 @@ public class CalibrationManager : MonoBehaviour
 				{
 					delayMessage.SetText(String.Format(delayMessageFormat,  avg * 1000.0, "late" ));
 				}
+				Debug.Log($"Set input delay to {Conductor.InputOffset * 1000.0}ms");
 			}
 
 			yield return null;
