@@ -113,7 +113,7 @@ public class TutorialManager : MonoBehaviour
 			{
 				_stageIndex++;
 				// Since it's no longer the first stage, fade out the key prompts if they're still there
-				if (_promptKeysFader != null)
+				if (_promptKeysFader != null && _stageIndex > 1)
 				{
 					_promptKeysFader.enabled = true;
 				}
