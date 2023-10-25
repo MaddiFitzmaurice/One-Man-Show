@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
 	public EnemyManager manager;
 
 	[SerializeField] private float _startBeat;
-	// private List<Animation> _enemyAnims; // this may not work when changing directions? not needed for now
 	[SerializeField] private List<EnemyBeat> _setBeats; // the defined list of beats this enemy type has
 	private List<EnemyBeat> _beats; // the current list of beats of this specific enemy
 
 	[SerializeField] private float _hitTime; // how many beats until this enemy attacks
-	[SerializeField] private AudioClip _hitClip; // the sound this enemy plays if it attacks the player
-	[SerializeField] private AudioClip _deathClip; // the sound this enemy plays if it is killed
+
+	[SerializeField] private AudioClipData _deathClip; // the sound this enemy plays if it is killed
+
 	private float _hitWindow = 0.098f; // seconds leniency in both directions (consistent across all enemies)
 	private float _earlyWindow; // how many beats the player can be early
 	private float _lateWindow; // how many beats the player can be late
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 	private bool _tutorialMode = false; // when true, show a red flash for the correct timing
 	[SerializeField] private GameObject _tutorialIndicatorPrefab; // the object to spawn to show timings during the tutorial
 	private GameObject _tutorialIndicator; // where the instance of the tutorial indicator is stored
-	[SerializeField] private AudioClip _guideClip; // the sound that plays at the perfect hit timing
+	[SerializeField] private AudioClipData _guideClip; // the sound that plays at the perfect hit timing
 	private bool _hasPlayedGuide = false; // whether the perfect hit timing has occurred yet
 
 	[SerializeField]
@@ -62,7 +62,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
 	{
 		_deathSFX = new SFXData(_deathClip, StageDirection.FORWARD);
-		_hitSFX = new SFXData(_hitClip, StageDirection.FORWARD);
 		_anim = GetComponent<Animator>();
 		_beats = new List<EnemyBeat>(); // just so it doesn't error out when the game starts
 	}
@@ -119,7 +118,6 @@ public class Enemy : MonoBehaviour
 		}
 
 		_deathSFX.dir = _direction;
-		_hitSFX.dir = _direction;
 
 		gameObject.SetActive(true);
 
@@ -325,10 +323,6 @@ public class Enemy : MonoBehaviour
 
 				// Deal damage to player
 				EventManager.EventTrigger(EventType.PLAYER_HIT, _direction);
-				if (_hitClip != null)
-				{
-					EventManager.EventTrigger(EventType.SFX, _hitSFX);
-				}
 
                 StartCoroutine(FadeOut());
 

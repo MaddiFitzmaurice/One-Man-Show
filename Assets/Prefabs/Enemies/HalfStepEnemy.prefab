@@ -155,18 +155,25 @@ MonoBehaviour:
   _startBeat: 0
   _setBeats:
   - BeatOffset: 0
-    Sound: {fileID: 8300000, guid: 6728ef104fd9fab4da1d141dc944f013, type: 3}
+    Sound:
+      clip: {fileID: 8300000, guid: 6728ef104fd9fab4da1d141dc944f013, type: 3}
+      volume: 0.5
     MoveByBeat: 1
   - BeatOffset: 1
-    Sound: {fileID: 8300000, guid: 74f2be8a6c9aba140a6e2bd38b0653a1, type: 3}
+    Sound:
+      clip: {fileID: 8300000, guid: 74f2be8a6c9aba140a6e2bd38b0653a1, type: 3}
+      volume: 0.2
     MoveByBeat: 0.5
   _hitTime: 1.5
-  _hitClip: {fileID: 0}
-  _deathClip: {fileID: 8300000, guid: e4e243db5f82b4645870e38ab30b9848, type: 3}
+  _deathClip:
+    clip: {fileID: 8300000, guid: e4e243db5f82b4645870e38ab30b9848, type: 3}
+    volume: 0.5
   _direction: 0
   _attackReadied: 0
   _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
-  _guideClip: {fileID: 8300000, guid: 286db5423bbf76440ba4854caa3eab00, type: 3}
+  _guideClip:
+    clip: {fileID: 0}
+    volume: 0
   _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
   _rightSpawnOffset: {x: 0, y: 1.5, z: 0}
   _forwardSpawnOffset: {x: 0, y: 1.5, z: 0}

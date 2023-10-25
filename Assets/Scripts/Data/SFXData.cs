@@ -3,12 +3,12 @@ using UnityEngine;
 [System.Serializable]
 public class SFXData
 {
-	public AudioClip clip;
+    public AudioClipData clipData;
 	public StageDirection dir;
 
-    public SFXData(AudioClip clip, StageDirection dir)
+    public SFXData(AudioClipData clipData, StageDirection dir)
     {
-        this.clip = clip;
+        this.clipData = clipData;
         this.dir = dir;
     }
 }

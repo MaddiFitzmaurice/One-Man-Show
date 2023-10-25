@@ -38,12 +38,12 @@ public class Player : MonoBehaviour
 	public bool IsDead { get => _currentHealth == 0; }
 
 	// Audio Data
-	[SerializeField] AudioClip _attackSFXForward;
-	[SerializeField] AudioClip _attackSFXLeft;
-	[SerializeField] AudioClip _attackSFXRight;
-	[SerializeField] AudioClip _playerHitSFX;
-	[SerializeField] AudioClip _parryMissSFX;
-	[SerializeField] AudioClip _parryHitSFX;
+	[SerializeField] AudioClipData _attackSFXForward;
+	[SerializeField] AudioClipData _attackSFXLeft;
+	[SerializeField] AudioClipData _attackSFXRight;
+	[SerializeField] AudioClipData _playerHitSFX;
+	[SerializeField] AudioClipData _parryMissSFX;
+	[SerializeField] AudioClipData _parryHitSFX;
 
 	[SerializeField] Transform _particleParentLeft;
 	[SerializeField] Transform _particleParentForward;

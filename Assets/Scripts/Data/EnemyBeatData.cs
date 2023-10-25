@@ -4,7 +4,7 @@ using UnityEngine;
 public struct EnemyBeat
 {
     public float BeatOffset;
-    public AudioClip Sound;
+    public AudioClipData Sound;
     public float MoveByBeat;
 }
 

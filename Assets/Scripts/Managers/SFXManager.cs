@@ -44,7 +44,7 @@ public class SFXManager : MonoBehaviour
         SFXData sfxData = data as SFXData;
         if (_cues.ContainsKey(sfxData.dir))
         {
-            _cues[sfxData.dir].PlayOneShot(sfxData.clip);
+            _cues[sfxData.dir].PlayOneShot(sfxData.clipData.clip, sfxData.clipData.volume);
         }
     }
 }

@@ -102,21 +102,33 @@ MonoBehaviour:
   _startBeat: 0
   _setBeats:
   - BeatOffset: 0
-    Sound: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+    Sound:
+      clip: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+      volume: 0.5
     MoveByBeat: 1
   - BeatOffset: 1
-    Sound: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+    Sound:
+      clip: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+      volume: 0.2
     MoveByBeat: 1
   - BeatOffset: 2
-    Sound: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+    Sound:
+      clip: {fileID: 8300000, guid: 1084ca21e922eac4ca949e445a7ec7b6, type: 3}
+      volume: 0.2
     MoveByBeat: 1
   _hitTime: 3
-  _hitClip: {fileID: 0}
-  _deathClip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
+  _hitClip:
+    clip: {fileID: 0}
+    volume: 0
+  _deathClip:
+    clip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
+    volume: 0.3
   _direction: 0
   _attackReadied: 0
   _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
-  _guideClip: {fileID: 8300000, guid: 286db5423bbf76440ba4854caa3eab00, type: 3}
+  _guideClip:
+    clip: {fileID: 0}
+    volume: 0
   _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
   _rightSpawnOffset: {x: 0.5, y: 1.6, z: 0}
   _forwardSpawnOffset: {x: 0.5, y: 1.6, z: 0}
