@@ -168,36 +168,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stages:
-  - _length: 16
+  - _length: 2
+    _spawns: []
+  - _length: 12
     _spawns:
-    - beat: 4
+    - beat: 2
       direction: 0
       type: 0
-    - beat: 8
+    - beat: 6
       direction: 1
       type: 0
-  - _length: 16
+  - _length: 12
     _spawns:
-    - beat: 4
+    - beat: 2
       direction: 2
       type: 2
-    - beat: 8
+    - beat: 6
       direction: 0
       type: 2
-  - _length: 16
+  - _length: 12
     _spawns:
-    - beat: 4
+    - beat: 2
       direction: 0
       type: 1
-    - beat: 8
+    - beat: 6
       direction: 1
       type: 1
-  - _length: 16
+  - _length: 12
     _spawns:
-    - beat: 4
+    - beat: 2
       direction: 0
       type: 2
-    - beat: 6
+    - beat: 4
       direction: 1
       type: 1
   _stageIndex: 0
