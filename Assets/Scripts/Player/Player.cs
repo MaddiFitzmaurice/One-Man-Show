@@ -45,13 +45,16 @@ public class Player : MonoBehaviour
 	[SerializeField] AudioClip _parryMissSFX;
 	[SerializeField] AudioClip _parryHitSFX;
 
-	[SerializeField] Transform _particleParentForward;
 	[SerializeField] Transform _particleParentLeft;
+	[SerializeField] Transform _particleParentForward;
 	[SerializeField] Transform _particleParentRight;
+
+	[SerializeField] ParticleSystem _missLeft;
+	[SerializeField] ParticleSystem _missForward;
+	[SerializeField] ParticleSystem _missRight;
 
 	// Particles
 	[SerializeField] private GameObject _parryParticle;
-	[SerializeField] private GameObject _missParticle;
 
 	SFXData _playerHitSFXData;
 
@@ -113,12 +116,12 @@ public class Player : MonoBehaviour
 				Instantiate(_parryParticle, _particleParentForward);
 				break;
 			case StageDirection.LEFT:
-                _anim.SetTrigger("LeftAttack");
-                Instantiate(_parryParticle, _particleParentLeft);
+				_anim.SetTrigger("LeftAttack");
+				Instantiate(_parryParticle, _particleParentLeft);
 				break;
 			case StageDirection.RIGHT:
-                _anim.SetTrigger("RightAttack");
-                Instantiate(_parryParticle, _particleParentRight);
+				_anim.SetTrigger("RightAttack");
+				Instantiate(_parryParticle, _particleParentRight);
 				break;
 		}
 	}
@@ -133,25 +136,27 @@ public class Player : MonoBehaviour
 
 		SendSFXData(sfx);
 
-		GameObject particle;
 		switch (direction)
 		{
 			case StageDirection.FORWARD:
-                _anim.SetTrigger("FrontAttack");
-                particle = Instantiate(_missParticle, _particleParentForward);
+				_anim.SetTrigger("FrontAttack");
+				_missForward.Play();
+				//particle = Instantiate(_missParticle, _particleParentForward);
 				// rotate the particle by 90 degrees
-				particle.transform.localRotation = Quaternion.Euler(0, 0, -90);
+				//particle.transform.localRotation = Quaternion.Euler(0, 0, -90);
 				break;
 			case StageDirection.LEFT:
-                _anim.SetTrigger("LeftAttack");
-                particle = Instantiate(_missParticle, _particleParentLeft);
+				_anim.SetTrigger("LeftAttack");
+				_missLeft.Play();
+				//particle = Instantiate(_missParticle, _particleParentLeft);
 				// flip the particle horizontally
-				Vector3 scale = particle.transform.localScale;
-				particle.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+				//Vector3 scale = particle.transform.localScale;
+				//particle.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
 				break;
 			case StageDirection.RIGHT:
-                _anim.SetTrigger("RightAttack");
-                Instantiate(_missParticle, _particleParentRight);
+				_anim.SetTrigger("RightAttack");
+				_missRight.Play();
+				//Instantiate(_missParticle, _particleParentRight);
 				break;
 		}
 	}

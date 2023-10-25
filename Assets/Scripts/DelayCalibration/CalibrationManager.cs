@@ -30,6 +30,11 @@ public class CalibrationManager : MonoBehaviour
 
 	public string delayMessageFormat = "Average delay: {0:N2}ms {1}";
 
+	public void Start()
+	{
+		SetDelayText();
+	}
+
 	public void Update()
 	{
 		if (_calibrator != null) return;
@@ -66,6 +71,28 @@ public class CalibrationManager : MonoBehaviour
 		pressMessage.gameObject.SetActive(false);
 		menuButton.SetActive(true);
 		beatLine.enabled = false;
+	}
+
+	private void SetDelayText()
+	{
+		if (delayMessage == null) return;
+
+		string text;
+
+		if (Conductor.InputOffset < 0)
+		{
+			text = string.Format(delayMessageFormat, -Conductor.InputOffset * 1000.0, "early");
+		}
+		else if (Conductor.InputOffset > 0)
+		{
+			text = string.Format(delayMessageFormat, Conductor.InputOffset * 1000.0, "late");
+		}
+		else
+		{
+			text = string.Format(delayMessageFormat, 0, "");
+		}
+
+		delayMessage.SetText(text.Trim());
 	}
 
 	public IEnumerator CalibrationLoop(uint offsets)
@@ -112,15 +139,9 @@ public class CalibrationManager : MonoBehaviour
 
 				Conductor.InputOffset = avg;
 
-				if (avg < 0)
-				{
-					delayMessage.SetText(String.Format(delayMessageFormat, -avg * 1000.0, "early"));
-				}
-				else
-				{
-					delayMessage.SetText(String.Format(delayMessageFormat,  avg * 1000.0, "late" ));
-				}
 				Debug.Log($"Set input delay to {Conductor.InputOffset * 1000.0}ms");
+
+				SetDelayText();
 			}
 
 			yield return null;
