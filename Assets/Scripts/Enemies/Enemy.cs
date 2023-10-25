@@ -21,9 +21,13 @@ public class Enemy : MonoBehaviour
 	[SerializeField] private bool _attackReadied = false; // set to true when the event to kill this enemy is added
 	private bool _checkingForAttack = false;
 	private bool _hasAttacked = false;
+
+	// Tutorial
 	private bool _tutorialMode = false; // when true, show a red flash for the correct timing
 	[SerializeField] private GameObject _tutorialIndicatorPrefab; // the object to spawn to show timings during the tutorial
 	private GameObject _tutorialIndicator; // where the instance of the tutorial indicator is stored
+	[SerializeField] private AudioClip _guideClip; // the sound that plays at the perfect hit timing
+	private bool _hasPlayedGuide = false; // whether the perfect hit timing has occurred yet
 
 	[SerializeField]
 	private GameObject _spawnOnDeath = null;
@@ -81,6 +85,7 @@ public class Enemy : MonoBehaviour
         _attackReadied = false;
 		_checkingForAttack = false;
 		_hasAttacked = false;
+		_hasPlayedGuide = false;
 
         transform.position = startPos;
 
@@ -301,6 +306,15 @@ public class Enemy : MonoBehaviour
 				EventManager.EventSubscribe(EventType.PARRY_INPUT, InputHandler);
 				manager._awaitingInput[_direction]++;
 			}
+
+			// if past the perfect timing in the tutorial, play a sound to help with cueing
+			if (_tutorialMode && !_hasPlayedGuide && currentBeat > (_hitTime + _startBeat))
+			{
+				_hasPlayedGuide = true;
+				SFXData thisSound = new SFXData(_guideClip, _direction);
+				EventManager.EventTrigger(EventType.SFX, thisSound);
+			}
+
 			// if the player hasn't destroyed this enemy in time, deal damage
 			if (_attackReadied && currentBeat > _lateWindow)
 			{

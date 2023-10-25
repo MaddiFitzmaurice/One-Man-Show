@@ -166,6 +166,7 @@ MonoBehaviour:
   _direction: 0
   _attackReadied: 0
   _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
+  _guideClip: {fileID: 8300000, guid: 286db5423bbf76440ba4854caa3eab00, type: 3}
   _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
   _rightSpawnOffset: {x: 0, y: 1.5, z: 0}
   _forwardSpawnOffset: {x: 0, y: 1.5, z: 0}
