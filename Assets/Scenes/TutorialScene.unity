@@ -204,7 +204,7 @@ MonoBehaviour:
   _currentBeat: 0
   _startBeat: 0
   _repeatOnDamage: 1
-  _repeatOnMiss: 1
+  _repeatOnMiss: 0
   _spawns: []
   _songManager: {fileID: 1854875624}
   _song: {fileID: 11400000, guid: bde4d25499c15ad4289296ef9605d2a4, type: 2}
