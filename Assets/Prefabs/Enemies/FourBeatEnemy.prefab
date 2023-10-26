@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  _startBeat: 0
   _setBeats:
   - BeatOffset: 0
     Sound:
@@ -117,32 +116,67 @@ MonoBehaviour:
       volume: 0.2
     MoveByBeat: 1
   _hitTime: 3
-  _hitClip:
-    clip: {fileID: 0}
-    volume: 0
-  _deathClip:
-    clip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
-    volume: 0.3
-  _direction: 0
-  _attackReadied: 0
-  _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
-  _guideClip:
-    clip: {fileID: 0}
-    volume: 0
-  _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
+  _hitWindow: 0.098
+  _moveBeats:
+  - beat: 0
+    percentage: 0
+  - beat: 1
+    percentage: 0.35
+  - beat: 2
+    percentage: 0.6
+  - beat: 2.8
+    percentage: 0.8
+  - beat: 3.25
+    percentage: 1
   _rightSpawnOffset: {x: 0.5, y: 1.6, z: 0}
   _forwardSpawnOffset: {x: 0.5, y: 1.6, z: 0}
-  _sprite: {fileID: 7300863750329005227}
-  _overrideControllers:
-  - {fileID: 22100000, guid: a7f7432ec16d7e44290d703f12e5e411, type: 2}
-  - {fileID: 22100000, guid: 8fda149de7e41e34eb3f479970829dce, type: 2}
-  _accelCurve:
+  _movementAnimation:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.2190675
+      outSlope: 0.2190675
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.14354727
+    - serializedVersion: 3
+      time: 0.10261552
+      value: 0.12214208
+      inSlope: 3.8092442
+      outSlope: 3.8092442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.03116777
+    - serializedVersion: 3
+      time: 0.75
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxAccel: 10
+  _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
+  _sprite: {fileID: 7300863750329005227}
+  frontOverride: {fileID: 22100000, guid: 8fda149de7e41e34eb3f479970829dce, type: 2}
+  sideOverride: {fileID: 22100000, guid: a7f7432ec16d7e44290d703f12e5e411, type: 2}
+  _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
+  _hitClip:
+    clip: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+    volume: 0.6
+  _deathClip:
+    clip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
+    volume: 0.3
+  _guideClip:
+    clip: {fileID: 0}
+    volume: 0
 --- !u!95 &4043673391577772695
 Animator:
   serializedVersion: 5

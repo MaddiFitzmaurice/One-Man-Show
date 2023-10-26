@@ -4,43 +4,103 @@ using System.Linq;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class CalibrationManager : MonoBehaviour
+public class CalibrationManager : MonoBehaviour, GameInput.ICalibrationActions
 {
-	private Coroutine _calibrator = null;
+    private GameInput _inputActions;
+    private Coroutine _calibrator = null;
+	int _pressedBeat = -1;
 
-	List<double> inputOffsets = new List<double>();
+	private List<double> inputOffsets = new List<double>();
 
-	public Transform arrowTransform;
-	public double BPM = 120.0;
-	public uint maxOffsets = 16;
-	public uint beatsPerCycle = 16;
-	public uint stopAfterNumBeats = 16;
+	[SerializeField] private SceneSwitcher switcher;
 
-	public TextMeshProUGUI startMessage;
-	public TextMeshProUGUI pressMessage;
-	public TextMeshProUGUI delayMessage;
+	[SerializeField] private Transform arrowTransform;
+	[SerializeField] private double BPM = 120.0;
+	[SerializeField] private uint maxOffsets = 16;
+	[SerializeField] private uint stopAfterNumBeats = 16;
 
-	public AudioSource audioSource;
+	[SerializeField] private TextMeshProUGUI startMessage;
+	[SerializeField] private TextMeshProUGUI pressMessage;
+	[SerializeField] private TextMeshProUGUI delayMessage;
 
-	public BeatLineController beatLine;
+	[SerializeField] private AudioSource audioSource;
+
+	[SerializeField] private BeatLineController beatLine;
 
 	public GameObject menuButton;
 
 	public string delayMessageFormat = "Average delay: {0:N2}ms {1}";
+
+	private void Awake()
+	{
+		if (_inputActions != null) return;
+		_inputActions = new GameInput();
+		_inputActions.Calibration.SetCallbacks(this);
+		_inputActions.Calibration.Enable();
+	}
+
+	private void OnEnable()
+	{
+		if (_inputActions != null) _inputActions.Enable();
+	}
+
+	private void OnDisable()
+	{
+		if (_calibrator != null) StopCalibration();
+		if (_inputActions != null) _inputActions.Disable();
+	}
 
 	public void Start()
 	{
 		SetDelayText();
 	}
 
-	public void Update()
+	public void OnBeat(InputAction.CallbackContext context)
 	{
-		if (_calibrator != null) return;
+		if (_calibrator == null)
+		{
+			StartCalibration();
+			return;
+		}
 
-		if (Input.GetKeyDown(KeyCode.Space)) StartCalibration();
+		int beat = Conductor.RawNearestBeat;
+
+		if (beat < _pressedBeat) return;
+
+		_pressedBeat = beat;
+
+		if (maxOffsets != 0 && inputOffsets.Count == maxOffsets)
+		{
+			inputOffsets.RemoveAt(0);
+		}
+
+		inputOffsets.Add(Conductor.RawBeatDelta);
+
+		delayMessage.gameObject.SetActive(true);
+
+		double avg = inputOffsets.Average();
+
+		Conductor.InputOffset = avg;
+
+		Debug.Log($"Set input delay to {Conductor.InputOffset * 1000.0}ms");
+
+		SetDelayText();
 	}
+
+	public void OnBack(InputAction.CallbackContext context)
+	{
+		if (switcher != null) ToMenu();
+    }
+
+	public void ToMenu()
+    {
+        switcher.SetScene("TitleScene");
+        StopCalibration();
+        enabled = false;
+    }
 
 	public void StartCalibration()
 	{
@@ -55,7 +115,7 @@ public class CalibrationManager : MonoBehaviour
 		menuButton.SetActive(false);
 		beatLine.enabled = true;
 
-		_calibrator = StartCoroutine(CalibrationLoop(maxOffsets));
+		_calibrator = StartCoroutine(CalibrationLoop());
 	}
 
 	public void StopCalibration()
@@ -95,54 +155,31 @@ public class CalibrationManager : MonoBehaviour
 		delayMessage.SetText(text.Trim());
 	}
 
-	public IEnumerator CalibrationLoop(uint offsets)
+	public IEnumerator CalibrationLoop()
 	{
-		int lastBeat = 0;
-		int lastPressedBeat = -1;
+		int lastBeepbeat = 0;
+
+        _pressedBeat = -1;
 
 		audioSource.Play();
 
-		if (offsets != 0)
+		if (maxOffsets != 0)
 		{
-			while (inputOffsets.Count >= offsets)
+			while (inputOffsets.Count >= maxOffsets)
 			{
 				inputOffsets.RemoveAt(0);
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space)) yield return null;
-
-		while (Conductor.RawNearestBeat <= stopAfterNumBeats)
+		while (Conductor.RawLastBeat <= stopAfterNumBeats)
 		{
-			if (Conductor.RawLastBeat > lastBeat)
+			if (Conductor.RawLastBeat > lastBeepbeat)
 			{
-				lastBeat = Conductor.RawLastBeat;
+                lastBeepbeat = Conductor.RawLastBeat;
 				audioSource.Play();
 			}
 
 			arrowTransform.rotation = Quaternion.Euler(0, 0, -360f * Mathf.Clamp(Conductor.RawSongBeat, 0, stopAfterNumBeats) / stopAfterNumBeats);
-
-			if (lastBeat > lastPressedBeat && Input.GetKeyDown(KeyCode.Space))
-			{
-				lastPressedBeat = lastBeat;
-
-				if (offsets != 0 && inputOffsets.Count == offsets)
-				{
-					inputOffsets.RemoveAt(0);
-				}
-
-				inputOffsets.Add(Conductor.RawBeatDelta);
-
-				delayMessage.gameObject.SetActive(true);
-
-				double avg = inputOffsets.Average();
-
-				Conductor.InputOffset = avg;
-
-				Debug.Log($"Set input delay to {Conductor.InputOffset * 1000.0}ms");
-
-				SetDelayText();
-			}
 
 			yield return null;
 		}

@@ -156,6 +156,76 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Calibration"",
+            ""id"": ""48c53c28-fce0-49a3-8859-b32a817c08de"",
+            ""actions"": [
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""615748e9-c7cd-49c5-8eb0-9767919ea6c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Beat"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8e23a13-ec9f-4a48-a52e-8c080dc65454"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d2e2b842-f02e-4e8c-a8c8-9690c8e68de3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35f77003-b1a0-4b7c-90fe-8567f9241b8d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecc5b73f-5c13-4248-8c54-7e49f18ded5a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Beat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2943fb83-31da-4a44-a4d0-741d8ad49855"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Beat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -165,6 +235,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Gameplay_LeftParry = m_Gameplay.FindAction("LeftParry", throwIfNotFound: true);
         m_Gameplay_RightParry = m_Gameplay.FindAction("RightParry", throwIfNotFound: true);
         m_Gameplay_ForwardParry = m_Gameplay.FindAction("ForwardParry", throwIfNotFound: true);
+        // Calibration
+        m_Calibration = asset.FindActionMap("Calibration", throwIfNotFound: true);
+        m_Calibration_Back = m_Calibration.FindAction("Back", throwIfNotFound: true);
+        m_Calibration_Beat = m_Calibration.FindAction("Beat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,10 +358,69 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Calibration
+    private readonly InputActionMap m_Calibration;
+    private List<ICalibrationActions> m_CalibrationActionsCallbackInterfaces = new List<ICalibrationActions>();
+    private readonly InputAction m_Calibration_Back;
+    private readonly InputAction m_Calibration_Beat;
+    public struct CalibrationActions
+    {
+        private @GameInput m_Wrapper;
+        public CalibrationActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_Calibration_Back;
+        public InputAction @Beat => m_Wrapper.m_Calibration_Beat;
+        public InputActionMap Get() { return m_Wrapper.m_Calibration; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CalibrationActions set) { return set.Get(); }
+        public void AddCallbacks(ICalibrationActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CalibrationActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CalibrationActionsCallbackInterfaces.Add(instance);
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+            @Beat.started += instance.OnBeat;
+            @Beat.performed += instance.OnBeat;
+            @Beat.canceled += instance.OnBeat;
+        }
+
+        private void UnregisterCallbacks(ICalibrationActions instance)
+        {
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+            @Beat.started -= instance.OnBeat;
+            @Beat.performed -= instance.OnBeat;
+            @Beat.canceled -= instance.OnBeat;
+        }
+
+        public void RemoveCallbacks(ICalibrationActions instance)
+        {
+            if (m_Wrapper.m_CalibrationActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICalibrationActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CalibrationActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CalibrationActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CalibrationActions @Calibration => new CalibrationActions(this);
     public interface IGameplayActions
     {
         void OnLeftParry(InputAction.CallbackContext context);
         void OnRightParry(InputAction.CallbackContext context);
         void OnForwardParry(InputAction.CallbackContext context);
+    }
+    public interface ICalibrationActions
+    {
+        void OnBack(InputAction.CallbackContext context);
+        void OnBeat(InputAction.CallbackContext context);
     }
 }

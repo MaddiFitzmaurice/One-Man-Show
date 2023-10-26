@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  _startBeat: 0
   _setBeats:
   - BeatOffset: 0
     Sound:
@@ -165,24 +164,53 @@ MonoBehaviour:
       volume: 0.2
     MoveByBeat: 0.5
   _hitTime: 1.5
-  _deathClip:
-    clip: {fileID: 8300000, guid: e4e243db5f82b4645870e38ab30b9848, type: 3}
-    volume: 0.5
-  _direction: 0
-  _attackReadied: 0
-  _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
-  _guideClip:
-    clip: {fileID: 0}
-    volume: 0
-  _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
+  _hitWindow: 0.098
+  _moveBeats:
+  - beat: 0
+    percentage: 0
+  - beat: 1
+    percentage: 0.5333
+  - beat: 1.3
+    percentage: 0.75
+  - beat: 1.75
+    percentage: 1
   _rightSpawnOffset: {x: 0, y: 1.5, z: 0}
   _forwardSpawnOffset: {x: 0, y: 1.5, z: 0}
-  _sprite: {fileID: 3123830022354434617}
-  _overrideControllers: []
-  _accelCurve:
+  _movementAnimation:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.3286166
+      outSlope: 6.3286166
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.055900615
+    - serializedVersion: 3
+      time: 0.33333334
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxAccel: 40
+  _spawnOnDeath: {fileID: 8647796207922505137, guid: 3c50af28601cbec4a9a21da25c70a686, type: 3}
+  _sprite: {fileID: 3123830022354434617}
+  frontOverride: {fileID: 0}
+  sideOverride: {fileID: 0}
+  _tutorialIndicatorPrefab: {fileID: 7074025790841196831, guid: f3d59fc7264317a47857dd2afafcdec5, type: 3}
+  _hitClip:
+    clip: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+    volume: 0.6
+  _deathClip:
+    clip: {fileID: 8300000, guid: e4e243db5f82b4645870e38ab30b9848, type: 3}
+    volume: 0.5
+  _guideClip:
+    clip: {fileID: 0}
+    volume: 0
