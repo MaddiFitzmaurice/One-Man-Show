@@ -118,7 +118,7 @@ MonoBehaviour:
   - beat: 2
     percentage: 0.5
   - beat: 3.8
-    percentage: 0.85
+    percentage: 0.9
   - beat: 4.25
     percentage: 1
   _rightSpawnOffset: {x: 0.1, y: 0.85, z: 0}
