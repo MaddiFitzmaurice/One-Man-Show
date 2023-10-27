@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Image))]
 public class HealthIcon : MonoBehaviour
 {
-    private bool _isFull = true;
-    private Animator _anim;
+	bool _isFull;
+	Image _image;
+	[SerializeField] Sprite _HPFull;
+	[SerializeField] Sprite _HPEmpty;
 
-    private void Awake()
+	private void Awake()
 	{
 		_isFull = true;
-        _anim = GetComponent<Animator>();
+		_image = GetComponent<Image>();
 	}
 
-	private void SetAnimation()
+	private void Start()
 	{
-		if (_anim == null) return;
-		_anim.SetTrigger(_isFull ? "activate" : "deactivate");
-		Debug.Log($"Set health trigger '{(_isFull ? "activate" : "deactivate")}'");
+		SetImage();
+	}
+
+	private void SetImage()
+	{
+		if (_image == null) return;
+		_image.sprite = _isFull ? _HPFull : _HPEmpty;
 	}
 
 	public bool IsFull
@@ -29,7 +35,7 @@ public class HealthIcon : MonoBehaviour
 		{
 			if (_isFull == value) return;
 			_isFull = value;
-            SetAnimation();
+			SetImage();
 		}
 	}
 }

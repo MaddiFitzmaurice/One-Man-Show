@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     public void UpdateHealthUIHandler(object data)
     {
         uint player_health = (uint)data;
-        //ResetHealthUI();
+        ResetHealthUI();
         uint icon_health = 0;
 
         foreach (HealthIcon icon in _healthIcons)

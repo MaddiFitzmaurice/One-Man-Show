@@ -97,7 +97,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 27847916bf173a9409470aa8249e1825, type: 3}
     volume: 1
   _playerHitSFX:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 27847916bf173a9409470aa8249e1825, type: 3}
     volume: 1
   _parryMissSFX:
     clip: {fileID: 8300000, guid: cabe0834fe5860e49bb1b1de168f7ac8, type: 3}
