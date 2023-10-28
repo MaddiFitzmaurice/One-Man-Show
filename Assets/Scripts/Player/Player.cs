@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 	// Health
 	[SerializeField] [Range(1, 5)] uint _maxHealth;
-	uint _currentHealth;
+	[SerializeField] uint _currentHealth;    // TEST, remove serialise when done
 
 	// Beat Data
 	private float _currentBeat;
@@ -38,7 +38,9 @@ public class Player : MonoBehaviour
 	public bool IsDead { get => _currentHealth == 0; }
 
 	// Audio Data
-	[SerializeField] AudioClipData _attackSFX;
+	[SerializeField] AudioClipData _attackSFXForward;
+	[SerializeField] AudioClipData _attackSFXLeft;
+	[SerializeField] AudioClipData _attackSFXRight;
 	[SerializeField] AudioClipData _playerHitSFX;
 	[SerializeField] AudioClipData _parryMissSFX;
 	[SerializeField] AudioClipData _parryHitSFX;
@@ -139,14 +141,22 @@ public class Player : MonoBehaviour
 			case StageDirection.FORWARD:
 				_anim.SetTrigger("FrontAttack");
 				_missForward.Play();
+				//particle = Instantiate(_missParticle, _particleParentForward);
+				// rotate the particle by 90 degrees
+				//particle.transform.localRotation = Quaternion.Euler(0, 0, -90);
 				break;
 			case StageDirection.LEFT:
 				_anim.SetTrigger("LeftAttack");
 				_missLeft.Play();
+				//particle = Instantiate(_missParticle, _particleParentLeft);
+				// flip the particle horizontally
+				//Vector3 scale = particle.transform.localScale;
+				//particle.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
 				break;
 			case StageDirection.RIGHT:
 				_anim.SetTrigger("RightAttack");
 				_missRight.Play();
+				//Instantiate(_missParticle, _particleParentRight);
 				break;
 		}
 	}
