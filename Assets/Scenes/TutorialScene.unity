@@ -3225,6 +3225,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7058225391649101337, guid: 5467a8b7a8350b04198a89c3e1b79fe0, type: 3}
+      propertyPath: _attackSFX.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
+    - target: {fileID: 7058225391649101337, guid: 5467a8b7a8350b04198a89c3e1b79fe0, type: 3}
+      propertyPath: _attackSFX.volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058225391649101337, guid: 5467a8b7a8350b04198a89c3e1b79fe0, type: 3}
+      propertyPath: _playerHitSFX.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c0f71ff8d0fe96842998e208c690cd8e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
