@@ -117,9 +117,6 @@ MonoBehaviour:
       volume: 0.2
     MoveByBeat: 1
   _hitTime: 3
-  _hitClip:
-    clip: {fileID: 0}
-    volume: 0
   _deathClip:
     clip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
     volume: 0.3
@@ -136,13 +133,30 @@ MonoBehaviour:
   _overrideControllers:
   - {fileID: 22100000, guid: a7f7432ec16d7e44290d703f12e5e411, type: 2}
   - {fileID: 22100000, guid: 8fda149de7e41e34eb3f479970829dce, type: 2}
-  _accelCurve:
+  _moveCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: Infinity
+      outSlope: 0.016899746
+      tangentMode: 7
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.4985005
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.9375
+      outSlope: 2.9375
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19999999
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxAccel: 10
 --- !u!95 &4043673391577772695
 Animator:
   serializedVersion: 5

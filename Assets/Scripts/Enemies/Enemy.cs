@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -38,7 +39,6 @@ public class Enemy : MonoBehaviour
 
 	// Data
 	private SFXData _deathSFX;
-	private SFXData _hitSFX;
 
 	// Components
 	[SerializeField]
@@ -49,15 +49,14 @@ public class Enemy : MonoBehaviour
 	// Beat Tracking
 	private float _currentBeat;
 
-	// Accel
-	[SerializeField] private AnimationCurve _accelCurve;
-	[SerializeField] private float _maxAccel;
 
 	// Positioning
 	private Vector3 _startPosition;
 	private Vector3 _endPosition;
-	private float _travelDistance;
-    private float _moveIntervalDist; // How far in units an Enemy has to move
+	private float _distance; // Total distance to travel
+    private float _moveIntervalDist; // How far in units an Enemy has to move per beat
+	private Vector3 _moveDirection; // Direction to move in
+	[SerializeField] private AnimationCurve _moveCurve;
 
     private void Awake()
 	{
@@ -78,8 +77,9 @@ public class Enemy : MonoBehaviour
 
 		_startPosition = startPos;
 		_endPosition = endPos;
-		_travelDistance = Vector3.Distance(_startPosition, _endPosition);
-        _moveIntervalDist = _travelDistance / _setBeats.Count;
+		_distance = Vector3.Distance(_startPosition, _endPosition);
+        _moveIntervalDist = _distance / _setBeats.Count;
+		_moveDirection = (_endPosition - _startPosition).normalized;
 
         _attackReadied = false;
 		_checkingForAttack = false;
@@ -336,34 +336,26 @@ public class Enemy : MonoBehaviour
 	IEnumerator MoveOnBeat(float moveByBeat)
 	{
 		float distLeft = _moveIntervalDist * (_beats.Count - 1);
-		float moveIntervalTime = moveByBeat * Conductor.SecondsPerBeat; // How long in seconds an Enemy has to move (based off of how many seconds a beat is)
 		float moveStartBeat = _currentBeat;
 
-		_accelCurve.ClearKeys();
+		Vector3 startPos = transform.position;
+		Vector3 nextPos = startPos + (_moveDirection * _moveIntervalDist);
 
-		Keyframe startKey = new Keyframe(0, 0);
-		startKey.weightedMode = WeightedMode.Both;
-		startKey.outWeight = 0.5f;
-		Keyframe middleKey = new Keyframe(moveIntervalTime * 0.33f, 0); // Appears to wait for a third of the move interval time
-		middleKey.weightedMode = WeightedMode.Both;
-        middleKey.inWeight = 0.5f;
-		middleKey.outWeight = 0.5f;
-        Keyframe endKey = new Keyframe(moveIntervalTime, _maxAccel);
-		endKey.weightedMode = WeightedMode.Both;
-		endKey.outWeight = 0.5f;
-
-		_accelCurve.AddKey(startKey);
-		_accelCurve.AddKey(middleKey);
-		_accelCurve.AddKey(endKey);
-
+		Keyframe[] keyframes = _moveCurve.keys;
+		keyframes[1].time = moveByBeat;
+		keyframes[1].inTangent = 1f;
+		_moveCurve.keys = keyframes;
+		
 		while (Vector3.Distance(_endPosition, transform.position) > distLeft)
 		{
-			float velocity = _accelCurve.Evaluate(Conductor.RawSongBeat - moveStartBeat);
-			transform.position = Vector3.MoveTowards(transform.position, _endPosition, 
-				(velocity * Time.deltaTime));
+			transform.position = Vector3.Lerp(
+				startPos,
+				nextPos,
+				_moveCurve.Evaluate(Conductor.RawSongBeat - moveStartBeat)
+			);
 
 			yield return null;
-		}
+        }
 	}
 
 	IEnumerator FadeOut()
