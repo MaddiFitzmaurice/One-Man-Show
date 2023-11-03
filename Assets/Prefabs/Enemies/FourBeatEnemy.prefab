@@ -118,7 +118,7 @@ MonoBehaviour:
     MoveByBeat: 1
   _hitTime: 3
   _deathClip:
-    clip: {fileID: 8300000, guid: fd2b1f13ca49db04d8f5d935d3f276f4, type: 3}
+    clip: {fileID: 8300000, guid: c52a5bac6fe0e2346823fd07186b3eb8, type: 3}
     volume: 0.3
   _direction: 0
   _attackReadied: 0
