@@ -32,9 +32,6 @@ public class UIManager : MonoBehaviour
 
 	#region HEALTHUI
 
-	// Awake executes before OnEnable which would have caused order effects with
-	// event subscription; instead, just get the players health directly.
-
 	// Create pool of health icons based on player's max health count
 	void SetupHealthUI()
     {

@@ -6362,8 +6362,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.016349792, y: -0.15575004, z: 0}
-    m_Extent: {x: 10.89295, y: 6.7576504, z: 0}
+    m_Center: {x: -0.022900105, y: -0.1552999, z: 0}
+    m_Extent: {x: 10.8965, y: 6.7565002, z: 0}
   m_PointLightInnerAngle: 119.07
   m_PointLightOuterAngle: 180.71
   m_PointLightInnerRadius: 6
@@ -6860,6 +6860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2998265878063899532, guid: 68286e4acf88f9a4eb8e9f8fde5c2736, type: 3}
+      propertyPath: _timeBetweenFrames
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3159752294150191471, guid: 68286e4acf88f9a4eb8e9f8fde5c2736, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7091,8 +7095,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.68125, y: 2.74515, z: 0}
-    m_Extent: {x: 2.61615, y: 3.80235, z: 0}
+    m_Center: {x: -0.67065006, y: 2.7423499, z: 0}
+    m_Extent: {x: 2.62365, y: 3.80805, z: 0}
   m_PointLightInnerAngle: 157.71727
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 6

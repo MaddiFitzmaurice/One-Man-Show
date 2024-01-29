@@ -8,24 +8,51 @@ public class HealthIcon : MonoBehaviour
 {
 	bool _isFull;
 	Image _image;
-	[SerializeField] Sprite _HPFull;
-	[SerializeField] Sprite _HPEmpty;
+	[SerializeField] List<Sprite> _HPFull;
+	[SerializeField] List<Sprite> _HPEmpty;
+	[SerializeField] float _timeBetweenFrames;
+	private float _timer;
+	private List<Sprite> _currentAnim;
+	private int _indexSprite;
 
 	private void Awake()
 	{
 		_isFull = true;
+		_timer = 0;
 		_image = GetComponent<Image>();
 	}
 
 	private void Start()
 	{
-		SetImage();
+		ChangeStatus();
 	}
 
-	private void SetImage()
+	private void Update()
+	{
+		if (_timer > _timeBetweenFrames)
+		{
+			_timer = 0;
+
+			if (_indexSprite >= _currentAnim.Count)
+			{
+				_indexSprite = 0;
+			}
+
+			_image.sprite = _currentAnim[_indexSprite];
+			_indexSprite++;
+		}
+		else
+		{
+			_timer += Time.deltaTime;
+		}
+	}
+
+	private void ChangeStatus()
 	{
 		if (_image == null) return;
-		_image.sprite = _isFull ? _HPFull : _HPEmpty;
+		
+		_currentAnim = _isFull ? _HPFull : _HPEmpty;
+		_indexSprite = 0;
 	}
 
 	public bool IsFull
@@ -35,7 +62,7 @@ public class HealthIcon : MonoBehaviour
 		{
 			if (_isFull == value) return;
 			_isFull = value;
-			SetImage();
+			ChangeStatus();
 		}
 	}
 }
